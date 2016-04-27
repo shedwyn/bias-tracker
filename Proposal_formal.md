@@ -9,7 +9,7 @@
 *2 types of users:  1) participant, 2) administrator.  They can be one in the same.*
 
 * **1) partUser** 
-    * *partUser* has a web form that asks for certain information about the incident being recorded.  *First and foremost will categorize as inclusive incident **(positive)** or exclusive incident **(negative)**.*
+    * *partUser* has a web form that asks for certain information about the incident being recorded.  _First and foremost will categorize as inclusive incident **(positive)** or exclusive incident **(negative)**._
     * *??Advanced??* Would use key words/choices in form to provide possible solutions to solve this incident in the future or steps to take to resolve - possibly use data already available at NCWIT.
     * *Advanced* Method by which the partUser was was the loggee, not the logger, of an incident can rate his/her experience with the organization's response to this incident.
     * *Advanced* phone app that can manage the incident logging form
