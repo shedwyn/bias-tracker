@@ -32,9 +32,9 @@ and where she could have taken action that might have changed the end result of 
 * 3. partUser page 1 - fields for details about incident.
     * actions available - enter data, submit;
 * 4. adminUser page 1 - Directory.  Choose to see statistics for 
-        * see ratios of pos to neg in past month overall (graphical)
-        * see ratios for specific iSubject (graphical)
-        * see ratios for location type (graphical)
+    * see ratios of pos to neg in past month overall (graphical)
+    * see ratios for specific iSubject (graphical)
+    * see ratios for location type (graphical)
 
 ## Technical Components
 **What are the "moving parts"?**
