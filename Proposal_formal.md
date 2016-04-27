@@ -30,13 +30,12 @@
 * 4. partUser page 2 - *Advanced?* present suggestions for resolving negative incident or turning a 
     negative more positive.  Question:  What suggestions for reinforcing a positive incident?
 * 5. *Advanced* partUser page 3 - page to rate organizational response to an incident
-    Build in security from the start/permissions/log in
 * 6. adminUser page 1 - Directory.  Choose to see statistics for 
     * a) logger (one who recorded incident)
         * location of incident (unclear how these subcategories could be broken down right now)
         * time of incident
         * ratios neg to pos
-        * calendar improvement (grid showing tracking over time) (d3 data visualization tool for JS)
+        * calendar improvement (grid showing tracking over time) 
         * loggees involved in any recorded incident(s)
         * *Advanced* meetings held with/about logger about incident(s)
         * *Advanced* organization decision on categorization of incident as bias and what type on flagged incident(s) - i.e. bias - gender, bias - gender and race, not bias - interpersonal
@@ -71,7 +70,7 @@
     * to control the movement from screen to screen *(or is that HTML?)*
 #### Javascript
     * to manage user inputs, including forcing answers when field data is a query tag
-    * data visualizations
+    * data visualizations - Chris J suggested specifically using D3 data visualization tool
 
 ### Back-End
 *I'm not sure how the front and back ends communicate and what role each plays.  But I **think**:*
@@ -85,17 +84,38 @@
         * do I put the conditions in SQL or in python for once SQL hands over the data?  
         * Where does SQL get used?  I know in the query developer for MS Access you can run filters so maybe it is more efficient to do some of the data limitation/mining with SQL as opposed to python?
 #### Django
-    * not sure - this is supposed to help me create the databases and update them, do the "handing off" between Javascript and SQL?  or between Javascript to Python to SQL?
+    * Assist JS with some of the execution of the graphs and charts
+    * will be web interface to SQL and probably eliminate need to write all the SQL for database
+    creation listed above in SQL section
+    * still a little fuzzy on how I set this up
 #### Python
-    * I think python is going to be used to calculate the statistics and transform the raw data into the proper out-put.  
-    * Where I can use python instead of Javascript, I would prefer, that way I only use Javascript for those things that can only be handled by Javascript.  I think it does data transformations and mining better than Javascript, but I have not worked with Javascript much.
-
+    * to be used to calculate the statistics and transform the raw data into the proper out-put. 
+    * create the classes that will work with Django to dip into the db and retrieve the data requested from the web app
 ### Timeline
 **In what order will you tackle your technical components?**
-**Can you guess how long you'll take for each?**
-**What are the easy parts?**
-**What are the hard parts?**
+* python - write the python tranformational code assuming that we will get correctly formatted inputs
+    * set up dummy .csv files to dump output that will be going into django for SQL db
+* javascript - write the necessary code to take raw input and correct/data test before handing off to django
+* django - create framework to connect js & python, develop db portion
+* python/js/django - correcting for poor hand offs, making sure this works
+* HTML/CSS - create user interface
 
+**Can you guess how long you'll take for each?**
+    * I am going to ** guess ** the following:
+    * 35% python - ~5 PDXCD class days
+    * 20% js - ~ 3 PDXCD class days
+    * 15% django - ~ 2 PDXCD class days
+    * 15% python/js/django corrections - ~ 2 PDXCD class days
+    * 10% HTML/CSS - ~ 2 PDXCD class days
+    * 5% padding - ~ 1 PDXCD class days
+**What are the easy parts?**
+    Uh...relative?
+    * Django
+    * HTML/CSS 
+**What are the hard parts?**
+    * python (base of entire app)
+    * js
+    * linking the two with django
 
 Work on the tough and crucial parts first.
 
