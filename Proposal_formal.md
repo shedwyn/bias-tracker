@@ -7,17 +7,38 @@
 **How does a user interact with it on a high level?**
 
 *2 types of users:  1) participant, 2) administrator.  They can be one in the same.*
+_NOTE:  iSubject will be used to describe the individual **about** whom the incident is
+being filed_
 
-* **1) partUser** 
-    * *partUser* has a web form that asks for certain information about the incident being recorded.
-    _First and foremost will categorize as inclusive incident **(positive)** or exclusive incident **(negative)**._
-    * *??Advanced??* Would use key words/choices in form to provide possible solutions to solve this incident in the future or steps to take to resolve - possibly use data already available at NCWIT.
-    * *Advanced* Method by which the partUser was was the loggee, not the logger, of an incident can rate his/her experience with the organization's response to this incident.
-    * *Advanced* phone app that can manage the incident logging form
+* It is easier to speak of this in terms of the goal behind the product.  Simply, this program is 
+being developed to give the person who feels she is experiencing unconscious gender bias in an 
+organizational setting a sense of control.  How?
 
-* **2) adminUser** 
-    * *adminUser* has a web form that allows them to bring up statistics *(need to decide what this will be initially)* about incidents for user.
-    * Base stat - ratio of inclusive v. exclusive
+* By recording, and therefore quantifying, the incidents, the user can, upon later review, break
+the incident down into components of ownership:  what she owns, what the organization owns, and 
+what the iSubject owns.  Once that has been done, she can study herself to see what improvements
+she can make, what recommendations she can make to her supervisors/organization, and that which
+is beyond her control.  By turning these upsetting incidents into data, they are coralled and 
+can be conquered.  It takes something that seems large and amorphous and compartmentalizing it
+into obvious conquerable steps.
+
+* "Positively representing unconscious gender bias" is really a ridiculous statement. In truth, 
+the reason behind including the ability to record incidents representing inclusiveness is 
+meant to give the user additional information to frame their interaction with others in the 
+workplace/classroom.  Not every interaction is negative.  In studying the positive interactions
+she can,  over time, learn specifically what the other person does to be inclusive, and incorporate
+those actions into her own life.  It also prevents the user from unconsciously developing an 
+incorrect visualization of the organizational setting because she is only remembering the negative
+interactions.  It can also help her to identify potential allies in the organization who might
+be receptive to taking a greater role in improving inclusiveness and working to end gender bias.
+
+* The advanced features will allow an organization to better map where/how/when they are 
+succeeding and ditto where they have the opportunity to make improvement.  Ideally there will
+be a way for user to connect to resources that allow her to gradually become better at 
+handling these incidents sooner (each time).  Theoretically, identifying a developing situation
+that might result in bad behaviour early enough in the interaction may allow the user to turn
+the situation around.  By, for example, asking a pointed question early on, or deliberately moving into the person's line of sight, or bravely and deliberately stopping a meeting organizer from 
+moving to the next topic when her questions have not been answered successfully.
 
 ## Specific Functionality
 **What is _every_ specific page or interface and _every_ action the user can take?**
@@ -25,101 +46,70 @@
 * 1. allUser page - login screen
 * 2. Directional screen?  Mainly for adminUser to choose to log an incident as partUser
     or go on to the adminUser page.
-* 3. partUser page 1 - fields for details about incident.  Some fields may be linked to db with "tips" so when user submits, a new **window** pops up with those tips(should also indicate what partUser entered to elicit this(these) recommendation(s))
+* 3. partUser page 1 - fields for details about incident.
     * actions available - enter data, submit;
-    * request for action?
-* 4. partUser page 2 - *Advanced?* present suggestions for resolving negative incident or turning a 
-    negative more positive.  Question:  What suggestions for reinforcing a positive incident?
-* 5. *Advanced* partUser page 3 - page to rate organizational response to an incident
-* 6. adminUser page 1 - Directory.  Choose to see statistics for 
-    * a) logger (one who recorded incident)
-        * location of incident (unclear how these subcategories could be broken down right now)
-        * time of incident
-        * ratios neg to pos
-        * calendar improvement (grid showing tracking over time) 
-        * loggees involved in any recorded incident(s)
-        * *Advanced* meetings held with/about logger about incident(s)
-        * *Advanced* organization decision on categorization of incident as bias and what type on flagged incident(s) - i.e. bias - gender, bias - gender and race, not bias - interpersonal
-        * *Advanced* organization actions regarding incidents logged by this partUser - free-form answer? "most negative incidents related to meetings, changed meeting style to promote better inclusion"  default to None - not all incidents require recording
-        * *Advanced* organization response (default None) to logger's logging of incidents - room to give "points" that can be redeemed for prizes for logging N incidents a week/month/quarter 
-        -early version to include a note section anyway
-    * b) loggee (one about whom an incident was recorded)
-        * location of incident (unclear how these subcategories could be broken down right now)
-        * time of incident
-        * ratios neg to pos
-        * calendar improvement (grid showing tracking over time)
-        * loggers involved in any recorded incident(s)
-        * *Advanced* meetings held with/about loggee about incident(s)
-        * *Advanced* organization decision on categorization of incident(s) as bias and what type on flagged incident(s) - i.e. bias - gender, bias - gender and race, not bias - interpersonal
-        * *Advanced* organization actions regarding incidents logged regarding this partUser - free-form answer? "most negative incidents related to meetings, changed meeting style to promote better inclusion"  default to None - not all incidents require recording
-        * *Advanced* organization response (default None) to loggee involvement (inclusion), improvement (negative) - room to give "points" that can be redeemed for prizes for being mentioned in N incidents a week/month/quarter, others for (subjective) enacting recommendations to promote inclusion and more for actually improving.
-    * c) aggregate of entire db of incidents
-        * statistics on locations/days/times of incident(s) (unclear how to use this, but it could be useful - does this seem to happen to a wider group at meetings?  Is it happening most often on Mondays?  *unclear - what other dynamics could be quantified?  ratio of women/men in group?  what about general minority makeup of teams, what are the "meetings" - product roll out?  code review?  stat of the company?  who was leading meeting?  Was it very structured (Roberts rules) or loose?*
-        * general ratios - pos to neg, marked as bias v. interpersonal, discussed formally v. not v discussed and actioned
-        * calendar improvement (grid showing tracking over time for different 
-        * *Advanced* satisfaction score from both logger and loggee on how any incident was handled
+* 4. adminUser page 1 - Directory.  Choose to see statistics for 
+        * see ratios of pos to neg in past month overall (graphical)
+        * see ratios for specific iSubject (graphical)
+        * see ratios for location type (graphical)
 
 ## Technical Components
 **What are the "moving parts"?**
 **What are the "modules" you're going to write?**
+
 ### Front-End
 #### HTML and CSS
     * forms will be needed for every data entry point, including queries
     * Change windows or pop ups?
     * HTML and CSS to formulate the output of the data queries?
-        * *I am very concerned about creating graphs and doing the statistical math*
-    * to control the movement from screen to screen *(or is that HTML?)*
+    * to control the movement from screen to screen
 #### Javascript
     * to manage user inputs, including forcing answers when field data is a query tag
     * data visualizations - Chris J suggested specifically using D3 data visualization tool
 
 ### Back-End
-*I'm not sure how the front and back ends communicate and what role each plays.  But I 
-**think**:*
 #### SQL
     * create multiple relational databases
         * user names
         * incidents (related to 2 users)
-        * *Advanced* actions related to specific person(s) and/or incident(s)
-        * *Advanced* user privileges (security)
-    * not sure how this will relate to python and data mining - 
-        * do I put the conditions in SQL or in python for once SQL hands over the data?  
+    * not sure how this will relate to Python and data mining - 
+        * do I put the conditions in SQL or in Python for once SQL hands over the data?  
         * Where does SQL get used?  
         I know in the query developer for MS Access you can run filters so maybe it is 
-        more efficient to do some of the data limitation/mining with SQL as opposed to python?
+        more efficient to do some of the data limitation/mining with SQL as opposed to Python?
 #### Django
     * Assist JS with some of the execution of the graphs and charts
     * will be web interface to SQL and probably eliminate need to write all the SQL for database
     creation listed above in SQL section
-    * still a little fuzzy on how I set this up
 #### Python
     * to be used to calculate the statistics and transform the raw data into the proper out-put. 
     * create the classes that will work with Django to dip into the db and retrieve the data 
     requested from the web app
+
 ## Timeline
 
 #### In what order will you tackle your technical components?
 
-* python - write the python tranformational code assuming that we will get correctly formatted 
+* Django - write modules and set up framework
+* Python - write the Python code assuming that we will get correctly formatted 
 inputs
-    * set up dummy .csv files to dump output that will be going into django for SQL db
-* javascript - write the necessary code to take raw input and correct/data test before handing 
-off to django
-* django - create framework to connect js & python, develop db portion
-* python/js/django - correcting for poor hand offs, making sure this works
+    * set up dummy .csv files to dump output that will be going into Django for SQL db
+* Javascript - write the necessary code to take raw input and correct/data test before handing 
+off to Django
+* Python/js/Django - correcting for poor hand offs, making sure this works
 * HTML/CSS - create user interface
 
 #### Can you guess how long you'll take for each?
 
     * I am going to ** guess ** the following based strictly on the 3 weeks we have at the end
-    of this class.  However, prior to the 3 weeks, the rough layout of information to be asked 
-    will be developed (obviously not finalized) and, hopefully, some code work will begin.
-    * 35% python - ~5 PDXCD class days
+    of this class.  However, prior to the 3 weeks, the rough list of data to be collected will 
+    be developed (obviously not finalized) and, hopefully, some code work will begin.
+    * 20% Django - ~ 3 PDXCD class days
+    * 26% Python - ~ 4 PDXCD class days
     * 20% js - ~ 3 PDXCD class days
-    * 15% django - ~ 2 PDXCD class days
-    * 15% python/js/django corrections - ~ 2 PDXCD class days
-    * 10% HTML/CSS - ~ 2 PDXCD class days
-    * 5% padding - ~ 1 PDXCD class days
+    * 13% Python/js/Django corrections - ~ 2 PDXCD class days
+    * 13% HTML/CSS - ~ 2 PDXCD class days
+    * 6% padding - ~ 1 PDXCD class days
 
 #### What are the easy parts?
 
@@ -128,6 +118,6 @@ off to django
 
 #### What are the hard parts?
 
-    * python (base of entire app)
-    * js
-    * linking the two with django
+    * Python
+    * Javascript
+    * linking the two with Django
