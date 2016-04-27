@@ -1,6 +1,6 @@
-## Name
-**What is the short name of your product or project?**
-**Bias Tracker**
+## Project Name:  Bias Tracker
+#### Developer:  Erin L. Fough
+#### Course:  Day Boot Camp - Spring 2016
 
 ## High-Level Product
 **What is your web app going to do?**
