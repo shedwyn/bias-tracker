@@ -106,7 +106,7 @@ off to django
 * python/js/django - correcting for poor hand offs, making sure this works
 * HTML/CSS - create user interface
 
-**Can you guess how long you'll take for each?**
+* **Can you guess how long you'll take for each?**
     * I am going to ** guess ** the following:
     * 35% python - ~5 PDXCD class days
     * 20% js - ~ 3 PDXCD class days
@@ -114,21 +114,11 @@ off to django
     * 15% python/js/django corrections - ~ 2 PDXCD class days
     * 10% HTML/CSS - ~ 2 PDXCD class days
     * 5% padding - ~ 1 PDXCD class days
-**What are the easy parts?**
+* **What are the easy parts?**
     Uh...relative?
     * Django
     * HTML/CSS 
-**What are the hard parts?**
+* **What are the hard parts?**
     * python (base of entire app)
     * js
     * linking the two with django
-
-Work on the tough and crucial parts first.
-
-## Submission
-Create a _new_ git repo based on your project name [in GitHub](https://github.com/new).
-Init that repository with a readme.
-Write up your proposal as `proposal.md` and link to it from the readme.
-I don't care that you learn all of the fancy parts of [writing Markdown documentation](https://help.github.com/articles/basic-writing-and-formatting-syntax/), but just get some basic sections that tackle the rubric above.
-
-Message me with a link to your capstone repo before the proposal is due.
