@@ -73,7 +73,8 @@
     * data visualizations - Chris J suggested specifically using D3 data visualization tool
 
 ### Back-End
-*I'm not sure how the front and back ends communicate and what role each plays.  But I **think**:*
+*I'm not sure how the front and back ends communicate and what role each plays.  But I 
+**think**:*
 #### SQL
     * create multiple relational databases
         * user names
@@ -82,7 +83,9 @@
         * *Advanced* user privileges (security)
     * not sure how this will relate to python and data mining - 
         * do I put the conditions in SQL or in python for once SQL hands over the data?  
-        * Where does SQL get used?  I know in the query developer for MS Access you can run filters so maybe it is more efficient to do some of the data limitation/mining with SQL as opposed to python?
+        * Where does SQL get used?  
+        I know in the query developer for MS Access you can run filters so maybe it is 
+        more efficient to do some of the data limitation/mining with SQL as opposed to python?
 #### Django
     * Assist JS with some of the execution of the graphs and charts
     * will be web interface to SQL and probably eliminate need to write all the SQL for database
@@ -90,12 +93,15 @@
     * still a little fuzzy on how I set this up
 #### Python
     * to be used to calculate the statistics and transform the raw data into the proper out-put. 
-    * create the classes that will work with Django to dip into the db and retrieve the data requested from the web app
+    * create the classes that will work with Django to dip into the db and retrieve the data 
+    requested from the web app
 ### Timeline
 **In what order will you tackle your technical components?**
-* python - write the python tranformational code assuming that we will get correctly formatted inputs
+* python - write the python tranformational code assuming that we will get correctly formatted 
+inputs
     * set up dummy .csv files to dump output that will be going into django for SQL db
-* javascript - write the necessary code to take raw input and correct/data test before handing off to django
+* javascript - write the necessary code to take raw input and correct/data test before handing 
+off to django
 * django - create framework to connect js & python, develop db portion
 * python/js/django - correcting for poor hand offs, making sure this works
 * HTML/CSS - create user interface
