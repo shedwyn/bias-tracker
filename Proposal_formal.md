@@ -95,7 +95,7 @@
     * to be used to calculate the statistics and transform the raw data into the proper out-put. 
     * create the classes that will work with Django to dip into the db and retrieve the data 
     requested from the web app
-### Timeline
+## Timeline
 **In what order will you tackle your technical components?**
 * python - write the python tranformational code assuming that we will get correctly formatted 
 inputs
