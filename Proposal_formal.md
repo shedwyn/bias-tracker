@@ -14,35 +14,18 @@ being filed_
 being developed to give the person who feels she is experiencing unconscious gender bias in an 
 organizational setting a sense of control.  How?
 
-* By recording, and therefore quantifying, the incidents, the user can, upon later review, break
-the incident down into components of ownership:  what she owns, what the organization owns, and 
-what the iSubject owns.  Once that has been done, she can study herself to see what improvements
-she can make, what recommendations she can make to her supervisors/organization, and that which
-is beyond her control.  By turning these upsetting incidents into data, they are coralled and 
-can be conquered.  It takes something that seems large and amorphous and compartmentalizing it
-into obvious conquerable steps.
-
-* "Positively representing unconscious gender bias" is really a ridiculous statement. In truth, 
-the reason behind including the ability to record incidents representing inclusiveness is 
-meant to give the user additional information to frame their interaction with others in the 
-workplace/classroom.  Not every interaction is negative.  In studying the positive interactions
-she can,  over time, learn specifically what the other person does to be inclusive, and incorporate
-those actions into her own life.  It also prevents the user from unconsciously developing an 
-incorrect visualization of the organizational setting because she is only remembering the negative
-interactions.  It can also help her to identify potential allies in the organization who might
-be receptive to taking a greater role in improving inclusiveness and working to end gender bias.
-
-* The advanced features will allow an organization to better map where/how/when they are 
-succeeding and ditto where they have the opportunity to make improvement.  Ideally there will
-be a way for user to connect to resources that allow her to gradually become better at 
-handling these incidents sooner (each time).  Theoretically, identifying a developing situation
-that might result in bad behaviour early enough in the interaction may allow the user to turn
-the situation around.  By, for example, asking a pointed question early on, or deliberately moving into the person's line of sight, or bravely and deliberately stopping a meeting organizer from 
-moving to the next topic when her questions have not been answered successfully.
+* The user is able to record all incidents that appear as if they *could* be unconscious (or
+conscious, really) gender bias.  She can then see statistics regarding incidence (positive or
+negative) of occurance (or those she recorded) by iSubject, by location, or just overall.  Later
+analysis with a cooler head enables her to see the incident for what it really was (bias or not)
+and where she could have taken action that might have changed the end result of the incident
+    * see also "Touchy-Feely Psychological Crap" section at bottom
 
 ## Specific Functionality
+
 **What is _every_ specific page or interface and _every_ action the user can take?**
 **Pick the minimum feature set for your product to work.**
+
 * 1. allUser page - login screen
 * 2. Directional screen?  Mainly for adminUser to choose to log an incident as partUser
     or go on to the adminUser page.
@@ -121,3 +104,28 @@ off to Django
     * Python
     * Javascript
     * linking the two with Django
+
+## Touchy-Feely Psychological Crap
+
+* By recording, and therefore quantifying, the incidents, the user can, upon later review, break
+the incident down into components of ownership:  what she owns, what the organization owns, and 
+what the iSubject owns.  Once that has been done, she can study herself to see what improvements
+she can make, what recommendations she can make to her supervisors/organization, and that which
+is beyond her control.  By turning these upsetting incidents into "mere" data, something large, amorphous, and seemingly hopeless is minimized and compartmentalized into obvious conquerable steps.
+
+* "Positively representing unconscious gender bias" is really a ridiculous statement. In truth, 
+the reason behind including the ability to record incidents representing inclusiveness is 
+meant to give the user additional information to frame their interaction with others in the 
+workplace/classroom.  This to, can be a source of empowerment.  Not every interaction is negative.
+In studying the positive interactions she can, over time, learn specifically what the other person does to be inclusive, and incorporate those actions into her own life.  It also prevents the user 
+from unconsciously developing an incorrect visualization of the organizational setting because she 
+is only remembering the negative interactions.  It can also help her to identify potential allies 
+in the organization who might be receptive to taking a greater role in improving inclusiveness and working to end gender bias.
+
+* The advanced features will allow an organization to better map where/how/when they are 
+succeeding and ditto where they have the opportunity to make improvement.  Ideally there will
+be a way for user to connect to resources that allow her to gradually become better at 
+handling these incidents sooner (each time).  Theoretically, identifying a developing situation
+that might result in bad behaviour early enough in the interaction may allow the user to turn
+the situation around.  By, for example, asking a pointed question early on, or deliberately moving into the person's line of sight, or bravely and deliberately stopping a meeting organizer from 
+moving to the next topic when her questions have not been answered successfully.
