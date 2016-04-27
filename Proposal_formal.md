@@ -21,17 +21,17 @@
 ## Specific Functionality
 **What is _every_ specific page or interface and _every_ action the user can take?**
 **Pick the minimum feature set for your product to work.**
-1. allUser page 0.5 - login screen
-2. Directional screen?  Mainly for adminUser to choose to log an incident as partUser
+* 1. allUser page 0.5 - login screen
+* 2. Directional screen?  Mainly for adminUser to choose to log an incident as partUser
     or go on to the adminUser page.
-3. partUser page 1 - fields for details about incident.  Some fields may be linked to db with "tips" so when user submits, a new **window** pops up with those tips(should also indicate what partUser entered to elicit this(these) recommendation(s))
+* 3. partUser page 1 - fields for details about incident.  Some fields may be linked to db with "tips" so when user submits, a new **window** pops up with those tips(should also indicate what partUser entered to elicit this(these) recommendation(s))
     * actions available - enter data, submit;
     * request for action?
-4. partUser page 2 - *Advanced?* present suggestions for resolving negative incident or turning a 
+* 4. partUser page 2 - *Advanced?* present suggestions for resolving negative incident or turning a 
     negative more positive.  Question:  What suggestions for reinforcing a positive incident?
-5. *Advanced* partUser page 3 - page to rate organizational response to an incident
+* 5. *Advanced* partUser page 3 - page to rate organizational response to an incident
     Build in security from the start/permissions/log in
-6. adminUser page 1 - Directory.  Choose to see statistics for 
+* 6. adminUser page 1 - Directory.  Choose to see statistics for 
     * a) logger (one who recorded incident)
         * location of incident (unclear how these subcategories could be broken down right now)
         * time of incident
@@ -77,10 +77,10 @@
 *I'm not sure how the front and back ends communicate and what role each plays.  But I **think**:*
 #### SQL
     * create multiple relational databases
-        a) user names
-        b) incidents (related to 2 users)
-        c) *Advanced* actions related to specific person(s) and/or incident(s)
-        d) *Advanced* user privileges (security)
+        * user names
+        * incidents (related to 2 users)
+        * *Advanced* actions related to specific person(s) and/or incident(s)
+        * *Advanced* user privileges (security)
     * not sure how this will relate to python and data mining - 
         * do I put the conditions in SQL or in python for once SQL hands over the data?  
         * Where does SQL get used?  I know in the query developer for MS Access you can run filters so maybe it is more efficient to do some of the data limitation/mining with SQL as opposed to python?
