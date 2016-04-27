@@ -96,7 +96,7 @@
     * create the classes that will work with Django to dip into the db and retrieve the data 
     requested from the web app
 ## Timeline
-**In what order will you tackle your technical components?**
+#### **In what order will you tackle your technical components?**
 * python - write the python tranformational code assuming that we will get correctly formatted 
 inputs
     * set up dummy .csv files to dump output that will be going into django for SQL db
@@ -105,8 +105,7 @@ off to django
 * django - create framework to connect js & python, develop db portion
 * python/js/django - correcting for poor hand offs, making sure this works
 * HTML/CSS - create user interface
-
-* **Can you guess how long you'll take for each?**
+#### **Can you guess how long you'll take for each?**
     * I am going to ** guess ** the following:
     * 35% python - ~5 PDXCD class days
     * 20% js - ~ 3 PDXCD class days
@@ -114,11 +113,10 @@ off to django
     * 15% python/js/django corrections - ~ 2 PDXCD class days
     * 10% HTML/CSS - ~ 2 PDXCD class days
     * 5% padding - ~ 1 PDXCD class days
-* **What are the easy parts?**
-    Uh...relative?
+#### **What are the easy parts?**
     * Django
     * HTML/CSS 
-* **What are the hard parts?**
+#### **What are the hard parts?**
     * python (base of entire app)
     * js
     * linking the two with django
