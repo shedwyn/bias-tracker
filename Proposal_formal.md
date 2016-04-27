@@ -106,7 +106,9 @@ off to django
 * python/js/django - correcting for poor hand offs, making sure this works
 * HTML/CSS - create user interface
 #### Can you guess how long you'll take for each?
-    * I am going to ** guess ** the following:
+    * I am going to ** guess ** the following based strictly on the 3 weeks we have at the end
+    of this class.  However, prior to the 3 weeks, the rough layout of information to be asked 
+    will be developed (obviously not finalized) and, hopefully, some code work will begin.
     * 35% python - ~5 PDXCD class days
     * 20% js - ~ 3 PDXCD class days
     * 15% django - ~ 2 PDXCD class days
