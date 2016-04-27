@@ -9,7 +9,8 @@
 *2 types of users:  1) participant, 2) administrator.  They can be one in the same.*
 
 * **1) partUser** 
-    * *partUser* has a web form that asks for certain information about the incident being recorded.  _First and foremost will categorize as inclusive incident **(positive)** or exclusive incident **(negative)**._
+    * *partUser* has a web form that asks for certain information about the incident being recorded.
+    _First and foremost will categorize as inclusive incident **(positive)** or exclusive incident **(negative)**._
     * *??Advanced??* Would use key words/choices in form to provide possible solutions to solve this incident in the future or steps to take to resolve - possibly use data already available at NCWIT.
     * *Advanced* Method by which the partUser was was the loggee, not the logger, of an incident can rate his/her experience with the organization's response to this incident.
     * *Advanced* phone app that can manage the incident logging form
@@ -21,7 +22,7 @@
 ## Specific Functionality
 **What is _every_ specific page or interface and _every_ action the user can take?**
 **Pick the minimum feature set for your product to work.**
-* 1. allUser page 0.5 - login screen
+* 1. allUser page - login screen
 * 2. Directional screen?  Mainly for adminUser to choose to log an incident as partUser
     or go on to the adminUser page.
 * 3. partUser page 1 - fields for details about incident.  Some fields may be linked to db with "tips" so when user submits, a new **window** pops up with those tips(should also indicate what partUser entered to elicit this(these) recommendation(s))
