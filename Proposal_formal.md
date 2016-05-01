@@ -34,7 +34,7 @@ and where she could have taken action that might have changed the end result of 
 * 4. adminUser page 1 - Directory.  Choose to see statistics for 
     * see ratios of pos to neg in past month overall (graphical)
     * see ratios for specific iSubject (graphical)
-    * see ratios for location type (graphical)
+    * see ratios for type of interaction (graphical)
 
 ## Technical Components
 **What are the "moving parts"?**
