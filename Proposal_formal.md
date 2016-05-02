@@ -35,6 +35,7 @@ and where she could have taken action that might have changed the end result of 
     * see ratios of pos to neg in past month overall (graphical)
     * see ratios for specific iSubject (graphical)
     * see ratios for type of interaction (graphical)
+    * allow edits to incidents (include follow)
 
 ## Technical Components
 **What are the "moving parts"?**
@@ -104,6 +105,11 @@ off to Django
     * Python
     * Javascript
     * linking the two with Django
+
+## Data Model
+**What are the "nouns" in your project? What do they represent What do you need to save in th DB?  What are the specific fields on each?**
+<br>
+**How do you need to search for specific instances of nouns?**
 
 ## Touchy-Feely Psychological Crap
 
