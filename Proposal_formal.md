@@ -37,6 +37,34 @@ and where she could have taken action that might have changed the end result of 
     * see ratios for type of interaction (graphical)
     * allow edits to incidents (include follow)
 
+## Data Model
+
+** What are the "nouns" in your project? What do they represent? What do you need to save in the DB? What are the specific fields on each? How do you need to search for specific instances of nouns? **
+
+* iSubject
+    * ID Num (unique)
+    * Name
+* Incident
+    * IDNum (unique)
+    * iSubject ID (links to iSubject db)
+    * Incident Filing Date
+    * Incident Date
+    * Incident Time
+    * Incident Flavor (pos/neg)
+    * Interaction Type ID
+    * Subject Matter (limit to list / ID link to other table?)
+    * Subject Stray (yes/no)
+    * Text Box for Detail
+    * Mitigation During (limit to list / ID links to other table?)
+    * Mitigation After (limit to list / ID links to other table?)
+* Interaction Type
+    * Small/Large/One-on-One/Other (limit to list)
+    * Other Field
+    * formal/impromtu/self-request/iSubject-request/super-peer-request (limit to list)
+    * leader (limit to list)
+    * regularity (limit to list)
+    * first time (yes/no)
+
 ## Technical Components
 **What are the "moving parts"?**
 **What are the "modules" you're going to write?**
@@ -53,7 +81,11 @@ and where she could have taken action that might have changed the end result of 
 
 ### Back-End
 #### SQL
-    * create multiple relational databases
+   
+#### Django
+    * Assist JS with some of the execution of the graphs and charts
+    * will be web interface to SQL
+     * create multiple relational databases
         * user names
         * incidents (related to 2 users)
     * not sure how this will relate to Python and data mining - 
@@ -61,10 +93,7 @@ and where she could have taken action that might have changed the end result of 
         * Where does SQL get used?  
         I know in the query developer for MS Access you can run filters so maybe it is 
         more efficient to do some of the data limitation/mining with SQL as opposed to Python?
-#### Django
-    * Assist JS with some of the execution of the graphs and charts
-    * will be web interface to SQL and probably eliminate need to write all the SQL for database
-    creation listed above in SQL section
+    
 #### Python
     * to be used to calculate the statistics and transform the raw data into the proper out-put. 
     * create the classes that will work with Django to dip into the db and retrieve the data 
@@ -106,21 +135,16 @@ off to Django
     * Javascript
     * linking the two with Django
 
-## Data Model
-**What are the "nouns" in your project? What do they represent What do you need to save in th DB?  What are the specific fields on each?**
-<br>
-**How do you need to search for specific instances of nouns?**
-
 ## Touchy-Feely Psychological Crap
 
 * By recording, and therefore quantifying, the incidents, the user can, upon later review, break
 the incident down into components of ownership:  what she owns, what the organization owns, and 
 what the iSubject owns.  Once that has been done, she can study herself to see what improvements
 she can make, what recommendations she can make to her supervisors/organization, and that which
-is beyond her control.  By turning these upsetting incidents into "mere" data, something large, amorphous, and seemingly hopeless is minimized and compartmentalized into obvious conquerable steps.
+is beyond her control.  By turning these upsetting incidents into "mere" data, something large, 
+amorphous, and seemingly hopeless is minimized and compartmentalized into obvious conquerable steps.
 
-* "Positively representing unconscious gender bias" is really a ridiculous statement. In truth, 
-the reason behind including the ability to record incidents representing inclusiveness is 
+* The reason behind including the ability to record incidents representing INclusiveness is 
 meant to give the user additional information to frame their interaction with others in the 
 workplace/classroom.  This to, can be a source of empowerment.  Not every interaction is negative.
 In studying the positive interactions she can, over time, learn specifically what the other person does to be inclusive, and incorporate those actions into her own life.  It also prevents the user 
