@@ -1,0 +1,67 @@
+partUser Incident Log form
+
+Name: (auto fill from login)
+File Date: (auto fill)
+Are you reporting an Individual or Institutional<link> Bias Incident
+    o Individual(s) (continue below)
+    o Institutional (skip to description)
+Date of incident: (manual or calendar choice)
+Time of incident: 
+Name of Employee(s) to Report (iSubject): (allow multiple selection)
+Incident type (overall)
+    o gender-bias<hyperlink to page description>/exclusion<hyperlink to page description>
+    o praise/inclusion<hyperlink to page description>
+Location/Environment
+    o Shared Workplace Area (hall, conference room)
+    o Classroom
+    o Individual's Office/Cubicle
+    O Other __________________
+Interaction Type
+    o Meeting/Discussion - Group (over 5)
+        o formal
+        o impromtu
+        who led meeting/discussion
+            o supervisor top/school official
+            o direct supervisor/instructor
+            o peer to direct supervisor/instructor
+            o peer
+            o self
+            o none
+        was this a regularly scheduled meeting
+            o yes
+            o no
+    o Meeting/Discussion - Small Group (3 - 5)
+        o formal
+        o impromtu
+        who led meeting/discussion
+            o senior supervisor/school official
+            o direct supervisor/instructor
+            o direct supervisor/instructor peer
+            o peer
+            o iSubject
+            o self
+            o none
+        was this a regularly scheduled meeting
+            o yes
+            o no
+    o Meeting/Discussion - One-on-One with iSubject
+        o requested by self
+        o requested by iSubject
+        o impromtu
+        o requested by supervisor or other peer
+    o Other __________________________
+Primary Subject Matter of Interaction
+    o work/school related
+    o personal/not related to school or work
+    o mix of both
+    Did Interaction Stray From Stated Purpose
+        o Yes
+        o No
+Description of incident:
+    Please remember to include details regarding any inappropriate subject matter, signs of aggression (yelling, unwanted physical touch)
+Would You Like to Be Contacted About This Incident
+    o Yes
+    o No <floating hyperlink?> - Note:  If the organization feels the incident requires discussion,
+    checking No does not release you from being required to attend any meetings requested about
+    the incident.  However, if the incident does not, in our estimation, require individual 
+    handling
