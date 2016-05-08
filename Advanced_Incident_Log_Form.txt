@@ -6,11 +6,17 @@ Are you reporting an Individual or Institutional<link> Bias Incident
     o Individual(s) (continue below)
     o Institutional (skip to description)
 Date of incident: (manual or calendar choice)
-Time of incident: 
+Time of incident:
 Name of Employee(s) to Report (iSubject): (allow multiple selection)
-Incident type (overall)
-    o gender-bias<hyperlink to page description>/exclusion<hyperlink to page description>
-    o praise/inclusion<hyperlink to page description>
+Gender Bias Type Tag
+    o Fix the woman
+    o Essentialism
+    o Women's Issues
+Incident Ions (overall)
+    o gender-bias and/or exclusion
+        // reward tag built in - issue will be reviewed
+    o praise/inclusion
+        // badges or reward tags for positive
 Location/Environment
     o Shared Workplace Area (hall, conference room)
     o Classroom
@@ -43,6 +49,9 @@ Interaction Type
             o none
         was this a regularly scheduled meeting
             o yes
+            was this your first time attending
+                o yes
+                o no
             o no
     o Meeting/Discussion - One-on-One with iSubject
         o requested by self
@@ -63,5 +72,5 @@ Would You Like to Be Contacted About This Incident
     o Yes
     o No <floating hyperlink?> - Note:  If the organization feels the incident requires discussion,
     checking No does not release you from being required to attend any meetings requested about
-    the incident.  However, if the incident does not, in our estimation, require individual 
+    the incident.  However, if the incident does not, in our estimation, require individual
     handling
