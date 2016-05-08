@@ -32,9 +32,13 @@ and where she could have taken action that might have changed the end result of 
 * 3. partUser page 1 - fields for details about incident.
     * actions available - enter data, submit;
 * 4. adminUser page 1 - Directory.  Choose to see statistics for
-    * see ratios of pos to neg in past month overall (graphical)
-    * see ratios for specific iSubject (graphical)
-    * see ratios for type of interaction (graphical)
+    * see incident type ratios for past month overall for individual
+    logging incidents (graphical)
+    * see incident type ratios for specific iSubject (graphical)
+    * generate graph showing numbers of incident type sub descriptors
+    (color code neg blue and pos orange) for individual logging incidents
+    * generate graph showing numbers of incident type sub descriptors for
+    specific iSubject
     * allow edits to incidents (include follow)
 
 ## Data Model
