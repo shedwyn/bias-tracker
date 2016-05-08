@@ -6,48 +6,53 @@ Are you reporting an Individual or Institutional<link> Bias Incident
     o Individual(s) (continue below)
     o Institutional (skip to description)
 Date of incident: (manual or calendar choice)
-Time of incident: 
+Time of incident:
 Name of Employee(s) to Report (iSubject): (allow multiple selection)
 Incident type (overall)
-    o gender-bias<hyperlink to page description>/exclusion<hyperlink to page description>
-    o praise/inclusion<hyperlink to page description>
-Interaction Type
-    o Meeting/Discussion - Group (over 5)
-        o formal
-        o impromtu
+    o gender-bias and/or exclusion
+        o statement - Fix the Woman
+        o statement - Essentialism
+        o statement - Women's Issues
+        o not listening
+        o not invited/included
+        o facial/hand gesture of impatience/boredom
+        o vocal tone
+        o talking over
+        o not responding to question
+        o bragging or push to compete
+        o dismissing ideas without reason
+        o treating as invisible
+        o over solicitation
+        o over simplified explanation
+        o answering question not asked
+        o directed toward essentialism tasks (i.e. front end)
+        o credit taken/not given
+        o
+    o praise/inclusion
+        o deliberately included in discussion
+        o credit given
+        o listening
+        o sharing talking space
+        o constructive criticism
+        o open to ideas
+        o willing to explain
+        o tailors explanation style/method
+        o positive tonality/gestures
+        o critical thinking
+Interaction Group Size
+    o Meeting/Discussion
         who led meeting/discussion
             o instructor
             o other school official
             o meetup organizer
             o self
             o none
-        was this a regularly scheduled meeting
-            o yes
-                was this your first time attending
-                    o yes
-                    o no
-            o no
-    o Meeting/Discussion - Small Group (3-5)
-        o formal
-        o impromtu
-        who led meeting/discussion
-            o instructor
-            o other school official
-            o meetup organizer
-            o self
-            o none
-        was this a regularly scheduled meeting
-            o yes
-                was this your first time attending
-                    o yes
-                    o no
-            o no
-    o Meeting/Discussion - One-on-One with iSubject
-        o requested by self
-        o requested by iSubject
-        o impromtu
-        o requested by supervisor or other peer
-    o Other __________________________
+    o One-on-One with iSubject
+Physical Location of Incident
+    o shared space (conference room, hall)
+    o classroom
+    o private office
+    o other
 Primary Subject Matter of Interaction
     o work/school related
     o personal/not related to school or work
