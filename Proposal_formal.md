@@ -43,7 +43,9 @@ and where she could have taken action that might have changed the end result of 
 
 ## Data Model
 
-** What are the "nouns" in your project? What do they represent? What do you need to save in the DB? What are the specific fields on each? How do you need to search for specific instances of nouns? **
+**What are the "nouns" in your project? What do they represent? What do
+you need to save in the DB? What are the specific fields on each? How do
+you need to search for specific instances of nouns?**
 
 * iSubject
     * ID Num (unique)
@@ -58,14 +60,7 @@ and where she could have taken action that might have changed the end result of 
     * Incident Time
     * Incident Type (pos/neg)
     * Incident Type Descriptors (list)
-    * Subject Matter (limit to list)
-    * Subject Stray (yes/no)
     * Text Box for Detail
-    * Mitigation During (limit to list / ID links to other table?)
-    * Mitigation After (limit to list / ID links to other table?)
-    * Physical Location of Incident
-    * Size of Group at Time of Incident
-    * Leader of Group Where Incident Occurred
 
 ## Technical Components
 **What are the "moving parts"?**
