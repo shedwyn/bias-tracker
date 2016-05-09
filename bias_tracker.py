@@ -23,8 +23,14 @@ class Incident:
         self.type_descriptors = type_descriptors  # list
         self.i_description = i_description
 
+user_request = input_item  # get input from django as to which report user//
+# wants to run, use this as argument to trigger a function that calls //
+# the function that contains the functions related to that particular report.
 
-#
+# Take in list of descriptors, sort, count
+# Take in self.i_type where author_id matches, split pos to neg, count //
+# tally
+# Take in self.i_type where i_subject_id matches request,
 
 
 def main():
