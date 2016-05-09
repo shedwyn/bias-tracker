@@ -11,8 +11,8 @@
 _NOTE:  iSubject will be used to describe the individual **about** whom the incident is
 being filed_
 
-* It is easier to speak of this in terms of the goal behind the product.  Simply, this program is 
-being developed to give the person who feels she is experiencing unconscious gender bias in an 
+* It is easier to speak of this in terms of the goal behind the product.  Simply, this program is
+being developed to give the person who feels she is experiencing unconscious gender bias in an
 organizational setting a sense of control.  How?
 
 * The user is able to record all incidents that appear as if they *could* be unconscious (or
@@ -48,12 +48,12 @@ and where she could have taken action that might have changed the end result of 
             * location of incident (unclear how these subcategories could be broken down right now)
             * time of incident
             * ratios neg to pos
-            * calendar improvement (grid showing tracking over time) 
+            * calendar improvement (grid showing tracking over time)
             * loggees involved in any recorded incident(s)
             * *Advanced* meetings held with/about logger about incident(s)
             * *Advanced* organization decision on categorization of incident as bias and what type on flagged incident(s) - i.e. bias - gender, bias - gender and race, not bias - interpersonal
             * *Advanced* organization actions regarding incidents logged by this partUser - free-form answer? "most negative incidents related to meetings, changed meeting style to promote better inclusion"  default to None - not all incidents require recording
-            * *Advanced* organization response (default None) to logger's logging of incidents - room to give "points" that can be redeemed for prizes for logging N incidents a week/month/quarter 
+            * *Advanced* organization response (default None) to logger's logging of incidents - room to give "points" that can be redeemed for prizes for logging N incidents a week/month/quarter
             -early version to include a note section anyway
         * b) loggee (one about whom an incident was recorded)
             * location of incident (unclear how these subcategories could be broken down right now)
@@ -68,8 +68,38 @@ and where she could have taken action that might have changed the end result of 
         * c) aggregate of entire db of incidents
             * statistics on locations/days/times of incident(s) (unclear how to use this, but it could be useful - does this seem to happen to a wider group at meetings?  Is it happening most often on Mondays?  *unclear - what other dynamics could be quantified?  ratio of women/men in group?  what about general minority makeup of teams, what are the "meetings" - product roll out?  code review?  stat of the company?  who was leading meeting?  Was it very structured (Roberts rules) or loose?*
             * general ratios - pos to neg, marked as bias v. interpersonal, discussed formally v. not v discussed and actioned
-            * calendar improvement (grid showing tracking over time for different 
+            * calendar improvement (grid showing tracking over time for different
             * *Advanced* satisfaction score from both logger and loggee on how any incident was handled
+
+            ## Data Model
+
+            **What are the "nouns" in your project? What do they represent? What do
+            you need to save in the DB? What are the specific fields on each? How do
+            you need to search for specific instances of nouns?**
+
+            * iSubject
+                * ID Num (unique)
+                * Name
+                * Gender
+                * Minority Status (observed)
+            * Incident
+                * IDNum (unique)
+                * iSubject ID (links to iSubject db) (list)
+                * Incident Filing Date
+                * Incident Date
+                * Incident Time
+                * Incident Type (pos/neg)
+                * Incident Type Descriptors (list)
+                * Subject Matter (limit to list)
+                * Subject Stray (yes/no)
+                * Text Box for Detail
+                * Mitigation During (limit to list / ID links to other table?)
+                * Mitigation After (limit to list / ID links to other table?)
+                * Physical Location of Incident
+                * Size of Group at Time of Incident
+                * Leader of Group Where Incident Occurred
+
+
 
 ## Technical Components
 **What are the "moving parts"?**
@@ -86,7 +116,7 @@ and where she could have taken action that might have changed the end result of 
     * data visualizations - Chris J suggested specifically using D3 data visualization tool
 
 ### Back-End
-*I'm not sure how the front and back ends communicate and what role each plays.  But I 
+*I'm not sure how the front and back ends communicate and what role each plays.  But I
 **think**:*
 #### SQL
     * create multiple relational databases
@@ -94,10 +124,10 @@ and where she could have taken action that might have changed the end result of 
         * incidents (related to 2 users)
         * *Advanced* actions related to specific person(s) and/or incident(s)
         * *Advanced* user privileges (security)
-    * not sure how this will relate to python and data mining - 
+    * not sure how this will relate to python and data mining -
         * do I put the conditions in SQL or in python for once SQL hands over the data?  
         * Where does SQL get used?  
-        I know in the query developer for MS Access you can run filters so maybe it is 
+        I know in the query developer for MS Access you can run filters so maybe it is
         more efficient to do some of the data limitation/mining with SQL as opposed to python?
 #### Django
     * Assist JS with some of the execution of the graphs and charts
@@ -105,17 +135,17 @@ and where she could have taken action that might have changed the end result of 
     creation listed above in SQL section
     * still a little fuzzy on how I set this up
 #### Python
-    * to be used to calculate the statistics and transform the raw data into the proper out-put. 
-    * create the classes that will work with Django to dip into the db and retrieve the data 
+    * to be used to calculate the statistics and transform the raw data into the proper out-put.
+    * create the classes that will work with Django to dip into the db and retrieve the data
     requested from the web app
 ## Timeline
 
 #### In what order will you tackle your technical components?
 
-* python - write the python tranformational code assuming that we will get correctly formatted 
+* python - write the python tranformational code assuming that we will get correctly formatted
 inputs
     * set up dummy .csv files to dump output that will be going into django for SQL db
-* javascript - write the necessary code to take raw input and correct/data test before handing 
+* javascript - write the necessary code to take raw input and correct/data test before handing
 off to django
 * django - create framework to connect js & python, develop db portion
 * python/js/django - correcting for poor hand offs, making sure this works
@@ -124,7 +154,7 @@ off to django
 #### Can you guess how long you'll take for each?
 
     * I am going to ** guess ** the following based strictly on the 3 weeks we have at the end
-    of this class.  However, prior to the 3 weeks, the rough layout of information to be asked 
+    of this class.  However, prior to the 3 weeks, the rough layout of information to be asked
     will be developed (obviously not finalized) and, hopefully, some code work will begin.
     * 35% python - ~5 PDXCD class days
     * 20% js - ~ 3 PDXCD class days
@@ -136,7 +166,7 @@ off to django
 #### What are the easy parts?
 
     * Django
-    * HTML/CSS 
+    * HTML/CSS
 
 #### What are the hard parts?
 
