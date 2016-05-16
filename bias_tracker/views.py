@@ -17,7 +17,10 @@ def render_menu_page(request):
     # remains logged in
     # request will include login name, call logic operation that will//
     # send that information to db and return
-    user_name = 'db name'  # 
+    user_email_login = request.POST['email']
+    user_name = logic.get_db_name(user_email_login)
+    # take in email, see if it exists in db, if so, return user_name, if not//
+    # produce error message
 
     pass
 
