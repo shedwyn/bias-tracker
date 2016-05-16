@@ -5,8 +5,8 @@ from . import views
 #
 # class User(models.Model):
 #     user_name = models.CharField()
-#     email = models.CharField()
-#     sign_up_date = models.DateTimeField()
+#     gender = models.CharField()
+#     minority_status = models.CharField()
 
 
 def fetch_current_names_db():
@@ -37,6 +37,10 @@ def get_db_name(user_id):
         return user_id.name
     else:
         generate_error_message()
+        # what is this error message?  where does it appear on page?//
+        # probably need to add a warning alert on login page //
+        # possibly reverse the else consequences - return to login page
+        # with "lit" warning message?
         return views.render_login_page(request)
 
 
@@ -51,5 +55,3 @@ def write_more(key, values):
 
 
 # INCIDENT PAGE #
-
-write_more()

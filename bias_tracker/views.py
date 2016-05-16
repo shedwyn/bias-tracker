@@ -6,7 +6,7 @@ from . import logic
 def render_login_page(request):
     """renders the home login page.  submitting the log in will redirect to
     menu-page"""
-    return render(request, 'jokes/form.html', {})
+    return render(request, 'login.html', {})
 
 
 def render_menu_page(request):
@@ -15,14 +15,13 @@ def render_menu_page(request):
     to appropriate page'"""
     # all other pages will return to this page if the original user //
     # remains logged in
-    # request will include login name, call logic operation that will//
-    # send that information to db and return
-    user_email_login = request.POST['email']
+    user_email_login = request.POST['login_name']
     user_name = logic.get_db_name(user_email_login)
     # take in email, see if it exists in db, if so, return user_name, if not//
     # produce error message
 
     pass
+
 
 def render_new_incident_log_page(request):
     """renders incident log page.  user enters field data for database.
