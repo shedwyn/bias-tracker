@@ -100,7 +100,7 @@ you need to search for specific instances of nouns?**
 
 #### In what order will you tackle your technical components?
 
-* Django - write modules and set up framework
+* Django - write modules (models?) and set up framework
 * Python - write the Python code assuming that we will get correctly formatted
 inputs
     * set up dummy .csv files to dump output that will be going into Django for SQL db
