@@ -6,7 +6,7 @@ from . import logic
 def render_login_page(request):
     """renders the home login page.  submitting the log in will redirect to
     menu-page"""
-    pass
+    return render(request, 'jokes/form.html', {})
 
 
 def render_menu_page(request):
@@ -15,8 +15,11 @@ def render_menu_page(request):
     to appropriate page'"""
     # all other pages will return to this page if the original user //
     # remains logged in
-    pass
+    # request will include login name, call logic operation that will//
+    # send that information to db and return
+    user_name = 'db name'  # 
 
+    pass
 
 def render_new_incident_log_page(request):
     """renders incident log page.  user enters field data for database.
@@ -36,4 +39,9 @@ def render_statistics_view_page(request):
     half of page, but allow single field choice for lower half.  When user
     selects iSubject, reload lower page with stats for that iSubject
     'return' button returns to menu-page"""
+    pass
+
+
+def render_add_new_isubject(request):
+    """may need page to add new iSubject"""
     pass

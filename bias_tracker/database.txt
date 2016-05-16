@@ -1,0 +1,2 @@
+grumpy ('Grumpy Dwarf', 'M')
+erin ('Snow White', 'F')
