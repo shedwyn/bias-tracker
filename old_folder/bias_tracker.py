@@ -1,9 +1,9 @@
 class Person:
     """name of person assigned to unique ID"""
-    def __init__(self, name, gender, minority_status):
+    def __init__(self, name):
         self.name = name
-        self.gender = gender
-        self.minority_status = minority_status
+        # self.gender = gender # these belong to advanced version
+        # self.minority_status = minority_status # these belong to adv version
 
 
 class Incident:
