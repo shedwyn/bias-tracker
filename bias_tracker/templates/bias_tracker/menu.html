@@ -3,6 +3,60 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Home/Menu Page</title>
-    <link rel="stylesheet" type="text/css" href="menu.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Menu Page</title>
+    <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+        integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+        crossorigin="anonymous"
+    >
 </head>
+<body>
+    <div class="container" action="{% url 'edit_incident' %}" method="post">>
+        <h1>Inclusion/Exclusion(Implicit Bias) Tracking Program</h1>
+        <p><span>User Name Here?</span>Choose what you would like to do</p>
+        <!-- begin first row: edit existing & create new incident -->
+        <div class="row">
+            <!-- begin: choose edit existing -->
+            <div class="column">
+                <h3>Edit Existing Incident</h3>
+                <label>Date of Incident
+                    <input
+                    type="DateTimeField"
+                    placeholder="YYYY/MM/DD"
+                    name="incident_date"
+                    >
+                </label>
+                <label> iSubject involved (leave blank if company-wide)
+                    <input
+                    type=CharField
+                    placeholder="Name or name or NAME"
+                    name="i_subject_name"
+                    >
+                </label>
+                <input type="submit" value="Get Incident Log">
+            </div>
+            <!-- end: choose edit existing -->
+            <div class="column">
+            </div>
+        </div>
+        <!-- end first row: edit existing and create new incident -->
+        <div class="row">
+            <div class="column">
+            </div>
+            <div class="column">
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+        integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+        crossorigin="anonymous"
+    >
+    </script>
+</body>

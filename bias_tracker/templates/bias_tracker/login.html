@@ -15,10 +15,14 @@
     >
 </head>
 <body>
-    <div class="container">
+    <div class="container" action="{% url 'edit_incident' %}" method="post">
+        {% csrf_token %}
         <h1>Inclusion/Exclusion(Implicit Bias) Tracking Program</h1>
         <p>In order to create an incident log sheet or see statistics, first you must log in</p>
-        <input placeholder="janedoe@somecompany.org" name="email">
+        <label>Your login name
+            <input type=CharField placeholder="Login Name" name="login_name">
+        </label>
+        <input type="submit" value="Login">
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
     </script>
