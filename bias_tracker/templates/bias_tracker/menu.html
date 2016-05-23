@@ -18,14 +18,14 @@
     <div class="container" action="{% url 'edit_incident' %}" method="post">>
         <h1>Inclusion/Exclusion(Implicit Bias) Tracking Program</h1>
         <p><span>User Name Here?</span>Choose what you would like to do</p>
-        <!-- begin first row: edit existing & create new incident -->
+        <!-- row1 -->
         <div class="row">
-            <!-- begin: choose edit existing -->
+            <!-- edit existing-->
             <div class="column">
                 <h3>Edit Existing Incident</h3>
                 <label>Date of Incident
                     <input
-                    type="DateTimeField"
+                    type="DateField"
                     placeholder="YYYY/MM/DD"
                     name="incident_date"
                     >
@@ -39,17 +39,21 @@
                 </label>
                 <input type="submit" value="Get Incident Log">
             </div>
-            <!-- end: choose edit existing -->
+            <!-- /edit existing -->
+            <!-- create new -->
             <div class="column">
             </div>
+            <!-- /create new -->
         </div>
-        <!-- end first row: edit existing and create new incident -->
+        <!-- /row1 -->
+        <!-- row2 -->
         <div class="row">
             <div class="column">
             </div>
             <div class="column">
             </div>
         </div>
+        <!-- /row2 -->
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
     </script>

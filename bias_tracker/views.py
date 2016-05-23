@@ -3,10 +3,10 @@ from django.shortcuts import render
 from . import logic
 
 
-def render_login_page(request):
+def render_index_page(request):
     """renders the home login page.  submitting the log in will redirect to
     menu-page"""
-    return render(request, 'login.html', {})
+    return render(request, 'index.html', {})
 
 
 def render_menu_page(request):

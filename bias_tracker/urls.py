@@ -18,10 +18,14 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
-    url(r'^$', views.render_login_page, name='login_page'),
-    url(r'', views.render_menu_page, name='menu_page'),
-    url(r'', views.render_new_incident_log_page, name='new_incident'),
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.render_index_page, name='index_page'),
+    url(r'^menu$', views.render_menu_page, name='menu_page'),
+    url(
+        r'^new_incident$',
+        views.render_new_incident_log_page,
+        name='new_incident'
+    ),
     url(r'', views.render_edit_incident_log_page, name='edit_incident'),
     url(r'', views.render_statistics_view_page, name='statistics_page')
 ]

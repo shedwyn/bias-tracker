@@ -1,12 +1,9 @@
 from . import views
 
-# from django.db import models
-#
-#
-# class User(models.Model):
-#     user_name = models.CharField()
-#     gender = models.CharField()
-#     minority_status = models.CharField()
+# 'Incident_str({}, {}, {}, {}, {}, {}, {}, {}, {})'.format(
+#     self.id, self.author_id, self.i_subject_id, self.filing_date,
+#     self.i_date, self.i_time, self.i_type, self.i_descriptors,
+#     self.text_description
 
 
 def fetch_current_names_db():
@@ -45,13 +42,13 @@ def get_db_name(user_id):
 
 
 # MENU PAGE #
-
-def write_more(key, values):
-    with open(database.txt, 'w') as humans_db_file:
-        human_database = humans_db_file.readlines()
-    print(human_database)
-    human_database.write(key values)
-    print(human_database)
+#
+# def write_more(key, values):
+#     with open(database.txt, 'w') as humans_db_file:
+#         human_database = humans_db_file.readlines()
+#     print(human_database)
+#     human_database.write(key values)
+#     print(human_database)
 
 
 # INCIDENT PAGE #
