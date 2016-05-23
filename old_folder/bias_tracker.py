@@ -23,6 +23,14 @@ class Incident:
         self.type_descriptors = type_descriptors  # list
         self.i_description = i_description
 
+
+class Descriptor:
+    """descriptor 'tag' which will be critical part of graphical result
+    output"""
+    def __init__(self, descriptor):
+        self.descriptor = descriptor
+
+
 user_request = input_item  # get input from django as to which report user//
 # wants to run, use this as argument to trigger a function that calls //
 # the function that contains the functions related to that particular report.
