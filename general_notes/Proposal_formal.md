@@ -47,19 +47,28 @@ and where she could have taken action that might have changed the end result of 
 you need to save in the DB? What are the specific fields on each? How do
 you need to search for specific instances of nouns?**
 
-* iSubject
-    * ID Num (unique)
+* Subject
+    * ID Num (unique) *automatic*
     * Name
-    * Gender
-    * Minority Status (observed)
+
+* Author
+    * *(necessary because it is one to many but Subject is many to many)*
+    * ID Num (unique) *automatic*
+    * Name
+
+* Incident Type Descriptors (list)
+    * ID Num (unique) *automatic*
+    * Name
+
 * Incident
-    * IDNum (unique)
-    * iSubject ID (links to iSubject db) (list)
+    * IDNum (unique) *automatic*
+    * Author ID *many to one or one to many*
+    * iSubject IDs *many to many*
+    * Descriptors IDs *many to many*
     * Incident Filing Date
     * Incident Date
     * Incident Time
     * Incident Type (pos/neg)
-    * Incident Type Descriptors (list)
     * Text Box for Detail
 
 ## Technical Components
