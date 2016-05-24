@@ -46,12 +46,14 @@ class Incident(models.Model):
     # foreing and manytomany need default keys so on_delete can be changed
     author = models.ForeignKey(
         Person,
-        related_name='incident_as_subjects'
+        related_name='incident_as_subjects',
+        default=None
     )
     # should match login
     subjects = models.ManyToManyField(
         Person,
         related_name='incidents_as_author',
+        default=None
     )  # list of persons
     filing_date = models.DateTimeField('Filing Date')
     i_date = models.DateField('Incident Date')
