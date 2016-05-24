@@ -15,10 +15,8 @@ being developed to give the person who feels she is experiencing unconscious gen
 organizational setting a sense of control.  How?
 
 * The user is able to record all incidents that appear as if they *could* be unconscious (or
-conscious) gender bias.  She can then see statistics regarding incidence (positive or
-negative) of occurance (of those she recorded) by iSubject, by location, or just overall.  Later
-analysis with a cooler head enables her to see the incident for what it really was (bias or not)
-and where she could have taken action that might have changed the end result of the incident
+conscious) gender bias.  She can then see statistics regarding incidence (positive(inclusion) or
+negative(exclusion)) of occurance (of those she recorded) by iSubject, by location, or just overall.  Later analysis with a cooler head enables her to see the incident for what it really was (bias or not) and where she could have taken action that might have changed the end result of the incident
     * see also "Touchy-Feely Psychological Crap" section at bottom
 
 ## Specific Functionality
@@ -27,19 +25,17 @@ and where she could have taken action that might have changed the end result of 
 **Pick the minimum feature set for your product to work.**
 
 * 1. allUser page - login screen
-* 2. Directional screen?  Mainly for adminUser to choose to log an incident as partUser
-    or go on to the adminUser page.
-* 3. partUser page 1 - fields for details about incident.
-    * actions available - enter data, submit;
-* 4. adminUser page 1 - Directory.  Choose to see statistics for
-    * see incident type ratios for past month overall for individual
-    logging incidents (graphical)
-    * see incident type ratios for specific iSubject (graphical)
+* 2. Home/Menu page
+* 3. Add an incident page
+* 4. Edit an incident page
+* 5. Add/Edit a Subject and/or Author
+* 6. Show statistics page (type of stats chosen from Directional page)
+    * incident type ratios for Author
+    * incident type ratios for Subject
     * generate graph showing numbers of incident type sub descriptors
-    (color code neg blue and pos orange) for individual logging incidents
+    (color code neg blue and pos orange) for Author
     * generate graph showing numbers of incident type sub descriptors for
-    specific iSubject
-    * allow edits to incidents (include follow)
+    Subject
 
 ## Data Model
 

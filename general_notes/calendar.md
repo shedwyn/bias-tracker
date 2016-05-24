@@ -23,7 +23,7 @@
     * logic links
 
 ## Wednesday, May 25
-
+*not in class*
 * Python
     * logic links
 
