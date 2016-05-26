@@ -55,32 +55,37 @@ class Incident(models.Model):
         related_name='incidents_as_author',
         default=None
     )  # list of persons
-    filing_date = models.DateTimeField('Filing Date')
-    i_date = models.DateField('Incident Date')
-    i_time = models.TimeField('Incident Time', blank=True)
-    i_type = models.CharField(
+    # filing_date = models.DateTimeField('Filing Date')
+    # i_date = models.DateField('Incident Date')
+    # i_time = models.TimeField('Incident Time', blank=True)
+    incident_type = models.CharField(
         'Incident Type',
         choices=TYPE_CHOICES,
         max_length=10
     )
-    i_descriptors = models.ManyToManyField(
+    descriptors = models.ManyToManyField(
         Descriptor,
         verbose_name='Descriptors of Incident Type',
     )
-    text_description = models.TextField('Incident Description')
+    # text_description = models.TextField('Incident Description')
 
     def __str__(self):
         """docstring"""
-        return 'Incident_str({}, {}, {}, {}, {}, {}, {}, {}, {})'.format(
-            self.id, self.author, self.subjects.all(), self.filing_date,
-            self.i_date, self.i_time, self.i_type, self.i_descriptors.all(),
-            self.text_description
+        return 'Incident_str({}, {}, {}, {}, {})'.format(
+            self.id,
+            self.author,
+            self.subjects.all(),
+            self.incident_type,
+            self.descriptors.all()
         )
+        # self.filing_date, self.i_date, self.i_time, self.text_description
 
     def __repr__(self):
         """docstring"""
-        return 'Incident_repr({!r}, {!r}, {!r}, {!r}, {!r}, {!r}, {!r}, {!r}, {!r})'.format(
-            self.id, self.author, self.subjects.all(), self.filing_date,
-            self.i_date, self.i_time, self.i_type, self.i_descriptors.all(),
-            self.text_description
+        return 'Incident_repr({!r}, {!r}, {!r}, {!r}, {!r})'.format(
+            self.id,
+            self.author,
+            self.subjects.all(),
+            self.incident_type,
+            self.descriptors.all()
         )
