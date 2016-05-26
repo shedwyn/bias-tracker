@@ -39,6 +39,7 @@ class Incident(models.Model):
 
     'i_' used as abbreviation for 'incident'.
     """
+
     TYPE_CHOICES = (
         ('Exclusion', 'Exclusion'),
         ('Inclusion', 'Inclusion')
@@ -47,13 +48,11 @@ class Incident(models.Model):
     author = models.ForeignKey(
         Person,
         related_name='incident_as_subjects',
-        default=None
     )
     # should match login
     subjects = models.ManyToManyField(
         Person,
         related_name='incidents_as_author',
-        default=None
     )  # list of persons
     # filing_date = models.DateTimeField('Filing Date')
     # i_date = models.DateField('Incident Date')
