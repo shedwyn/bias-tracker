@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home/Menu for Bias Tracker</title>
+    <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+        integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+        crossorigin="anonymous"
+    >
+</head>
+<body>
+    <header>
+        <h1>
+            Welcome to the Bias Tracking Program!
+        </h1>
+        <p>
+            This program allows an author (user - YOU!) to record any incident
+            at her/his organization which made her/him feel either:
+        </p>
+        <ul>
+            <li>Included</li>
+            <li>Excluded</li>
+        </ul>
+        <h3>
+            Please {{author}}, choose what you would like to do:
+        </h3>
+    </header>
+
+    <div class="container">
+        <!-- row1 -->
+        <div class="row">
+            <!-- edit existing-->
+            <div class="column">
+                <!-- Form enclosed in div so action can happen? -->
+                { url 'edit_incident' }
+                <h5>Edit Existing Incident</h5>
+                <label>Date of Incident
+                    <input
+                    type="DateField"
+                    placeholder="YYYY/MM/DD"
+                    name="i_date"
+                    >
+                </label>
+                <label> Subject involved (if company wide, use "Organization")
+                    <input
+                    type=CharField
+                    placeholder="Subject Name"
+                    name="i_subject"
+                    >
+                </label>
+                <input type="submit" value="Get Incident Log">
+            </div>
+            <!-- /edit existing -->
+            <!-- create new -->
+            <div class="column">
+                <p>
+                    The option for creating a new incident will live here
+                </p>
+            </div>
+            <!-- /create new -->
+        </div>
+        <!-- /row1 -->
+        <!-- row2 -->
+        <div class="row">
+            <!-- add or edit subject or author -->
+            <div class="column">
+                <p>
+                    The option for adding/editing Subjects and Authors will live
+                    here
+                </p>
+            </div>
+            <!-- /add or edit subject or author -->
+            <!-- select statistic -->
+            <div class="column">
+                <p>
+                    The option for selecting which statistic to view will live
+                    here
+                </p>
+            </div>
+        </div>
+        <!-- select statistic -->
+        <!-- /row2 -->
+    </div>
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+        integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+        crossorigin="anonymous"
+    >
+    </script>
+    <!-- /scripts -->
+</body>
