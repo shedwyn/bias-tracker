@@ -24,7 +24,7 @@ negative(exclusion)) of occurance (of those she recorded) by iSubject, by locati
 **What is _every_ specific page or interface and _every_ action the user can take?**
 **Pick the minimum feature set for your product to work.**
 
-* 1. allUser page - login screen
+* 1. allUser page - login screen *match name to db*
 * 2. Home/Menu page
 * 3. Add an incident page
 * 4. Edit an incident page
@@ -43,18 +43,13 @@ negative(exclusion)) of occurance (of those she recorded) by iSubject, by locati
 you need to save in the DB? What are the specific fields on each? How do
 you need to search for specific instances of nouns?**
 
-* Subject
-    * ID Num (unique) *automatic*
-    * Name
-
-* Author
-    * *(necessary because it is one to many but Subject is many to many)*
+* Person
     * ID Num (unique) *automatic*
     * Name
 
 * Incident Type Descriptors (list)
     * ID Num (unique) *automatic*
-    * Name
+    * Descriptor
 
 * Incident
     * IDNum (unique) *automatic*
