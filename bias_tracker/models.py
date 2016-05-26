@@ -1,10 +1,11 @@
 """bias_tracker Models configuration"""
 
+from django.contrib.auth.models import User
 from django.db import models
 
 
 class Person(models.Model):
-    """name of Author for recorded Incident"""
+    """name of Subject for recorded Incident"""
 
     name = models.CharField(max_length=40)
 
@@ -45,15 +46,8 @@ class Incident(models.Model):
         ('Inclusion', 'Inclusion')
     )
     # foreing and manytomany need default keys so on_delete can be changed
-    author = models.ForeignKey(
-        Person,
-        related_name='incident_as_subjects',
-    )
-    # should match login
-    subjects = models.ManyToManyField(
-        Person,
-        related_name='incidents_as_author',
-    )  # list of persons
+    author = models.ForeignKey(User)
+    subjects = models.ManyToManyField(Person)  # list of persons
     # filing_date = models.DateTimeField('Filing Date')
     # i_date = models.DateField('Incident Date')
     # i_time = models.TimeField('Incident Time', blank=True)
@@ -62,10 +56,7 @@ class Incident(models.Model):
         choices=TYPE_CHOICES,
         max_length=10
     )
-    descriptors = models.ManyToManyField(
-        Descriptor,
-        verbose_name='Descriptors of Incident Type',
-    )
+    descriptors = models.ManyToManyField(Descriptor)
     # text_description = models.TextField('Incident Description')
 
     def __str__(self):
