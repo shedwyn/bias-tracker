@@ -37,6 +37,10 @@
 
 * Python
     * Testing & Debugging
+    First new inciden, then just author stats
+    then go back to adv and edit
+    js to use a pop up message or mouseovers or something
+    js to render stats?
 
 ## Weekend, May 28 & 29 & 30
 
