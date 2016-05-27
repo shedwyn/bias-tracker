@@ -21,6 +21,13 @@
         <div>
             <form action="" method="post" name="new_incident">
                 <p name="author">Author will be {{user}}</p>
+                <div>
+                    <select name="subjects" multiple="True">
+                        {% for subject in subjects %}
+                        <option>{{subject.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 <input placeholder="Subjects"></input>
                 <input placeholder="Type"></input>
                 <input placeholder="Descriptors"></input>

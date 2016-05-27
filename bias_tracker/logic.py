@@ -25,7 +25,7 @@ def grab_type_options():
     """grab incident type choices for page"""
     return Incident.TYPE_CHOICES
 #
-#
+#all_flutts = models.Flutt.objects.all().order_by('date_n_time').reverse()
 # def generate_error_message():
 #     pass
 #
