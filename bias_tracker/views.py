@@ -19,6 +19,13 @@ def render_index_page(request):
 
 
 @login_required(login_url='/accounts/login/')
+def logout_return_home(request):
+    """logs out current user and returns to home page"""
+    logout(request)
+    return render(request, 'bias_tracker/index.html', {})
+
+
+@login_required(login_url='/accounts/login/')
 def render_new_incident_log_page(request):
     """renders incident log page.
 
@@ -33,15 +40,22 @@ def render_new_incident_log_page(request):
         'descriptors': descriptors,
         'incident_type': incident_type
     }
-    print(page_fill)
     return render(request, 'bias_tracker/incident_log.html', page_fill)
 
 
 @login_required(login_url='/accounts/login/')
-def logout_return_home(request):
-    """logs out current user and returns to home page"""
-    logout(request)
-    return render(request, 'bias_tracker/index.html', {})
+def submit_new(request):
+    """submits new incident and returns to home page"""
+    author = request.user
+    print(author)
+    subjects = request.POST['subjects']
+    incident_type = request.POST['incident_type']
+    descriptors = request.POST['descriptors']
+    new_incident = logic.log_new_incident(
+        author, subjects, incident_type, descriptors
+    )
+    page_fill = {'new_incident': new_incident}
+    return render(request, 'bias_tracker/index.html', page_fill)
 
 # def render_edit_incident_log_page(request):
 #     """takes incident id, finds incident in db, fills fields with data for that

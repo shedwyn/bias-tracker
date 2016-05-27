@@ -23,18 +23,18 @@ def grab_descriptor_options():
 
 def grab_type_options():
     """grab incident type choices for page"""
-    return Incident.TYPE_CHOICES
-#
-#all_flutts = models.Flutt.objects.all().order_by('date_n_time').reverse()
-# def generate_error_message():
-#     pass
-#
-#
+    incident_types = Incident.TYPE_CHOICES
+    incident_type_choices = create_incident_type_list(incident_types)
+    return incident_type_choices
 
 
+def create_incident_type_list(incident_types):
+    """take in tuple pairs and return single list of two items"""
+    incident_type_choices = []
+    for item in incident_types:
+        incident_type_choices.append(item[0])
+    return incident_type_choices
 
-# MENU PAGE #
-#
 
-
-# INCIDENT PAGE #
+def log_new_incident():
+    pass

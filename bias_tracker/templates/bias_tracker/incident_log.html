@@ -42,6 +42,8 @@
                 <!-- /select type -->
                 <!-- select descriptors -->
                 <div>
+                    <!-- consider using an optgroup for this one -->
+                    <!-- to divide Incl from Excl -->
                     <select name="descriptors" multiple="True">
                         {% for descriptor in descriptors %}
                         <option>{{descriptor.descriptor}}</option>
@@ -49,6 +51,7 @@
                     </select>
                 </div>
                 <!-- /select descriptors -->
+                <input type="submit" value="SUBMIT INCIDENT">
             </form>
         </div>
         <!-- /incident -->
