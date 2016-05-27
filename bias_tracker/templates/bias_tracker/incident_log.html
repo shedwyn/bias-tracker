@@ -21,6 +21,7 @@
         <div>
             <form action="" method="post" name="new_incident">
                 <p name="author">Author will be {{user}}</p>
+                <!-- select subjects -->
                 <div>
                     <select name="subjects" multiple="True">
                         {% for subject in subjects %}
@@ -28,10 +29,25 @@
                         {% endfor %}
                     </select>
                 </div>
-                <input placeholder="Subjects"></input>
-                <input placeholder="Type"></input>
-                <input placeholder="Descriptors"></input>
-
+                <!-- /select subjects -->
+                <!-- select type -->
+                <div>
+                    <select name="incident_type">
+                        {% for i in incident_type %}
+                        <option>{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- /select type -->
+                <!-- select descriptors -->
+                <div>
+                    <select name="descriptors" multiple="True">
+                        {% for descriptor in descriptors %}
+                        <option>{{descriptor.descriptor}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- /select descriptors -->
             </form>
         </div>
         <!-- /incident -->
