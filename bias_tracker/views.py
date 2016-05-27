@@ -25,7 +25,6 @@ def render_new_incident_log_page(request):
     user enters field data for database. 'submit' sends data to db, saves
     entries and redirects user to home/menu page.
     """
-
     subjects = logic.grab_subject_options
     descriptors = logic.grab_descriptor_options
     incident_type = logic.grab_type_options
@@ -36,8 +35,14 @@ def render_new_incident_log_page(request):
     }
     print(page_fill)
     return render(request, 'bias_tracker/incident_log.html', page_fill)
-#
-#
+
+
+@login_required(login_url='/accounts/login/')
+def logout_return_home(request):
+    """logs out current user and returns to home page"""
+    logout(request)
+    return render(request, 'bias_tracker/index.html', {})
+
 # def render_edit_incident_log_page(request):
 #     """takes incident id, finds incident in db, fills fields with data for that
 #     incident.  user may change data and submit edited record.  'submit' sends
