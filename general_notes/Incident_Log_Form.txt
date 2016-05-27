@@ -11,18 +11,18 @@ Incident type (overall)
         o statement - Essentialism
         o statement - Women's Issues
         o not listening
-        o not inviting/included
-        o facial/hand gesture of impatience/boredom
+        o not inviting/including in discussion/activity
+        o facial/hand/verbal expression of impatience/boredom
         o vocal tone
         o talking over
         o not responding to question
-        o bragging or push to compete
+        o bragging or pushing to compete
         o dismissing ideas without reason
         o treating as invisible
         o over solicitation
         o over simplified explanation
         o answering question not asked
-        o directed toward essentialism tasks (i.e. front end)
+        o directed toward tasks deemed "woman's work"
         o credit taken/not given
     o praise/inclusion
         o deliberately included in discussion
@@ -35,6 +35,7 @@ Incident type (overall)
         o tailors explanation style/method
         o positive tonality/gestures
         o critical thinking
+        o good eye contact
 Description of incident:
     Please remember to include details regarding any inappropriate subject
     matter, signs of aggression (yelling, unwanted physical touch)
