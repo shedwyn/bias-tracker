@@ -20,13 +20,14 @@
         <a href="{% url 'logout' %}" name="logout">EMERGENCY ESCAPE CLAUSE (aka "Logout")</a>
         <!-- incident -->
         <div>
-            <form action="" method="post" name="new_incident">
+            <form action="{% url 'submit_new' %}" method="post" name="new_incident">
+                {% csrf_token %}
                 <p name="author">Author will be {{user}}</p>
                 <!-- select subjects -->
                 <div>
                     <select name="subjects" multiple="True">
                         {% for subject in subjects %}
-                        <option>{{subject.name}}</option>
+                        <option value="{{subject.id}}">{{subject.name}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -46,7 +47,7 @@
                     <!-- to divide Incl from Excl -->
                     <select name="descriptors" multiple="True">
                         {% for descriptor in descriptors %}
-                        <option>{{descriptor.descriptor}}</option>
+                        <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
                         {% endfor %}
                     </select>
                 </div>

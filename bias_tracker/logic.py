@@ -36,5 +36,18 @@ def create_incident_type_list(incident_types):
     return incident_type_choices
 
 
-def log_new_incident():
-    pass
+def log_new_incident(author, subjects, incident_type, descriptors):
+    """take in incident fields and instantiate new incident"""
+    print(author, subjects, incident_type, descriptors)
+    new_incident = Incident(
+        author=author,
+        incident_type=incident_type,
+    )
+    new_incident.save()
+    for subject in subjects:
+        sub_id = int(subject)
+        new_incident.subjects.add(sub_id)
+    for descriptor in descriptors:
+        desc_id = int(descriptor)
+        new_incident.descriptors.add(descriptor)
+    return 'New Incident Submitted'

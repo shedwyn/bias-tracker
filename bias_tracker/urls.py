@@ -32,7 +32,8 @@ urlpatterns = [
         views.render_new_incident_log_page,
         name='new_incident'
     ),
-    url(r'^logout/', views.logout_return_home, name='logout')
+    url(r'^logout/', views.logout_return_home, name='logout'),
+    url(r'^submit_new/', views.submit_new, name='submit_new')
     # url(r'', views.render_edit_incident_log_page, name='edit_incident'),
     # url(r'', views.render_statistics_view_page, name='statistics_page')
 ]

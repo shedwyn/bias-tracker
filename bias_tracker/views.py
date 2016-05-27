@@ -47,10 +47,10 @@ def render_new_incident_log_page(request):
 def submit_new(request):
     """submits new incident and returns to home page"""
     author = request.user
-    print(author)
-    subjects = request.POST['subjects']
+    print(request.POST.getlist('subjects'))
+    subjects = request.POST.getlist('subjects')
     incident_type = request.POST['incident_type']
-    descriptors = request.POST['descriptors']
+    descriptors = request.POST.getlist('descriptors')
     new_incident = logic.log_new_incident(
         author, subjects, incident_type, descriptors
     )
