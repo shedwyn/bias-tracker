@@ -28,13 +28,22 @@
             <li>Excluded</li>
         </ul>
         <h3>
-            Please {{author}}, choose what you would like to do:
+            Please {{user}}, choose what you would like to do:
         </h3>
     </header>
 
     <div class="container">
         <!-- row1 -->
         <div class="row">
+            <!-- create new -->
+            <div class="column">
+                <p>
+                    *************
+                    Click <a href="{% url 'new_incident' %}">HERE</a> to add a new incident
+                    *************
+                </p>
+            </div>
+            <!-- /create new -->
             <!-- edit existing-->
             <div class="column">
                 <!-- Form enclosed in div so action can happen? -->
@@ -57,13 +66,6 @@
                 <input type="submit" value="Get Incident Log">
             </div>
             <!-- /edit existing -->
-            <!-- create new -->
-            <div class="column">
-                <p>
-                    The option for creating a new incident will live here
-                </p>
-            </div>
-            <!-- /create new -->
         </div>
         <!-- /row1 -->
         <!-- row2 -->
@@ -84,7 +86,7 @@
                 </p>
             </div>
         </div>
-        <!-- select statistic -->
+        <!-- /select statistic -->
         <!-- /row2 -->
     </div>
     <!-- scripts -->
