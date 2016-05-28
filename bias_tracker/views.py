@@ -47,7 +47,6 @@ def render_new_incident_log_page(request):
 def submit_new(request):
     """submits new incident and returns to home page"""
     author = request.user
-    print(request.POST.getlist('subjects'))
     subjects = request.POST.getlist('subjects')
     incident_type = request.POST['incident_type']
     descriptors = request.POST.getlist('descriptors')
@@ -57,34 +56,27 @@ def submit_new(request):
     page_fill = {'new_incident': new_incident}
     return render(request, 'bias_tracker/index.html', page_fill)
 
+
+@login_required(login_url='/accounts/login/')
+def self_stats(request):
+    """take user and render page with Incl v. Excl stats for user"""
+    author_id = request.user.id
+    recorded_incident_total = logic.get_total_incidents_as_author(author_id)
+    percent_exclusion_logged_as_author = \
+        logic.get_percent_exclusion_logged_as_author(author_id)
+    percent_inclusion_logged_as_author = \
+        logic.get_percent_inclusion_logged_as_author(author_id)
+    # return descriptors as iterable dictionary, get key and put in html, get
+    # val and put in html to match
+    page_fill = {
+        'total': recorded_incident_total,
+        'inclusion': percent_inclusion_logged_as_author,
+        'exclusion': percent_exclusion_logged_as_author
+    }
+    return render(request, 'bias_tracker/self_stats.html', page_fill)
+
 # def render_edit_incident_log_page(request):
-#     """takes incident id, finds incident in db, fills fields with data for that
+#     """takes incident id, finds incident in db, fills fields w data for that
 #     incident.  user may change data and submit edited record.  'submit' sends
 #     data to db and redirects to menu-page"""
-#     pass
-#
-#
-# def render_statistics_view_page(request):
-#     """renders statistics view page - auto loads user's statistics on top
-#     half of page, but allow single field choice for lower half.  When user
-#     selects iSubject, reload lower page with stats for that iSubject
-#     'return' button returns to menu-page"""
-#     pass
-#
-#
-# def render_add_new_isubject(request):
-#     """may need page to add new iSubject"""
-#     pass
-
-# def render_menu_page(request):
-#     """'home' page after log-in.  user has four choices:  create new incident
-#     edit existing incident, see statistics, or log out. 'submit' will direct
-#     to appropriate page'"""
-#     # all other pages will return to this page if the original user //
-#     # remains logged in
-#     user_email_login = request.POST['login_name']
-#     user_name = logic.get_db_name(user_email_login)
-#     # take in email, see if it exists in db, if so, return user_name, if not
-#     # produce error message
-#
 #     pass

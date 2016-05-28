@@ -28,6 +28,32 @@ def grab_type_options():
     return incident_type_choices
 
 
+def get_total_incidents_as_author(user_id):
+    """take in name, return number of incidents logged by name"""
+    total_incidents_as_author = Incident.objects.filter(author__exact=user_id).count()
+    return total_incidents_as_author
+
+
+def get_percent_exclusion_logged_as_author(user_id):
+    """take in User.id and return incident percent for exclusionary"""
+    total_incidents_as_author = get_total_incidents_as_author(user_id)
+    count_exclusive_as_author = Incident.objects.filter(
+        author__exact=user_id, incident_type__exact='Exclusion'
+    ).count()
+    percent = (count_exclusive_as_author / total_incidents_as_author) * 100
+    return percent
+
+
+def get_percent_inclusion_logged_as_author(user_id):
+    """take in User.id and return incident percent for inclusionary"""
+    total_incidents_as_author = get_total_incidents_as_author(user_id)
+    count_inclusion_as_author = Incident.objects.filter(
+        author__exact=user_id, incident_type__exact='Inclusion'
+    ).count()
+    percent = (count_inclusion_as_author / total_incidents_as_author) * 100
+    return percent
+
+
 def create_incident_type_list(incident_types):
     """take in tuple pairs and return single list of two items"""
     incident_type_choices = []

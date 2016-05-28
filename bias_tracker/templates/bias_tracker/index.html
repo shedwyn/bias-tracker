@@ -41,52 +41,29 @@
                 <div class="invisible">
                     HIDDEN VERIFICATION FOR INCIDENT SUBMISSION {{ new_incident }}
                 </div>
+                <p>*************</p>
                 <p>
-                    *************
+
                     Click <a href="{% url 'new_incident' %}">HERE</a> to add a new incident
-                    *************
                 </p>
+                <p>*************</p>
             </div>
             <!-- /create new -->
-            <!-- edit existing-->
-            <div class="column">
-                <!-- Form enclosed in div so action can happen? -->
-                { url 'edit_incident' }
-                <h5>Edit Existing Incident</h5>
-                <label>Date of Incident
-                    <input
-                    type="DateField"
-                    placeholder="YYYY/MM/DD"
-                    name="i_date"
-                    >
-                </label>
-                <label> Subject involved (if company wide, use "Organization")
-                    <input
-                    type=CharField
-                    placeholder="Subject Name"
-                    name="i_subject"
-                    >
-                </label>
-                <input type="submit" value="Get Incident Log">
-            </div>
-            <!-- /edit existing -->
         </div>
         <!-- /row1 -->
         <!-- row2 -->
         <div class="row">
-            <!-- add or edit subject or author -->
-            <div class="column">
-                <p>
-                    This option is being deleted
-                </p>
-            </div>
-            <!-- /add or edit subject or author -->
             <!-- select statistic -->
             <div class="column">
+                <p>*************</p>
                 <p>
-                    The option for selecting which statistic to view will live
-                    here
+                    Click <a href="{% url 'self_stats' %}">HERE</a> to see Exclusion v. Inclusion recorded
                 </p>
+                <p>*************</p>
+                <p>
+                    Click <a href="">HERE</a> to see Descriptor percentages
+                </p>
+                <p>*************</p>
             </div>
         </div>
         <!-- /select statistic -->
