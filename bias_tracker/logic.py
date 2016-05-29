@@ -24,13 +24,15 @@ def grab_descriptor_options():
 def grab_type_options():
     """grab incident type choices for page"""
     incident_types = Incident.TYPE_CHOICES
+    # is this necessary?
     incident_type_choices = create_incident_type_list(incident_types)
     return incident_type_choices
 
 
 def get_total_incidents_as_author(user_id):
     """take in name, return number of incidents logged by name"""
-    total_incidents_as_author = Incident.objects.filter(author__exact=user_id).count()
+    total_incidents_as_author = \
+        Incident.objects.filter(author__exact=user_id).count()
     return total_incidents_as_author
 
 
@@ -52,6 +54,21 @@ def get_percent_inclusion_logged_as_author(user_id):
     ).count()
     percent = (count_inclusion_as_author / total_incidents_as_author) * 100
     return percent
+
+
+def get_descriptor_counts_as_author(user_id):
+    """take User.id, return dict of descriptors with count"""
+    incidents_as_author = Incident.objects.filter(author__exact=user_id)
+    descriptor_counts = {}
+    for incident in incidents_as_author:
+        descriptors = incident.descriptors.all()
+        for descriptor in descriptors:
+            if descriptor not in descriptor_counts:
+                descriptor_counts[descriptor] = 1
+            else:
+                descriptor_counts[descriptor] += 1
+    print(descriptor_counts)
+    return descriptor_counts
 
 
 def create_incident_type_list(incident_types):
