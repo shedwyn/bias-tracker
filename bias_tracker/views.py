@@ -66,12 +66,15 @@ def self_stats(request):
         logic.get_percent_exclusion_logged_as_author(author_id)
     percent_inclusion_logged_as_author = \
         logic.get_percent_inclusion_logged_as_author(author_id)
+    descriptor_counts = logic.get_descriptor_counts_as_author(author_id)
     # return descriptors as iterable dictionary, get key and put in html, get
     # val and put in html to match
+    print(descriptor_counts)
     page_fill = {
         'total': recorded_incident_total,
         'inclusion': percent_inclusion_logged_as_author,
-        'exclusion': percent_exclusion_logged_as_author
+        'exclusion': percent_exclusion_logged_as_author,
+        'descriptors': descriptor_counts
     }
     return render(request, 'bias_tracker/self_stats.html', page_fill)
 

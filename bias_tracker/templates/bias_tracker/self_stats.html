@@ -16,12 +16,31 @@
 </head>
 <body>
     <header>
-        <h3> {{ user }} Your incident Inclusion and Exclusion </h3>
+        <h3>{{user}}</h3>
+        <h3>Your Incident Data</h3>
+        <h6>
+            <a href="{% url 'logout' %}" name="logout">EMERGENCY ESCAPE CLAUSE (aka "Logout")</a>
+        </h6>
+        <h6>
+            <a href="{% url 'index_page' %}">HOME - HOME - HOME</a>
+        </h6>
     </header>
-    <div>
-        <p>Total: {{ total }}</p>
-        <p>Inclusion: {{ inclusion }}%</p>
-        <p>Exclusion: {{ exclusion }}%</p>
+    <div class="container">
+        <!-- types -->
+        <div class="row">
+            <p>Total: {{ total }}</p>
+            <p>Inclusion: {{ inclusion }}%</p>
+            <p>Exclusion: {{ exclusion }}%</p>
+        </div>
+        <!-- /types -->
+        <!-- descriptors -->
+        <div class="row">
+            <ul> {%for descriptor in descriptors%}
+                <li>Descriptor: {{descriptor.0}} Count: {{descriptor.1}}</li>
+                {%endfor%}
+            </ul>
+        </div>
+        <!-- /descriptors -->
     </div>
     <!-- scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">

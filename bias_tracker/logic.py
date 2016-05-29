@@ -56,19 +56,25 @@ def get_percent_inclusion_logged_as_author(user_id):
     return percent
 
 
-def get_descriptor_counts_as_author(user_id):
-    """take User.id, return dict of descriptors with count"""
-    incidents_as_author = Incident.objects.filter(author__exact=user_id)
+def count_descriptors_for_author(incidents_as_author):
+    """take Incidents, count all Incident references to descriptor & return"""
     descriptor_counts = {}
     for incident in incidents_as_author:
         descriptors = incident.descriptors.all()
         for descriptor in descriptors:
             if descriptor not in descriptor_counts:
-                descriptor_counts[descriptor] = 1
+                descriptor_counts[descriptor.descriptor] = 1
             else:
-                descriptor_counts[descriptor] += 1
-    print(descriptor_counts)
+                descriptor_counts[descriptor.descriptor] += 1
     return descriptor_counts
+
+
+def get_descriptor_counts_as_author(user_id):
+    """take User.id, return dict of descriptors with count"""
+    incidents_as_author = Incident.objects.filter(author__exact=user_id)
+    descriptor_counts = count_descriptors_for_author(incidents_as_author)
+    descriptors_and_counts = descriptor_counts.items()
+    return descriptors_and_counts
 
 
 def create_incident_type_list(incident_types):
@@ -92,5 +98,6 @@ def log_new_incident(author, subjects, incident_type, descriptors):
         new_incident.subjects.add(sub_id)
     for descriptor in descriptors:
         desc_id = int(descriptor)
-        new_incident.descriptors.add(descriptor)
+        # do I need the above or can I just put "descriptor" in below?
+        new_incident.descriptors.add(desc_id)
     return 'New Incident Submitted'
