@@ -42,7 +42,9 @@ def get_percent_exclusion_logged_as_author(user_id):
     count_exclusive_as_author = Incident.objects.filter(
         author__exact=user_id, incident_type__exact='Exclusion'
     ).count()
-    percent = (count_exclusive_as_author / total_incidents_as_author) * 100
+    percent = round(
+        (count_exclusive_as_author / total_incidents_as_author) * 100, 1
+    )
     return percent
 
 
@@ -52,7 +54,9 @@ def get_percent_inclusion_logged_as_author(user_id):
     count_inclusion_as_author = Incident.objects.filter(
         author__exact=user_id, incident_type__exact='Inclusion'
     ).count()
-    percent = (count_inclusion_as_author / total_incidents_as_author) * 100
+    percent = round(
+        (count_inclusion_as_author / total_incidents_as_author) * 100, 1
+    )
     return percent
 
 
@@ -61,11 +65,13 @@ def count_descriptors_for_author(incidents_as_author):
     descriptor_counts = {}
     for incident in incidents_as_author:
         descriptors = incident.descriptors.all()
+        print(descriptors)
         for descriptor in descriptors:
-            if descriptor not in descriptor_counts:
+            if descriptor.descriptor not in descriptor_counts:
                 descriptor_counts[descriptor.descriptor] = 1
             else:
                 descriptor_counts[descriptor.descriptor] += 1
+    print(descriptor_counts)
     return descriptor_counts
 
 
