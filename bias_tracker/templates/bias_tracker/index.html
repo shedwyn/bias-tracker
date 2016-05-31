@@ -16,6 +16,7 @@
 </head>
 <body>
     <header>
+        <div class="invisible"><input default="home" name="trigger"></div>
         <h1>
             Welcome to the Bias Tracking Program!
         </h1>
@@ -38,7 +39,7 @@
         <div class="row">
             <!-- create new -->
             <div class="column">
-                <div class="invisible">
+                <div class="invisible" name="special_message">
                     HIDDEN VERIFICATION FOR INCIDENT SUBMISSION {{ new_incident }}
                 </div>
                 <p>*************</p>
@@ -58,10 +59,6 @@
                 <p>*************</p>
                 <p>
                     Click <a href="{% url 'self_stats' %}">HERE</a> to see Exclusion v. Inclusion recorded
-                </p>
-                <p>*************</p>
-                <p>
-                    Click <a href="">HERE</a> to see Descriptor percentages
                 </p>
                 <p>*************</p>
             </div>
