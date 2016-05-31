@@ -15,14 +15,20 @@ from . import logic
 @login_required(login_url='/accounts/login/')
 def render_index_page(request):
     """home/menu page with all choices of redirection available"""
-    return render(request, 'bias_tracker/index.html', {})
+    page_fill = {
+        'trigger': 'default'
+    }
+    return render(request, 'bias_tracker/index.html', page_fill)
 
 
 @login_required(login_url='/accounts/login/')
 def logout_return_home(request):
     """logs out current user and returns to home page"""
     logout(request)
-    return render(request, 'bias_tracker/index.html', {})
+    page_fill = {
+        'trigger': 'logout'
+    }
+    return render(request, 'bias_tracker/index.html', page_fill)
 
 
 @login_required(login_url='/accounts/login/')
@@ -53,7 +59,7 @@ def submit_new(request):
     new_incident = logic.log_new_incident(
         author, subjects, incident_type, descriptors
     )
-    page_fill = {'new_incident': new_incident}
+    page_fill = {'new_incident': new_incident, 'trigger': 'submit_new'}
     return render(request, 'bias_tracker/index.html', page_fill)
 
 
