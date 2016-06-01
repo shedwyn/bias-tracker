@@ -3,10 +3,10 @@
 Includes use of User to authenticate and authorize.
 """
 
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout  # , authenticate, login
 from django.contrib.auth.decorators import login_required
 
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render
 
 from . import logic
@@ -23,7 +23,7 @@ def render_index_page(request):
 
 @login_required(login_url='/accounts/login/')
 def logout_return_home(request):
-    """logs out current user and returns to home page"""
+    """log out current user and returns to home page"""
     logout(request)
     page_fill = {
         'trigger': 'logout'
@@ -33,7 +33,7 @@ def logout_return_home(request):
 
 @login_required(login_url='/accounts/login/')
 def render_new_incident_log_page(request):
-    """renders incident log page.
+    """render incident log page.
 
     user enters field data for database. 'submit' sends data to db, saves
     entries and redirects user to home/menu page.
@@ -51,7 +51,7 @@ def render_new_incident_log_page(request):
 
 @login_required(login_url='/accounts/login/')
 def submit_new(request):
-    """submits new incident and returns to home page"""
+    """submit new incident and returns to home page"""
     author = request.user
     subjects = request.POST.getlist('subjects')
     incident_type = request.POST['incident_type']

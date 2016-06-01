@@ -1,10 +1,12 @@
-"use strict";
-
-triggerHiddenText() {
-    if $("#trigger") === 'default'
-    // toggle class()
-    // if value of "trigger" === 'logout
-    // toggle class()
-    // if value of "trigger" === 'default
-    // none'
+'use strict';
+/**
+ * fills or deletes message based on 'trigger' value.
+ */
+function triggerHiddenText() {
+  if ($('#trigger') === 'default') {
+    $('newIncidentMessage').toggleClass('invisible');
+  }
+  else if ($('#trigger') === 'submit_new') {
+    $('newIncidentMessage').toggleClass('invisible');
+  }
 }
