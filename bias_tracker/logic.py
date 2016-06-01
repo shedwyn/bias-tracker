@@ -65,13 +65,11 @@ def count_descriptors_for_author(incidents_as_author):
     descriptor_counts = {}
     for incident in incidents_as_author:
         descriptors = incident.descriptors.all()
-        print(descriptors)
         for descriptor in descriptors:
             if descriptor.descriptor not in descriptor_counts:
                 descriptor_counts[descriptor.descriptor] = 1
             else:
                 descriptor_counts[descriptor.descriptor] += 1
-    print(descriptor_counts)
     return descriptor_counts
 
 
@@ -93,7 +91,6 @@ def create_incident_type_list(incident_types):
 
 def log_new_incident(author, subjects, incident_type, descriptors):
     """take in incident fields and instantiate new incident"""
-    print(author, subjects, incident_type, descriptors)
     new_incident = Incident(
         author=author,
         incident_type=incident_type,

@@ -15,9 +15,7 @@ from . import logic
 @login_required(login_url='/accounts/login/')
 def render_index_page(request):
     """home/menu page with all choices of redirection available"""
-    page_fill = {
-        'trigger': 'default'
-    }
+    page_fill = {}
     return render(request, 'bias_tracker/index.html', page_fill)
 
 
@@ -25,9 +23,7 @@ def render_index_page(request):
 def logout_return_home(request):
     """log out current user and returns to home page"""
     logout(request)
-    page_fill = {
-        'trigger': 'logout'
-    }
+    page_fill = {}
     return render(request, 'bias_tracker/index.html', page_fill)
 
 
@@ -59,7 +55,7 @@ def submit_new(request):
     new_incident = logic.log_new_incident(
         author, subjects, incident_type, descriptors
     )
-    page_fill = {'new_incident': new_incident, 'trigger': 'submit_new'}
+    page_fill = {'new_incident': new_incident}
     return render(request, 'bias_tracker/index.html', page_fill)
 
 
