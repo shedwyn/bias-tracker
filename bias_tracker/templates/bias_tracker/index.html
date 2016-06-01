@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,57 +17,76 @@
     >
 </head>
 <body onload="">
-    <header>
-        <div class="invisible"><input default="home" id="trigger" value="{{trigger}}"></div>
-        <h1>
-            Welcome to the Bias Tracking Program!
-        </h1>
-        <a href="{% url 'logout' %}" name="logout">EMERGENCY ESCAPE CLAUSE (aka "Logout")</a>
-        <p>
-            This program allows an author (user - YOU!) to record any incident
-            at her/his organization which made her/him feel either:
-        </p>
+  <header>
+    <h1>
+      Welcome to the Bias Tracking Program!
+    </h1>
+    <p>
+        This program allows an author (user - YOU!) to record any incident
+        at her/his organization which made her/him feel either:
         <ul>
             <li>Included</li>
             <li>Excluded</li>
         </ul>
-        <h3>
-            Please {{user}}, choose what you would like to do:
-        </h3>
-    </header>
-
-    <div class="container">
-        <!-- row1 -->
-        <div class="row">
-            <!-- create new -->
-            <div class="column">
-                <div class="invisible" id="newIncidentMessage">
-                    Your new incident was recorded
-                </div>
-                <p>*************</p>
-                <p>
-
-                    Click <a href="{% url 'new_incident' %}">HERE</a> to add a new incident
-                </p>
-                <p>*************</p>
-            </div>
-            <!-- /create new -->
-        </div>
-        <!-- /row1 -->
-        <!-- row2 -->
-        <div class="row">
-            <!-- select statistic -->
-            <div class="column">
-                <p>*************</p>
-                <p>
-                    Click <a href="{% url 'self_stats' %}">HERE</a> to see Exclusion v. Inclusion recorded
-                </p>
-                <p>*************</p>
-            </div>
-        </div>
-        <!-- /select statistic -->
-        <!-- /row2 -->
+    </p>
+  </header>
+  <!-- username area -->
+  <div class="container">
+    <!-- Home Greeting -->
+    <h3 id="greeting" name="greeting">
+        Please {{user.first_name}}, choose what you would like to do:
+    </h3>
+    <!-- /Home Greeting -->
+    <!-- Login -->
+    <form action="" method="post" name="loginform">
+      <input type="hidden" name="csrfmiddlewaretoken" value="JTr10aHEZMY4J1p8PMW32bOn6zsGDJ0F">
+      <div class="form-row">
+        <label>User Name
+          <input id="id_username" type="text" name="loginName">
+        </label>
+      </div>
+      <div class="form-row">
+        <label>Password
+          <input id="id_password" type="password" name="password">
+        </label>
+        <input type="hidden" name="next" value="/new_incident">
+      </div>
+      <div class = "submit-row">
+        <input type="submit" value="Log In">
+      </div>
+    </form>
+    <!-- /Login -->
     </div>
+    <!-- /username area -->
+    <!-- choices -->
+    <div class="container">
+      <!-- row1 -->
+      <div class="row">
+        <!-- create new -->
+        <div class="col-xs-4">
+          <p>
+            Click <a href="{% url 'new_incident' %}">HERE</a> to add a new incident
+          </p>
+        </div>
+        <!-- /create new -->
+        <!-- self stats -->
+        <div class="col-xs-4">
+          <p>
+            Click <a href="{% url 'self_stats' %}">HERE</a> to see Exclusion v. Inclusion recorded
+          </p>
+        </div>
+        <!-- /self stats -->
+        <!-- logout -->
+        <div class="col-xs-4">
+          <p>
+            Click <a href="{% url 'logout' %}" name="logout">HERE</a> to Logout
+          </p>
+        </div>
+        <!-- /logout -->
+      </div>
+      <!-- /row1 -->
+    </div>
+    <!-- /choices -->
     <!-- scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
     </script>
@@ -75,6 +96,6 @@
         crossorigin="anonymous"
     >
     </script>
-    <script src="static/js_scripts.js"></script>
+    <script src="{% static "bias_tracker/js_scripts.js" %}"></script>
     <!-- /scripts -->
 </body>
