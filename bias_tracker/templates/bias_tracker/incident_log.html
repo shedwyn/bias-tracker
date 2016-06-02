@@ -17,57 +17,57 @@
     >
 </head>
 <body>
-    <!-- row1 -->
+  <h6><a href="{% url 'index_page'%}" name="home">RETURN TO HOME PAGE</a></h6>
+  <!-- row1 -->
+  <div>
+    <!-- incident -->
     <div>
-        <a href="{% url 'logout' %}" name="logout">EMERGENCY ESCAPE CLAUSE (aka "Logout")</a>
-        <!-- incident -->
+      <form action="{% url 'submit_new' %}" method="post" name="new_incident">
+        {% csrf_token %}
+        <p name="author">Author will be <b><em>{{user}}</em></b></p>
+        <!-- select subjects -->
         <div>
-            <form action="{% url 'submit_new' %}" method="post" name="new_incident">
-                {% csrf_token %}
-                <p name="author">Author will be {{user}}</p>
-                <!-- select subjects -->
-                <div>
-                    <select name="subjects" multiple="True">
-                        {% for subject in subjects %}
-                        <option value="{{subject.id}}">{{subject.name}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <!-- /select subjects -->
-                <!-- select type -->
-                <div>
-                    <select name="incident_type">
-                        {% for i in incident_type %}
-                        <option>{{i}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <!-- /select type -->
-                <!-- select descriptors -->
-                <div>
-                    <!-- consider using an optgroup for this one -->
-                    <!-- to divide Incl from Excl -->
-                    <select name="descriptors" multiple="True">
-                        {% for descriptor in descriptors %}
-                        <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <!-- /select descriptors -->
-                <input type="submit" value="SUBMIT INCIDENT">
-            </form>
+          <select name="subjects" multiple="True">
+            {% for subject in subjects %}
+            <option value="{{subject.id}}">{{subject.name}}</option>
+            {% endfor %}
+          </select>
         </div>
-        <!-- /incident -->
-    <!-- /row1 -->
-    <!-- scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-    </script>
-    <script
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
-        integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
-        crossorigin="anonymous"
-    >
-    </script>
-    <script src="static/bias_tracker/js_scripts.js"></script>
-    <!-- /scripts -->
+        <!-- /select subjects -->
+        <!-- select type -->
+        <div>
+          <select name="incident_type">
+            {% for i in incident_type %}
+            <option>{{i}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <!-- /select type -->
+        <!-- select descriptors -->
+        <div>
+          <!-- consider using an optgroup for this one -->
+          <!-- to divide Incl from Excl -->
+          <select name="descriptors" multiple="True">
+            {% for descriptor in descriptors %}
+            <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <!-- /select descriptors -->
+        <input type="submit" value="SUBMIT INCIDENT">
+      </form>
+    </div>
+    <!-- /incident -->
+  <!-- /row1 -->
+  <!-- scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+  </script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+    integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+    crossorigin="anonymous"
+  >
+  </script>
+  <script src="static/bias_tracker/js_scripts.js"></script>
+  <!-- /scripts -->
 </body>

@@ -17,42 +17,40 @@
     >
 </head>
 <body>
-    <header>
-        <h3>{{user}}</h3>
-        <h3>Your Incident Data</h3>
-        <h6>
-            <a href="{% url 'logout' %}" name="logout">EMERGENCY ESCAPE CLAUSE (aka "Logout")</a>
-        </h6>
-        <h6>
-            <a href="{% url 'index_page' %}">HOME - HOME - HOME</a>
-        </h6>
-    </header>
-    <div class="container">
-        <!-- types -->
-        <div class="row">
-            <p>Total: {{ total }}</p>
-            <p>Inclusion: {{ inclusion }}%</p>
-            <p>Exclusion: {{ exclusion }}%</p>
-        </div>
-        <!-- /types -->
-        <!-- descriptors -->
-        <div class="row">
-            <ul> {%for descriptor in descriptors%}
-                <li>Descriptor: {{descriptor.0}} Count: {{descriptor.1}}</li>
-                {%endfor%}
-            </ul>
-        </div>
-        <!-- /descriptors -->
+  <header>
+    <h6>
+        <a href="{% url 'index_page' %}">RETURN TO HOME PAGE</a>
+    </h6>
+    <h3>{{user}}</h3>
+    <h3>Your Incident Data</h3>
+
+  </header>
+  <div class="container">
+    <!-- types -->
+    <div class="row">
+      <p>Total: {{ total }}</p>
+      <p>Inclusion: {{ inclusion }}%</p>
+      <p>Exclusion: {{ exclusion }}%</p>
     </div>
-    <!-- scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-    </script>
-    <script
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
-        integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
-        crossorigin="anonymous"
-    >
-    </script>
-    <script src="{% static "bias_tracker/js_scripts.js" %}"></script>
-    <!-- /scripts -->
+    <!-- /types -->
+    <!-- descriptors -->
+    <div class="row">
+      <ul> {%for descriptor in descriptors%}
+          <li>Descriptor: {{descriptor.0}} Count: {{descriptor.1}}</li>
+          {%endfor%}
+      </ul>
+    </div>
+    <!-- /descriptors -->
+  </div>
+  <!-- scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+  </script>
+  <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+      integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+      crossorigin="anonymous"
+  >
+  </script>
+  <script src="{% static "bias_tracker/js_scripts.js" %}"></script>
+  <!-- /scripts -->
 </body>
