@@ -16,7 +16,7 @@
         crossorigin="anonymous"
     >
 </head>
-<body onload="">
+<body>
   <header>
     <h1>
       Welcome to the Bias Tracking Program!
@@ -30,63 +30,42 @@
         </ul>
     </p>
   </header>
-  <!-- username area -->
   <div class="container">
     <!-- Home Greeting -->
-    <h3 id="greeting" name="greeting">
-        Please {{user.first_name}}, choose what you would like to do:
-    </h3>
+    <div class="row">
+      <h3>
+          Please {{user.first_name}}, choose what you would like to do:
+      </h3>
+    </div>
     <!-- /Home Greeting -->
-    <!-- Login -->
-    <form action="" method="post" name="loginform">
-      <input type="hidden" name="csrfmiddlewaretoken" value="JTr10aHEZMY4J1p8PMW32bOn6zsGDJ0F">
-      <div class="form-row">
-        <label>User Name
-          <input id="id_username" type="text" name="loginName">
-        </label>
-      </div>
-      <div class="form-row">
-        <label>Password
-          <input id="id_password" type="password" name="password">
-        </label>
-        <input type="hidden" name="next" value="/new_incident">
-      </div>
-      <div class = "submit-row">
-        <input type="submit" value="Log In">
-      </div>
-    </form>
-    <!-- /Login -->
-    </div>
-    <!-- /username area -->
     <!-- choices -->
-    <div class="container">
-      <!-- row1 -->
-      <div class="row">
-        <!-- create new -->
-        <div class="col-xs-4">
-          <p>
-            Click <a href="{% url 'new_incident' %}">HERE</a> to add a new incident
-          </p>
-        </div>
-        <!-- /create new -->
-        <!-- self stats -->
-        <div class="col-xs-4">
-          <p>
-            Click <a href="{% url 'self_stats' %}">HERE</a> to see Exclusion v. Inclusion recorded
-          </p>
-        </div>
-        <!-- /self stats -->
-        <!-- logout -->
-        <div class="col-xs-4">
-          <p>
-            Click <a href="{% url 'logout' %}" name="logout">HERE</a> to Logout
-          </p>
-        </div>
-        <!-- /logout -->
+    <!-- row2 -->
+    <div class="row">
+      <!-- create new -->
+      <div class="col-xs-4">
+        <p>
+          Click <a href="{% url 'new_incident' %}">HERE</a> to add a new incident
+        </p>
       </div>
-      <!-- /row1 -->
+      <!-- /create new -->
+      <!-- self stats -->
+      <div class="col-xs-4">
+        <p>
+          Click <a href="{% url 'self_stats' %}">HERE</a> to see your statistics
+        </p>
+      </div>
+      <!-- /self stats -->
+      <!-- logout -->
+      <div class="col-xs-4">
+        <p>
+          Click <a href="{% url 'logout' %}" name="logout">HERE</a> to Logout
+        </p>
+      </div>
+      <!-- /logout -->
     </div>
+    <!-- /row2 -->
     <!-- /choices -->
+  </div>
     <!-- scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
     </script>

@@ -3,25 +3,52 @@
 Includes use of User to authenticate and authorize.
 """
 
-from django.contrib.auth import logout  # , authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-# from django.http import HttpResponse
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from . import logic
+from . import settings
 
 
 @login_required(login_url='/accounts/login/')
 def render_index_page(request):
-    """home/menu page with all choices of redirection available"""
+    """render home/menu page with all further page choices"""
     page_fill = {}
     return render(request, 'bias_tracker/index.html', page_fill)
 
 
+def process_login(request):
+    """log in user or redirect to next page"""
+    next = request.GET.get('next', '/')
+    if request.method == 'POST':
+        #  check post to make sure these are what we want
+        username = request.POST['username']
+        password = request.POST['password']
+        print(username)
+        print(password)
+        user = authenticate(username=username, password=password)
+        print(user)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(next)
+            else:
+                return HttpResponse('Inactive User.')
+        else:
+            return HttpResponseRedirect(settings.LOGIN_URL)
+    page_fill = {
+        'redirect_to': next
+    }
+    return render(request, 'bias_tracker/login.html', page_fill)
+
+
 @login_required(login_url='/accounts/login/')
 def logout_return_home(request):
-    """log out current user and returns to home page"""
+    """log out current user and return to home page"""
     logout(request)
     page_fill = {}
     return render(request, 'bias_tracker/index.html', page_fill)

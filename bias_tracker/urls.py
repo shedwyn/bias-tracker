@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
+# from django.contrib.auth import views as auth_views
 
 from . import views
 
@@ -23,8 +23,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(
         r'^accounts/login/$',
-        auth_views.login,
-        {'template_name': 'admin/login.html'}
+        views.process_login,
+        # {'template_name': 'bias_tracker/login.html'},
+        name='login'
     ),
     url(r'^$', views.render_index_page, name='index_page'),
     url(
