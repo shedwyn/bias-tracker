@@ -87,7 +87,7 @@ def submit_new(request):
 
 
 @login_required(login_url='/accounts/login/')
-def self_stats(request):
+def render_self_stats(request):
     """take user and render page with Incl v. Excl stats for user"""
     author_id = request.user.id
     recorded_incident_total = logic.get_total_incidents_as_author(author_id)
@@ -96,6 +96,30 @@ def self_stats(request):
     percent_inclusion_logged_as_author = \
         logic.get_percent_inclusion_logged_as_author(author_id)
     descriptor_counts = logic.get_descriptor_counts_as_author(author_id)
+    # return descriptors as iterable dictionary, get key and put in html, get
+    # val and put in html to match
+    page_fill = {
+        'total': recorded_incident_total,
+        'inclusion': percent_inclusion_logged_as_author,
+        'exclusion': percent_exclusion_logged_as_author,
+        'descriptors': descriptor_counts
+    }
+    return render(request, 'bias_tracker/self_stats.html', page_fill)
+
+@login_required(login_url='/accounts/login/')
+def render_subject_stats(request):
+    """render page to choose from list of subjects and view stats for subject.
+
+    single page reloads type and descriptor stats based on user choice of
+    subject.
+    """
+    subject_id = request.subject.id
+    recorded_incident_total = logic.get_total_incidents_as_subject(subject_id)
+    percent_exclusion_logged_as_author = \
+        logic.get_percent_exclusion_logged_as_subject(subject_id)
+    percent_inclusion_logged_as_author = \
+        logic.get_percent_inclusion_logged_as_subject(subject_id)
+    descriptor_counts = logic.get_descriptor_counts_as_subject(subject_id)
     # return descriptors as iterable dictionary, get key and put in html, get
     # val and put in html to match
     print(descriptor_counts)

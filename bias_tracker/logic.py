@@ -30,7 +30,7 @@ def grab_type_options():
 
 
 def get_total_incidents_as_author(user_id):
-    """take in name, return number of incidents logged by name"""
+    """take in id, return number of incidents logged as author by id"""
     total_incidents_as_author = \
         Incident.objects.filter(author__exact=user_id).count()
     return total_incidents_as_author
@@ -79,6 +79,25 @@ def get_descriptor_counts_as_author(user_id):
     descriptor_counts = count_descriptors_for_author(incidents_as_author)
     descriptors_and_counts = descriptor_counts.items()
     return descriptors_and_counts
+
+
+def get_total_incidents_as_subject(subject_id):
+    """take in id, return number of incidents logged as subject for id"""
+    total_incidents_as_subject = \
+        Incident.objects.filter(subject__exact=subject_id).count()
+    return total_incidents_as_subject
+
+
+def get_percent_exclusion_logged_as_subject(subject_id):
+    pass
+
+
+def get_percent_inclusion_logged_as_subject(subject_id):
+    pass
+
+
+def get_descriptor_counts_as_subject(subject_id):
+    pass
 
 
 def create_incident_type_list(incident_types):

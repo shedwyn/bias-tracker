@@ -29,7 +29,7 @@
         <div>
           <select name="subjects" multiple="True">
             {% for subject in subjects %}
-            <option value="{{subject.id}}">{{subject.name}}</option>
+              <option value="{{subject.id}}">{{subject.name}}</option>
             {% endfor %}
           </select>
         </div>
@@ -38,7 +38,7 @@
         <div>
           <select name="incident_type">
             {% for i in incident_type %}
-            <option>{{i}}</option>
+              <option>{{i}}</option>
             {% endfor %}
           </select>
         </div>
@@ -49,7 +49,7 @@
           <!-- to divide Incl from Excl -->
           <select name="descriptors" multiple="True">
             {% for descriptor in descriptors %}
-            <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
+              <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
             {% endfor %}
           </select>
         </div>

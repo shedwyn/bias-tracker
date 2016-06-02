@@ -9,3 +9,16 @@ function triggerHiddenText() {
     $('#newIncidentMessage').addClass('invisible');
   }
 }
+
+
+
+//
+// transform
+//
+// create
+//
+// modify & sync
+//
+// main
+//
+// registerEventHandlers

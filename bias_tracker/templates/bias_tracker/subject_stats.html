@@ -1,0 +1,74 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Subject Stats for Bias Tracker</title>
+    <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+        integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+        crossorigin="anonymous"
+    >
+</head>
+<body>
+  <div class="container">
+    <!-- row1 -->
+    <!-- header -->
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h6>
+          <a href="{% url 'index_page' %}">RETURN TO HOME PAGE</a>
+        </h6>
+        <h3>Hello, {{user}}</h3>
+        <h3>Select from the list of subjects to show their statistics</h3>
+      </div>
+    </div>
+    <!-- /header -->
+    <!-- /row1 -->
+    <!-- row2 -->
+    <div class="row">
+      <div class="column">
+        <select name="subjects">
+          {% for subject in subjects %}
+            <option value="{{subject.id}}">{{subject.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <!--/row2 -->
+    <!-- row3 -->
+    <!-- types -->
+    <div class="row">
+      <p>Total: {{ total }}</p>
+      <p>Inclusion: {{ inclusion }}%</p>
+      <p>Exclusion: {{ exclusion }}%</p>
+    </div>
+    <!-- /types -->
+    <!-- descriptors -->
+    <div class="row">
+      <ul> {%for descriptor in descriptors%}
+          <li>Descriptor: {{descriptor.0}} Count: {{descriptor.1}}</li>
+          {%endfor%}
+      </ul>
+    </div>
+    <!-- /descriptors -->
+    <!-- /row3 -->
+  </div>
+  <!-- scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+  </script>
+  <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+      integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+      crossorigin="anonymous"
+  >
+  </script>
+  <script src="{% static "bias_tracker/js_scripts.js" %}"></script>
+  <!-- /scripts -->
+</body>
