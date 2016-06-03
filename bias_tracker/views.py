@@ -106,8 +106,20 @@ def render_self_stats(request):
     }
     return render(request, 'bias_tracker/self_stats.html', page_fill)
 
+
 @login_required(login_url='/accounts/login/')
 def render_subject_stats(request):
+    """render blank page with subjects list.
+
+    this renders page with only list of subjects.  user chooses subject to
+    trigger js script to generate data.
+    """
+    subjects = logic.grab_subject_options
+    page_fill = {'subjects': subjects}
+    return render(request, 'bias_tracker/subject_stats.html', page_fill)
+
+
+def get_subject_data(request):
     """render page to choose from list of subjects and view stats for subject.
 
     single page reloads type and descriptor stats based on user choice of
@@ -129,10 +141,6 @@ def render_subject_stats(request):
         'exclusion': percent_exclusion_logged_as_author,
         'descriptors': descriptor_counts
     }
-    return render(request, 'bias_tracker/self_stats.html', page_fill)
-
-# def render_edit_incident_log_page(request):
-#     """takes incident id, finds incident in db, fills fields w data for that
-#     incident.  user may change data and submit edited record.  'submit' sends
-#     data to db and redirects to menu-page"""
-#     pass
+    # return render(request, 'bias_tracker/self_stats.html', page_fill)
+    # return JSON
+    pass

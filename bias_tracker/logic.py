@@ -2,10 +2,10 @@
 
 from bias_tracker.models import Descriptor
 from bias_tracker.models import Person
-from bias_tracker.models import User
+# from bias_tracker.models import User
 from bias_tracker.models import Incident
 
-from . import views
+# from . import views
 
 # 'Incident_str({}, {}, {}, {}, {})'.format(
 #     self.id, self.author, self.subjects, self.incident_type, self.descriptors
@@ -84,20 +84,53 @@ def get_descriptor_counts_as_author(user_id):
 def get_total_incidents_as_subject(subject_id):
     """take in id, return number of incidents logged as subject for id"""
     total_incidents_as_subject = \
-        Incident.objects.filter(subject__exact=subject_id).count()
+        Incident.objects.filter(subjects__exact=subject_id).count()
     return total_incidents_as_subject
 
 
 def get_percent_exclusion_logged_as_subject(subject_id):
-    pass
+    """take in id and return incident percent for exclusionary"""
+    total_incidents_as_subject = get_total_incidents_as_subject(subject_id)
+    count_exclusive_as_subject = Incident.objects.filter(
+        subjects__exact=subject_id, incident_type__exact='Exclusion'
+    ).count()
+    percent = round(
+        (count_exclusive_as_subject / total_incidents_as_subject) * 100, 1
+    )
+    return percent
 
 
 def get_percent_inclusion_logged_as_subject(subject_id):
-    pass
+    """take in id and return incident percent for inclusionary"""
+    total_incidents_as_subject = get_total_incidents_as_subject(subject_id)
+    count_inclusive_as_subject = Incident.objects.filter(
+        subjects__exact=subject_id, incident_type__exact='Inclusion'
+    ).count()
+    percent = round(
+        (count_inclusive_as_subject / total_incidents_as_subject) * 100, 1
+    )
+    return percent
+
+
+def count_descriptors_for_subject(incidents_as_subject):
+    """take Incidents, count all Incident references to descriptor & return"""
+    descriptor_counts = {}
+    for incident in incidents_as_subject:
+        descriptors = incident.descriptors.all()
+        for descriptor in descriptors:
+            if descriptor.descriptor not in descriptor_counts:
+                descriptor_counts[descriptor.descriptor] = 1
+            else:
+                descriptor_counts[descriptor.descriptor] += 1
+    return descriptor_counts
 
 
 def get_descriptor_counts_as_subject(subject_id):
-    pass
+    """take id, return dict of descriptors with count"""
+    incidents_as_subject = Incident.objects.filter(subjects__exact=subject_id)
+    descriptor_counts = count_descriptors_for_subject(incidents_as_subject)
+    descriptors_and_counts = descriptor_counts.items()
+    return descriptors_and_counts
 
 
 def create_incident_type_list(incident_types):

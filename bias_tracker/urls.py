@@ -33,9 +33,14 @@ urlpatterns = [
         views.render_new_incident_log_page,
         name='new_incident'
     ),
-    url(r'^logout/', views.logout_return_home, name='logout'),
-    url(r'^submit_new/', views.submit_new, name='submit_new'),
-    url(r'^self_stats/', views.render_self_stats, name='self_stats')
+    url(r'^logout/$', views.logout_return_home, name='logout'),
+    url(r'^submit_new/$', views.submit_new, name='submit_new'),
+    url(r'^self_stats/$', views.render_self_stats, name='self_stats'),
+    url(r'^subject_stats/$', views.render_subject_stats, name='subject_stats'),
+    # url(
+    #     r'^subject_stats/(?P<SUBJECT_ID>.*)/$',
+    #     views.get_subjects_data,
+    #     name='get_stats'
+    # )
     # url(r'', views.render_edit_incident_log_page, name='edit_incident'),
-    # url(r'', views.render_statistics_view_page, name='statistics_page')
 ]

@@ -18,8 +18,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- row1 -->
-    <!-- header -->
+    <!-- header row -->
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
         <h6>
@@ -29,36 +28,41 @@
         <h3>Select from the list of subjects to show their statistics</h3>
       </div>
     </div>
-    <!-- /header -->
-    <!-- /row1 -->
-    <!-- row2 -->
+    <!-- /header row -->
+    <!-- select sub row -->
     <div class="row">
+      <!-- select sub -->
       <div class="column">
-        <select name="subjects">
-          {% for subject in subjects %}
+        <form action="" method="get" name="subject_form">
+          <select name="subjects">
+            {% for subject in subjects %}
             <option value="{{subject.id}}">{{subject.name}}</option>
-          {% endfor %}
-        </select>
+            {% endfor %}
+          </select>
+          <input type="submit" value="REALIZE STATS">
+        </form>
       </div>
     </div>
-    <!--/row2 -->
-    <!-- row3 -->
-    <!-- types -->
+    <!--/select sub row -->
+    <!-- js magic -->
+    <!-- types row -->
     <div class="row">
-      <p>Total: {{ total }}</p>
+      BLANK
+      <!-- <p>Total: {{ total }}</p>
       <p>Inclusion: {{ inclusion }}%</p>
-      <p>Exclusion: {{ exclusion }}%</p>
+      <p>Exclusion: {{ exclusion }}%</p> -->
     </div>
-    <!-- /types -->
-    <!-- descriptors -->
+    <!-- /types row -->
+    <!-- descriptors row -->
     <div class="row">
-      <ul> {%for descriptor in descriptors%}
+      BLANK
+      <!-- <ul> {%for descriptor in descriptors%}
           <li>Descriptor: {{descriptor.0}} Count: {{descriptor.1}}</li>
           {%endfor%}
-      </ul>
+      </ul> -->
     </div>
-    <!-- /descriptors -->
-    <!-- /row3 -->
+    <!-- /descriptors row -->
+    <!-- /js magic -->
   </div>
   <!-- scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
