@@ -1,13 +1,9 @@
 'use strict';
 /**
- * fills or deletes message based on 'trigger' value.
+ * renders subject_stats_data.
  */
-function triggerHiddenText() {
-  if ($('#trigger') === 'submit_new') {
-    $('#newIncidentMessage').removeClass('invisible');
-  }  else {
-    $('#newIncidentMessage').addClass('invisible');
-  }
+function get_subject_id() {
+  return $("#subjects").val()
 }
 
 
@@ -22,3 +18,7 @@ function triggerHiddenText() {
 // main
 //
 // registerEventHandlers
+
+$('#subject_form').on("submit", function (event){
+    event.preventDefault();;
+    // call stuff()

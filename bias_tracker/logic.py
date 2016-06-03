@@ -133,6 +133,16 @@ def get_descriptor_counts_as_subject(subject_id):
     return descriptors_and_counts
 
 
+def create_descriptor_and_count_dicts(subject_id):
+    """take in tuple pair, return list of dictionaries with 2 key:val pairs"""
+    descriptors_and_counts = get_descriptor_counts_as_subject(subject_id)
+    descriptor_and_count_dicts = []
+    for i in descriptors_and_counts:
+        dict_item = {'descriptor': i[0], 'count': i[1]}
+        descriptor_and_count_dicts.append(dict_item)
+    return descriptor_and_count_dicts
+
+
 def create_incident_type_list(incident_types):
     """take in tuple pairs and return single list of two items"""
     incident_type_choices = []
@@ -156,3 +166,25 @@ def log_new_incident(author, subjects, incident_type, descriptors):
         # do I need the above or can I just put "descriptor" in below?
         new_incident.descriptors.add(desc_id)
     return 'New Incident Submitted'
+
+
+def create_json_object(subject_id):
+    """take in id, create items for JSON dict, make JSON dict"""
+    inclusion_percent = get_percent_inclusion_logged_as_subject(subject_id)
+    print('INCLUSION', inclusion_percent)
+    exclusion_percent = get_percent_exclusion_logged_as_subject(subject_id)
+    print('EXCLUSION', exclusion_percent)
+    print('**********************************')
+    descriptor_counts = create_descriptor_and_count_dicts(subject_id)
+    print('DESCRIPTOR', descriptor_counts)
+    print('**********************************')
+    print('**********************************')
+    print('**********************************')
+    json_object = {
+        'inclusion': inclusion_percent,
+        'exclusion': exclusion_percent,
+        'descriptors': descriptor_counts
+    }
+    print('**********************************')
+    # print(json_object)
+    return json_object

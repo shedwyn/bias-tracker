@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from . import logic
@@ -28,10 +29,7 @@ def process_login(request):
         #  check post to make sure these are what we want
         username = request.POST['username']
         password = request.POST['password']
-        print(username)
-        print(password)
         user = authenticate(username=username, password=password)
-        print(user)
         if user is not None:
             if user.is_active:
                 login(request, user)
@@ -91,17 +89,17 @@ def render_self_stats(request):
     """take user and render page with Incl v. Excl stats for user"""
     author_id = request.user.id
     recorded_incident_total = logic.get_total_incidents_as_author(author_id)
-    percent_exclusion_logged_as_author = \
+    percent_exclusion_as_author = \
         logic.get_percent_exclusion_logged_as_author(author_id)
-    percent_inclusion_logged_as_author = \
+    percent_inclusion_as_author = \
         logic.get_percent_inclusion_logged_as_author(author_id)
     descriptor_counts = logic.get_descriptor_counts_as_author(author_id)
     # return descriptors as iterable dictionary, get key and put in html, get
     # val and put in html to match
     page_fill = {
         'total': recorded_incident_total,
-        'inclusion': percent_inclusion_logged_as_author,
-        'exclusion': percent_exclusion_logged_as_author,
+        'inclusion': percent_inclusion_as_author,
+        'exclusion': percent_exclusion_as_author,
         'descriptors': descriptor_counts
     }
     return render(request, 'bias_tracker/self_stats.html', page_fill)
@@ -119,28 +117,40 @@ def render_subject_stats(request):
     return render(request, 'bias_tracker/subject_stats.html', page_fill)
 
 
-def get_subject_data(request):
-    """render page to choose from list of subjects and view stats for subject.
-
-    single page reloads type and descriptor stats based on user choice of
-    subject.
-    """
-    subject_id = request.subject.id
-    recorded_incident_total = logic.get_total_incidents_as_subject(subject_id)
-    percent_exclusion_logged_as_author = \
-        logic.get_percent_exclusion_logged_as_subject(subject_id)
-    percent_inclusion_logged_as_author = \
-        logic.get_percent_inclusion_logged_as_subject(subject_id)
-    descriptor_counts = logic.get_descriptor_counts_as_subject(subject_id)
-    # return descriptors as iterable dictionary, get key and put in html, get
-    # val and put in html to match
-    print(descriptor_counts)
-    page_fill = {
+def convert_subject_stats_to_json_obj(
+    recorded_incident_total,
+    percent_exclusion_as_subject,
+    percent_inclusion_as_subject,
+    descriptor_counts
+):
+    """Convert a subject stats data into a JSON-encodable object."""
+    return {
         'total': recorded_incident_total,
-        'inclusion': percent_inclusion_logged_as_author,
-        'exclusion': percent_exclusion_logged_as_author,
+        'inclusion': percent_inclusion_as_subject,
+        'exclusion': percent_exclusion_as_subject,
         'descriptors': descriptor_counts
     }
-    # return render(request, 'bias_tracker/self_stats.html', page_fill)
-    # return JSON
-    pass
+
+
+def get_subject_data(request):
+    """extract subject id and find incident stats where id was subject.
+
+    generate data for percentage of behavior recorded as being inclusionary,
+    percent of behavior recorded as exclusionary, and number of times the
+    subject used any of the recorded descriptors when behaving in recorded
+    inclusion/exclusionary ways.
+    """
+    subject_id = request.POST['subject']
+    recorded_incident_total = logic.get_total_incidents_as_subject(subject_id)
+    percent_exclusion_as_subject = \
+        logic.get_percent_exclusion_logged_as_subject(subject_id)
+    percent_inclusion_as_subject = \
+        logic.get_percent_inclusion_logged_as_subject(subject_id)
+    descriptor_counts = logic.create_descriptor_and_count_dicts(subject_id)
+    subject_stats = convert_subject_stats_to_json_obj(
+        recorded_incident_total,
+        percent_exclusion_as_subject,
+        percent_inclusion_as_subject,
+        descriptor_counts
+    )
+    return JsonResponse(subject_stats)

@@ -33,8 +33,9 @@
     <div class="row">
       <!-- select sub -->
       <div class="column">
-        <form action="" method="get" name="subject_form">
-          <select name="subjects">
+        <form action="{% url 'get_stats' %}" method="post" id="subject-form">
+          {% csrf_token %}
+          <select name="subject">
             {% for subject in subjects %}
             <option value="{{subject.id}}">{{subject.name}}</option>
             {% endfor %}
@@ -47,15 +48,32 @@
     <!-- js magic -->
     <!-- types row -->
     <div class="row">
-      BLANK
-      <!-- <p>Total: {{ total }}</p>
-      <p>Inclusion: {{ inclusion }}%</p>
-      <p>Exclusion: {{ exclusion }}%</p> -->
+      <h3>Individual Incident Subject Statistics</h3>
+      <h6>
+        <ol>Includes:
+          <li>total number of incidents where individual was listed as subject (not author)</li>
+          <li>percentage of total incidents where individual demonstrated inclusion</li>
+          <li>percentage of total incidents where individual demonstrated exclusion</li>
+          <li>numbers of times individual used specifically described inclusionary/exclusionary behaviors</li>
+        </ol>
+      </h6>
+      <p id="error"></p>
+      <p>
+        1. <span id="name">INSERT NAME HERE</span>
+        was the recorded subject of
+        <strong><span id="total"></span></strong> incidents
+      </p>
+      <p>
+        2. Of those incidents <strong><span id="inclusion"></span></strong>% were inclusionary
+      </p>
+      <p>
+        3. Of those incidents <strong><span id="exclusion"></span></strong>% were exclusionary
+      </p>
     </div>
     <!-- /types row -->
     <!-- descriptors row -->
     <div class="row">
-      BLANK
+      4. BLANK
       <!-- <ul> {%for descriptor in descriptors%}
           <li>Descriptor: {{descriptor.0}} Count: {{descriptor.1}}</li>
           {%endfor%}
@@ -73,6 +91,7 @@
       crossorigin="anonymous"
   >
   </script>
-  <script src="{% static "bias_tracker/js_scripts.js" %}"></script>
+  <script src="{% static 'bias_tracker/ajax_csrf_setup.js' %}"></script>
+  <script src="{% static 'bias_tracker/subject_stats.js' %}"></script>
   <!-- /scripts -->
 </body>
