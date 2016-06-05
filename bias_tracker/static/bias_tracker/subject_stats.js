@@ -5,13 +5,14 @@
 function fillSubjectStatsPage(stats) {
   var totalField = $('#total');
   totalField.text(stats.total);
-  console.dir(stats.total)
   var inclusionField = $('#inclusion');
   inclusionField.text(stats.inclusion);
   var exclusionField = $('#exclusion');
   exclusionField.text(stats.exclusion);
-  // var descriptors = $('#descriptors');
-  // descriptors.html(stats.descriptors);
+  var descriptorsArea = $('#descriptors');
+  // descriptorsArea.html(stats.descriptors);
+  // $("#header ul").append('<li><a href="/user/messages"><span class="tab">Message Center</span></a></li>')
+  console.dir(stats.descriptors);
 }
 /**
  * Fill in the current page with any error encountered.
@@ -35,6 +36,13 @@ function emptyResponseElements() {
   errorP.empty();
 }
 /**
+ * Take in descriptor array (dict), create one list item from each array item
+ * which will have two parts - the descriptor name and it's count.
+ */
+function createListItem() {
+
+}
+/**
  * Take in source form data, POST, update page in place.
  */
 function runSubmitSourceAndUpdate() {
@@ -51,7 +59,6 @@ function runSubmitSourceAndUpdate() {
  */
 function registerGlobalEventHandlers() {
   var sourceForm = $('#subject-form');
-  console.log('testtesttest');
   sourceForm.on('submit', function(event) {
     event.preventDefault();
     runSubmitSourceAndUpdate();
