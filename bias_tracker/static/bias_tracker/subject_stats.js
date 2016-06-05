@@ -10,8 +10,10 @@ function fillSubjectStatsPage(stats) {
   var exclusionField = $('#exclusion');
   exclusionField.text(stats.exclusion);
   var descriptorsArea = $('#descriptors');
+  for descriptor in stats.descriptors {
+    descriptorsArea.append(createListItem(i))
+  }
   // descriptorsArea.html(stats.descriptors);
-  // $("#header ul").append('<li><a href="/user/messages"><span class="tab">Message Center</span></a></li>')
   console.dir(stats.descriptors);
 }
 /**
@@ -36,11 +38,18 @@ function emptyResponseElements() {
   errorP.empty();
 }
 /**
- * Take in descriptor array (dict), create one list item from each array item
- * which will have two parts - the descriptor name and it's count.
+ * Take in descriptor and count list item pair, create one list item from each
+ * array item which will have two parts - the descriptor name and it's count.
  */
-function createListItem() {
-
+function createListItem(descriptor_pair) {
+  var descriptor = descriptor_pair[descriptor];
+  var count = descriptor_pair[count]
+  var li_element = '<li><u>' +
+    descriptor +
+    '</u> used <u>' +
+    count +
+    '</u> time(s)</li>';
+  return li_element
 }
 /**
  * Take in source form data, POST, update page in place.
