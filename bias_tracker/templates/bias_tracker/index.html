@@ -4,33 +4,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home/Menu for Bias Tracker</title>
-
-    <link
-        rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
-        integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
-        crossorigin="anonymous"
-    >
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Home/Menu for Bias Tracker</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/index.css' %}">
+  <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+      integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+      crossorigin="anonymous"
+  >
 </head>
 <body>
   {% if user.is_active %}
-    <div class="container">
+    <div class="container m-t-1">
       <div class = "row">
         <div class="col-sm-10 col-sm-offset-1">
           <h1 class="text-sm-center">
             Welcome to the Bias Tracking Program!
           </h1>
-          <p class="text-sm-center">
+          <p class="text-sm-justify">
             This program allows an author (user - YOU!) to record any incident
-            at her/his organization which made her/him feel either:
-            <ul>
-              <li>Included</li>
-              <li>Excluded</li>
-            </ul>
+            at her/his organization which made her/him feel either <em>Included</em>
+            or <em>Excluded</em>
           </p>
         </div>
       </div>
@@ -39,7 +36,7 @@
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
           <h3 class="text-sm-center">
-              Please <em><strong>{{user.first_name}}</strong></em>, choose what you would like to do:
+              Please <strong>{{user.first_name}}</strong>, choose what you would like to do:
           </h3>
         </div>
       </div>
@@ -49,31 +46,44 @@
       <!-- choices -->
       <div class="row">
         <!-- create new -->
-        <div class="col-sm-2 col-sm-offset-2">
-          <p>
-            Click <a href="{% url 'new_incident' %}">HERE</a> to add a new incident
-          </p>
+        <div class="col-md-2 col-md-offset-2 m-y-1">
+          <a class="btn btn-primary btn-lg btn-block"
+          href="{% url 'new_incident' %}"
+          role="button"
+          >
+          Create New Incident
+        </a>
         </div>
         <!-- /create new -->
         <!-- self stats -->
-        <div class="col-sm-2">
-          <p>
-            Click <a href="{% url 'self_stats' %}">HERE</a> to see your statistics
-          </p>
+        <div class="col-md-2 m-y-1">
+            <a class="btn btn-primary btn-lg btn-block"
+              href="{% url 'self_stats' %}"
+              role="button"
+            >
+            YOUR statistics
+          </a>
         </div>
         <!-- /self stats -->
         <!-- subject stats -->
-        <div class="col-sm-2">
-          <p>
-            Click <a href="{% url 'subject_stats' %}">HERE</a> to view statistics for subjects
-          </p>
+        <div class="col-md-2 m-y-1">
+          <a class="btn btn-primary btn-lg btn-block"
+            href="{% url 'subject_stats' %}"
+            role="button"
+          >Incident Subject Statistics
+          </a>
         </div>
         <!-- /subject stats -->
         <!-- logout -->
-        <div class="col-sm-2">
-          <p>
-            Click <a href="{% url 'logout' %}" name="logout">HERE</a> to Logout
-          </p>
+        <div class="col-md-2 m-y-1">
+          <a
+            class="btn btn-primary btn-lg btn-block"
+            href="{% url 'logout' %}"
+            name="logout"
+            role="button"
+          >
+            Logout
+          </a>
         </div>
         <!-- /logout -->
       </div>
@@ -99,6 +109,5 @@
         crossorigin="anonymous"
     >
     </script>
-    <script src="{% static "bias_tracker/js_scripts.js" %}"></script>
     <!-- /scripts -->
 </body>
