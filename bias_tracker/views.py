@@ -75,12 +75,21 @@ def submit_new(request):
     """submit new incident and returns to home page"""
     author = request.user
     subjects = request.POST.getlist('subjects')
+    incident_date = request.POST['date']
+    incident_time = request.POST['time']
     incident_type = request.POST['incident_type']
     descriptors = request.POST.getlist('descriptors')
-    new_incident = logic.log_new_incident(
-        author, subjects, incident_type, descriptors
+    text_description = request.POST['description']
+    logic.log_new_incident(
+        author,
+        subjects,
+        incident_date,
+        incident_time,
+        incident_type,
+        descriptors,
+        text_description
     )
-    page_fill = {'new_incident': new_incident}
+    page_fill = {}
     return render(request, 'bias_tracker/index.html', page_fill)
 
 

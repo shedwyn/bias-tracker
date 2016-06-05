@@ -151,11 +151,31 @@ def create_incident_type_list(incident_types):
     return incident_type_choices
 
 
-def log_new_incident(author, subjects, incident_type, descriptors):
+def test_time_input(time):
+    """take in time input and if None return 00:00"""
+    if time == '':
+        return '00:00'
+    else:
+        return time
+
+
+def log_new_incident(
+    author,
+    subjects,
+    incident_date,
+    incident_time,
+    incident_type,
+    descriptors,
+    text_description
+):
     """take in incident fields and instantiate new incident"""
+    incident_time = test_time_input(incident_time)
     new_incident = Incident(
         author=author,
+        incident_date=incident_date,
+        incident_time=incident_time,
         incident_type=incident_type,
+        text_description=text_description
     )
     new_incident.save()
     for subject in subjects:

@@ -24,9 +24,28 @@
     <div>
       <form action="{% url 'submit_new' %}" method="post" name="new_incident">
         {% csrf_token %}
-        <p name="author">Author will be <b><em>{{user}}</em></b></p>
+        <!-- fixed info -->
+        <div class="form-group">
+          <p name="author">Author will be <b><em>{{user}}</em></b></p>
+          <p>The filing date will be recorded as today</p>
+        </div>
+        <!-- /fixed info -->
+        <!-- incident date -->
+        <div class="form-group">
+          <label>Date of Incident
+            <input name="date" placeholder="YYYY-MM-DD">
+          </label>
+        </div>
+        <!-- /incident date -->
+        <!-- incident time -->
+        <div class="form-group">
+          <label>Time of Incident
+            <input name="time">
+          </label>
+        </div>
+        <!-- /incident time -->
         <!-- select subjects -->
-        <div>
+        <div class="form-group">
           <select name="subjects" multiple="True">
             {% for subject in subjects %}
               <option value="{{subject.id}}">{{subject.name}}</option>
@@ -35,7 +54,7 @@
         </div>
         <!-- /select subjects -->
         <!-- select type -->
-        <div>
+        <div class="form-group">
           <select name="incident_type">
             {% for i in incident_type %}
               <option>{{i}}</option>
@@ -44,7 +63,7 @@
         </div>
         <!-- /select type -->
         <!-- select descriptors -->
-        <div>
+        <div class="form-group">
           <!-- consider using an optgroup for this one -->
           <!-- to divide Incl from Excl -->
           <select name="descriptors" multiple="True">
@@ -54,7 +73,16 @@
           </select>
         </div>
         <!-- /select descriptors -->
-        <input type="submit" value="SUBMIT INCIDENT">
+        <!-- text area -->
+        <div class="form-group">
+          <textarea name="description"></textarea>
+        </div>
+        <!-- /text area -->
+        <!-- submit -->
+        <div class="form-group">
+          <input type="submit" class="btn btn-default" value="SUBMIT INCIDENT">
+        </div>
+        <!-- /submit -->
       </form>
     </div>
     <!-- /incident -->

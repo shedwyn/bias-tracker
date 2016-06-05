@@ -2,9 +2,9 @@
 /**
  * renders subject_stats_data.
  */
-function get_subject_id() {
-  return $("#subjects").val()
-}
+// function get_subject_id() {
+//   return $("#subjects").val()
+// }
 
 
 
@@ -19,6 +19,6 @@ function get_subject_id() {
 //
 // registerEventHandlers
 
-$('#subject_form').on("submit", function (event){
-    event.preventDefault();;
+// $('#subject_form').on("submit", function (event){
+//     event.preventDefault();;
     // call stuff()

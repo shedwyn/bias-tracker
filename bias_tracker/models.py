@@ -44,6 +44,7 @@ class Incident(models.Model):
     """
 
     default_description = 'describe incident detail here'
+    default_date = '2016-01-01'
     TYPE_CHOICES = (
         ('Exclusion', 'Exclusion'),
         ('Inclusion', 'Inclusion')
@@ -51,8 +52,8 @@ class Incident(models.Model):
     # look into pre-delete and filling incidents with sub_id 1
     author = models.ForeignKey(User)
     subjects = models.ManyToManyField(Person)  # list of persons
-    filing_date = models.DateField(auto_now_add=True)
-    incident_date = models.DateField(default=datetime.today)
+    filing_date = models.DateTimeField(auto_now_add=True)
+    incident_date = models.DateField(default=default_date)
     incident_time = models.TimeField(blank=True)
     incident_type = models.CharField(choices=TYPE_CHOICES, max_length=10)
     descriptors = models.ManyToManyField(Descriptor)
