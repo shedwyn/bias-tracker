@@ -18,25 +18,27 @@
 </head>
 <body>
   <!-- Login -->
-  <form action="{% url 'login' %}" method="post" name="loginform">
-    {% csrf_token %}
-    {% if next %}
+  <div class="container m-t-8">
+    <form action="{% url 'login' %}" method="post" name="loginform">
+      {% csrf_token %}
+      {% if next %}
       <input type="hidden" name="next" value="{{ next }}" />
-    {% endif %}
-    <div class="form-row">
-      <label>User Name
-        <input id="id_username" type="text" name="username">
-      </label>
-    </div>
-    <div class="form-row">
-      <label>Password
-        <input id="id_password" type="password" name="password">
-      </label>
-    </div>
-    <div class = "submit-row">
-      <input type="submit" value="Log In">
-    </div>
-  </form>
+      {% endif %}
+      <div class="form-row">
+        <label>User Name
+          <input id="id_username" type="text" name="username">
+        </label>
+      </div>
+      <div class="form-row">
+        <label>Password
+          <input id="id_password" type="password" name="password">
+        </label>
+      </div>
+      <div class = "submit-row">
+        <input type="submit" value="Log In">
+      </div>
+    </form>
+  </div>
   <!-- /Login -->
   <!-- scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">

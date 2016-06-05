@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>New Incident for Bias Tracker</title>
-    <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/index.css' %}">
     <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
@@ -17,26 +17,48 @@
     >
 </head>
 <body>
-  <header>
-    <h6>
-        <a href="{% url 'index_page' %}">RETURN TO HOME PAGE</a>
-    </h6>
-    <h3>{{user}}</h3>
-    <h3>Your Incident Data</h3>
-
-  </header>
   <div class="container">
+    <!-- nav -->
+    <div class="row">
+      <p class="text-sm-right">
+        <a class="" href="{% url 'index_page'%}" name="home">RETURN HOME</a>
+      </p>
+    </div>
+    <!-- /nav -->
+    <!-- title -->
+    <div class="row">
+      <h2 class="text-sm-center">
+        Incident Data for <strong>{{user.first_name}} {{user.last_name}}</strong>
+      </h2>
+    </div>
+    <!-- /title -->
     <!-- types -->
     <div class="row">
-      <p>Total: {{ total }}</p>
-      <p>Inclusion: {{ inclusion }}%</p>
-      <p>Exclusion: {{ exclusion }}%</p>
+      <p>You have logged <strong><mark>{{ total }}</mark></strong> incidents in total</p>
+      <p>
+        Of Incidents logged, <strong><mark>
+          {{ inclusion }}%
+        </mark></strong> have been of the <u>
+          inclusion type
+        </u>
+      </p>
+      <p>
+        Of Incidents logged, <strong><mark>
+          {{ exclusion }}%
+        </mark></strong> have been of the <u>
+          exclusion type
+        </u>
+      </p>
     </div>
     <!-- /types -->
     <!-- descriptors -->
     <div class="row">
-      <ul> {%for descriptor in descriptors%}
-          <li>Descriptor: {{descriptor.0}} Count: {{descriptor.1}}</li>
+      <p>
+        The following list of <strong><mark>descriptors</strong></mark> shows <u>how many times</u> you logged
+        each descriptor as being used by a subject involved in an incident.
+      </p>
+      <ul><strong>Descriptor Counts</strong> {%for descriptor in descriptors%}
+          <li><u>{{descriptor.0}}</u> used <u>{{descriptor.1}}</u> time</li>
           {%endfor%}
       </ul>
     </div>

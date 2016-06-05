@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Subject Stats for Bias Tracker</title>
-    <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/statistics.css' %}">
     <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
@@ -18,37 +18,38 @@
 </head>
 <body>
   <div class="container">
-    <!-- header row -->
+    <!-- nav -->
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
-        <h6>
-          <a href="{% url 'index_page' %}">RETURN TO HOME PAGE</a>
-        </h6>
-        <h3>Hello, {{user}}</h3>
-        <h3>Select from the list of subjects to show their statistics</h3>
+      <p class="text-sm-right">
+        <a class="" href="{% url 'index_page'%}" name="home">RETURN HOME</a>
+      </p>
+    </div>
+    <!-- /nav -->
+    <!-- header -->
+    <div class="row">
+      <h3 class="text-sm-center"><strong>{{user.first_name}}</strong>, select from the list of subjects to show their statistics</h3>
       </div>
     </div>
-    <!-- /header row -->
-    <!-- select sub row -->
+    <!-- /header -->
+    <!-- select sub -->
     <div class="row">
-      <!-- select sub -->
-      <div class="column">
+      <div class="col-xs-4 col-sm-offset-4">
         <form action="{% url 'get_stats' %}" method="post" id="subject-form">
           {% csrf_token %}
-          <select name="subject">
+          <select class="form-control" name="subject">
             {% for subject in subjects %}
             <option value="{{subject.id}}">{{subject.name}}</option>
             {% endfor %}
           </select>
-          <input type="submit" value="REALIZE STATS">
+          <input class="form-control" type="submit" value="REALIZE STATS">
         </form>
       </div>
     </div>
-    <!--/select sub row -->
+    <!--/select sub -->
     <!-- js magic -->
-    <!-- types row -->
+    <!-- types -->
     <div class="row">
-      <h3>Individual Incident Subject Statistics</h3>
+      <h4 class="text-sm-left p-l-1">Individual Incident Subject Statistics</h4>
       <h6>
         <ol>Includes:
           <li>total number of incidents where individual was listed as subject (not author)</li>
@@ -70,8 +71,8 @@
         3. Of those incidents <strong><span id="exclusion"></span></strong>% were exclusionary
       </p>
     </div>
-    <!-- /types row -->
-    <!-- descriptors row -->
+    <!-- /types -->
+    <!-- descriptors -->
     <div class="row">
       4. BLANK
       <!-- <ul> {%for descriptor in descriptors%}
@@ -79,7 +80,7 @@
           {%endfor%}
       </ul> -->
     </div>
-    <!-- /descriptors row -->
+    <!-- /descriptors -->
     <!-- /js magic -->
   </div>
   <!-- scripts -->
