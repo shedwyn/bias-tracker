@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Home/Menu for Bias Tracker</title>
-    <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/login.css' %}">
     <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
@@ -18,25 +18,33 @@
 </head>
 <body>
   <!-- Login -->
-  <div class="container m-t-8">
-    <form action="{% url 'login' %}" method="post" name="loginform">
+  <div class="container">
+    <form class="form-horizontal" action="{% url 'login' %}" method="post" name="loginform">
       {% csrf_token %}
       {% if next %}
       <input type="hidden" name="next" value="{{ next }}" />
       {% endif %}
-      <div class="form-row">
+      <!-- username -->
+      <div class="form-group col-centered">
         <label>User Name
           <input id="id_username" type="text" name="username">
         </label>
       </div>
-      <div class="form-row">
+      <!-- /username -->
+      <!-- password -->
+      <div class="form-group">
         <label>Password
           <input id="id_password" type="password" name="password">
         </label>
       </div>
-      <div class = "submit-row">
-        <input type="submit" value="Log In">
+      <!-- /password -->
+      <!-- submit -->
+      <div class="form-group">
+        <div class = "submit-row">
+          <input type="submit" value="Log In">
+        </div>
       </div>
+      <!-- submit -->
     </form>
   </div>
   <!-- /Login -->
