@@ -1,10 +1,8 @@
 """functions and data for rendering views"""
 
-from datetime import datetime
 
 from bias_tracker.models import Descriptor
 from bias_tracker.models import Person
-# from bias_tracker.models import User
 from bias_tracker.models import Incident
 
 
