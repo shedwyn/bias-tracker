@@ -18,7 +18,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- row1 -->
+    <!-- nav -->
     <div class="row">
       <div class="col-xs-4 col-xs-offset-8">
         <p class="text-md-right">
@@ -26,8 +26,7 @@
         </p>
       </div>
     </div>
-    <!-- /row1 -->
-    <!-- row2 -->
+    <!-- /nav -->
     <!-- incident -->
     <form class="form-horizontal" action="{% url 'submit_new' %}" method="post" name="new_incident">
       {% csrf_token %}
@@ -39,50 +38,64 @@
       <!-- /fixed info -->
       <!-- incident date -->
       <div class="form-group">
-        <label>Date of Incident
-          <input class="form-control" placeholder="YYYY-MM-DD" name="date" >
+        <label>
+          Date of Incident
+          <input class="form-control" id="date" type="date" placeholder="YYYY-MM-DD" name="date" >
         </label>
       </div>
       <!-- /incident date -->
       <!-- incident time -->
       <div class="form-group">
-        <label>Time of Incident
-          <input class="form-control" name="time">
+        <label>
+          Time of Incident
+          <input class="form-control" type="time" placeholder="HH:MM" id="time" name="time">
         </label>
       </div>
       <!-- /incident time -->
       <!-- select subjects -->
       <div class="form-group">
-        <select class="form-control" multiple="True" name="subjects">
-          {% for subject in subjects %}
-          <option value="{{subject.id}}">{{subject.name}}</option>
-          {% endfor %}
-        </select>
+        <label>
+          Subject(s) Involved in Incident
+          <select class="form-control" multiple="True" name="subjects">
+            {% for subject in subjects %}
+            <option value="{{subject.id}}">{{subject.name}}</option>
+            {% endfor %}
+          </select>
+        </label>
       </div>
       <!-- /select subjects -->
       <!-- select type -->
       <div class="form-group">
-        <select class="form-control" name="incident_type">
-          {% for i in incident_type %}
-          <option>{{i}}</option>
-          {% endfor %}
-        </select>
+        <label>
+          Choose Type of Incident
+          <select class="form-control" name="incident_type">
+            {% for i in incident_type %}
+            <option>{{i}}</option>
+            {% endfor %}
+          </select>
+        </label>
       </div>
       <!-- /select type -->
       <!-- select descriptors -->
       <div class="form-group">
         <!-- consider using an optgroup for this one -->
         <!-- to divide Incl from Excl -->
-        <select class="form-control" name="descriptors" multiple="True">
-          {% for descriptor in descriptors %}
-          <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
-          {% endfor %}
-        </select>
+        <label>
+          Choose from common descriptors for Incident:
+          <select class="form-control" name="descriptors" multiple="True">
+            {% for descriptor in descriptors %}
+            <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
+            {% endfor %}
+          </select>
+        </label>
       </div>
       <!-- /select descriptors -->
       <!-- text area -->
       <div class="form-group">
-        <textarea class="form-control" name="description"></textarea>
+        <label>
+          Add text description of Incident in your own words:
+          <textarea class="form-control" rows="4" name="description"></textarea>
+        </label>
       </div>
       <!-- /text area -->
       <!-- submit -->
@@ -92,7 +105,6 @@
       <!-- /submit -->
     </form>
     <!-- /incident -->
-  <!-- /row2 -->
   <!-- scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
   </script>
