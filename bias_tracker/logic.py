@@ -1,14 +1,11 @@
 """functions and data for rendering views"""
 
+from datetime import datetime
+
 from bias_tracker.models import Descriptor
 from bias_tracker.models import Person
 # from bias_tracker.models import User
 from bias_tracker.models import Incident
-
-# from . import views
-
-# 'Incident_str({}, {}, {}, {}, {})'.format(
-#     self.id, self.author, self.subjects, self.incident_type, self.descriptors
 
 
 def grab_subject_options():
@@ -29,11 +26,41 @@ def grab_type_options():
     return incident_type_choices
 
 
+def test_for_zero_div(type_count, total_incidents):
+    """take in two numbers and check/correct for ZeroDivisionError"""
+    try:
+        percent_div = type_count / total_incidents
+    except ZeroDivisionError:
+        return 0
+    return percent_div
+
+
+def test_time_input(time):
+    """take in time input and if None return 00:00"""
+    if time == '':
+        return '00:00'
+    else:
+        return time
+
+
 def get_total_incidents_as_author(user_id):
     """take in id, return number of incidents logged as author by id"""
     total_incidents_as_author = \
         Incident.objects.filter(author__exact=user_id).count()
     return total_incidents_as_author
+
+
+def get_total_incidents_as_subject(subject_id):
+    """take in id, return number of incidents logged as subject for id"""
+    total_incidents_as_subject = \
+        Incident.objects.filter(subjects__exact=subject_id).count()
+    return total_incidents_as_subject
+
+
+def get_subject_name(subject_id):
+    """take in Person.id as string, return name value for Person instance"""
+    subject = Person.objects.get(id__exact=subject_id)
+    return subject.name
 
 
 def get_percent_exclusion_logged_as_author(user_id):
@@ -42,8 +69,12 @@ def get_percent_exclusion_logged_as_author(user_id):
     count_exclusive_as_author = Incident.objects.filter(
         author__exact=user_id, incident_type__exact='Exclusion'
     ).count()
+    pre_percent = test_for_zero_div(
+        count_exclusive_as_author,
+        total_incidents_as_author
+    )
     percent = round(
-        (count_exclusive_as_author / total_incidents_as_author) * 100, 1
+        pre_percent * 100, 1
     )
     return percent
 
@@ -51,11 +82,47 @@ def get_percent_exclusion_logged_as_author(user_id):
 def get_percent_inclusion_logged_as_author(user_id):
     """take in User.id and return incident percent for inclusionary"""
     total_incidents_as_author = get_total_incidents_as_author(user_id)
-    count_inclusion_as_author = Incident.objects.filter(
+    count_inclusive_as_author = Incident.objects.filter(
         author__exact=user_id, incident_type__exact='Inclusion'
     ).count()
+    pre_percent = test_for_zero_div(
+        count_inclusive_as_author,
+        total_incidents_as_author
+    )
     percent = round(
-        (count_inclusion_as_author / total_incidents_as_author) * 100, 1
+        pre_percent * 100, 1
+    )
+    return percent
+
+
+def get_percent_exclusion_logged_as_subject(subject_id):
+    """take in id and return incident percent for exclusionary"""
+    total_incidents_as_subject = get_total_incidents_as_subject(subject_id)
+    count_exclusive_as_subject = Incident.objects.filter(
+        subjects__exact=subject_id, incident_type__exact='Exclusion'
+    ).count()
+    pre_percent = test_for_zero_div(
+        count_exclusive_as_subject,
+        total_incidents_as_subject
+    )
+    percent = round(
+        pre_percent * 100, 1
+    )
+    return percent
+
+
+def get_percent_inclusion_logged_as_subject(subject_id):
+    """take in id and return incident percent for inclusionary"""
+    total_incidents_as_subject = get_total_incidents_as_subject(subject_id)
+    count_inclusive_as_subject = Incident.objects.filter(
+        subjects__exact=subject_id, incident_type__exact='Inclusion'
+    ).count()
+    pre_percent = test_for_zero_div(
+        count_inclusive_as_subject,
+        total_incidents_as_subject
+    )
+    percent = round(
+        pre_percent * 100, 1
     )
     return percent
 
@@ -73,43 +140,12 @@ def count_descriptors_for_author(incidents_as_author):
     return descriptor_counts
 
 
-def get_descriptor_counts_as_author(user_id):
+def create_descriptors_and_counts_as_author(user_id):
     """take User.id, return dict of descriptors with count"""
     incidents_as_author = Incident.objects.filter(author__exact=user_id)
     descriptor_counts = count_descriptors_for_author(incidents_as_author)
     descriptors_and_counts = descriptor_counts.items()
     return descriptors_and_counts
-
-
-def get_total_incidents_as_subject(subject_id):
-    """take in id, return number of incidents logged as subject for id"""
-    total_incidents_as_subject = \
-        Incident.objects.filter(subjects__exact=subject_id).count()
-    return total_incidents_as_subject
-
-
-def get_percent_exclusion_logged_as_subject(subject_id):
-    """take in id and return incident percent for exclusionary"""
-    total_incidents_as_subject = get_total_incidents_as_subject(subject_id)
-    count_exclusive_as_subject = Incident.objects.filter(
-        subjects__exact=subject_id, incident_type__exact='Exclusion'
-    ).count()
-    percent = round(
-        (count_exclusive_as_subject / total_incidents_as_subject) * 100, 1
-    )
-    return percent
-
-
-def get_percent_inclusion_logged_as_subject(subject_id):
-    """take in id and return incident percent for inclusionary"""
-    total_incidents_as_subject = get_total_incidents_as_subject(subject_id)
-    count_inclusive_as_subject = Incident.objects.filter(
-        subjects__exact=subject_id, incident_type__exact='Inclusion'
-    ).count()
-    percent = round(
-        (count_inclusive_as_subject / total_incidents_as_subject) * 100, 1
-    )
-    return percent
 
 
 def count_descriptors_for_subject(incidents_as_subject):
@@ -125,7 +161,7 @@ def count_descriptors_for_subject(incidents_as_subject):
     return descriptor_counts
 
 
-def get_descriptor_counts_as_subject(subject_id):
+def create_descriptors_and_counts_as_subject(subject_id):
     """take id, return dict of descriptors with count"""
     incidents_as_subject = Incident.objects.filter(subjects__exact=subject_id)
     descriptor_counts = count_descriptors_for_subject(incidents_as_subject)
@@ -133,14 +169,33 @@ def get_descriptor_counts_as_subject(subject_id):
     return descriptors_and_counts
 
 
-def create_descriptor_and_count_dicts(subject_id):
-    """take in tuple pair, return list of dictionaries with 2 key:val pairs"""
-    descriptors_and_counts = get_descriptor_counts_as_subject(subject_id)
-    descriptor_and_count_dicts = []
+def create_json_ready_descriptors_and_counts(subject_id):
+    """take in id, return list of dictionaries with 2 key:val pairs"""
+    descriptors_and_counts = create_descriptors_and_counts_as_subject(
+        subject_id
+    )
+    json_ready_list = []
     for i in descriptors_and_counts:
         dict_item = {'descriptor': i[0], 'count': i[1]}
-        descriptor_and_count_dicts.append(dict_item)
-    return descriptor_and_count_dicts
+        json_ready_list.append(dict_item)
+    return json_ready_list
+
+
+def convert_subject_stats_to_json_obj(
+    subject_name,
+    recorded_incident_total,
+    percent_exclusion_as_subject,
+    percent_inclusion_as_subject,
+    descriptor_counts
+):
+    """Convert a subject stats data into a JSON-encodable object."""
+    return {
+        'subName': subject_name,
+        'total': recorded_incident_total,
+        'inclusion': percent_inclusion_as_subject,
+        'exclusion': percent_exclusion_as_subject,
+        'descriptors': descriptor_counts
+    }
 
 
 def create_incident_type_list(incident_types):
@@ -149,14 +204,6 @@ def create_incident_type_list(incident_types):
     for item in incident_types:
         incident_type_choices.append(item[0])
     return incident_type_choices
-
-
-def test_time_input(time):
-    """take in time input and if None return 00:00"""
-    if time == '':
-        return '00:00'
-    else:
-        return time
 
 
 def log_new_incident(
@@ -186,25 +233,3 @@ def log_new_incident(
         # do I need the above or can I just put "descriptor" in below?
         new_incident.descriptors.add(desc_id)
     return 'New Incident Submitted'
-
-
-def create_json_object(subject_id):
-    """take in id, create items for JSON dict, make JSON dict"""
-    inclusion_percent = get_percent_inclusion_logged_as_subject(subject_id)
-    print('INCLUSION', inclusion_percent)
-    exclusion_percent = get_percent_exclusion_logged_as_subject(subject_id)
-    print('EXCLUSION', exclusion_percent)
-    print('**********************************')
-    descriptor_counts = create_descriptor_and_count_dicts(subject_id)
-    print('DESCRIPTOR', descriptor_counts)
-    print('**********************************')
-    print('**********************************')
-    print('**********************************')
-    json_object = {
-        'inclusion': inclusion_percent,
-        'exclusion': exclusion_percent,
-        'descriptors': descriptor_counts
-    }
-    print('**********************************')
-    # print(json_object)
-    return json_object

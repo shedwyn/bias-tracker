@@ -102,9 +102,9 @@ def render_self_stats(request):
         logic.get_percent_exclusion_logged_as_author(author_id)
     percent_inclusion_as_author = \
         logic.get_percent_inclusion_logged_as_author(author_id)
-    descriptor_counts = logic.get_descriptor_counts_as_author(author_id)
-    # return descriptors as iterable dictionary, get key and put in html, get
-    # val and put in html to match
+    descriptor_counts = logic.create_descriptors_and_counts_as_author(
+        author_id
+    )
     page_fill = {
         'total': recorded_incident_total,
         'inclusion': percent_inclusion_as_author,
@@ -126,21 +126,7 @@ def render_subject_stats(request):
     return render(request, 'bias_tracker/subject_stats.html', page_fill)
 
 
-def convert_subject_stats_to_json_obj(
-    recorded_incident_total,
-    percent_exclusion_as_subject,
-    percent_inclusion_as_subject,
-    descriptor_counts
-):
-    """Convert a subject stats data into a JSON-encodable object."""
-    return {
-        'total': recorded_incident_total,
-        'inclusion': percent_inclusion_as_subject,
-        'exclusion': percent_exclusion_as_subject,
-        'descriptors': descriptor_counts
-    }
-
-
+@login_required(login_url='/accounts/login/')
 def get_subject_data(request):
     """extract subject id and find incident stats where id was subject.
 
@@ -150,13 +136,17 @@ def get_subject_data(request):
     inclusion/exclusionary ways.
     """
     subject_id = request.POST['subject']
+    subject_name = logic.get_subject_name(subject_id)
     recorded_incident_total = logic.get_total_incidents_as_subject(subject_id)
     percent_exclusion_as_subject = \
         logic.get_percent_exclusion_logged_as_subject(subject_id)
     percent_inclusion_as_subject = \
         logic.get_percent_inclusion_logged_as_subject(subject_id)
-    descriptor_counts = logic.create_descriptor_and_count_dicts(subject_id)
-    subject_stats = convert_subject_stats_to_json_obj(
+    descriptor_counts = logic.create_json_ready_descriptors_and_counts(
+        subject_id
+    )
+    subject_stats = logic.convert_subject_stats_to_json_obj(
+        subject_name,
         recorded_incident_total,
         percent_exclusion_as_subject,
         percent_inclusion_as_subject,
