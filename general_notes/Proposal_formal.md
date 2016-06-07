@@ -6,42 +6,43 @@
 **What is your web app going to do?**
 **How does a user interact with it on a high level?**
 
-*2 types of users:  1) participant, 2) administrator.  They can be one in the same.*
-_NOTE:  iSubject will be used to describe the individual **about** whom the incident is
+*2 types of users:  1) author, 2) administrator.  They can be one in the same.*
+_NOTE:  subject will be used to describe the individual **about** whom the incident is
 being filed_
 
-* It is easier to speak of this in terms of the goal behind the product.  Simply, this program is
-being developed to give the person who feels she is experiencing unconscious gender bias in an
-organizational setting a sense of control.  How?
+* The author is able to record all incidents that appear as if they *could* be unconscious gender bias as an "Incident" and save to a database with a "type" field set to "exclusion".  She will also be able to record Incident of "type: inclusion".  This helps to pinpoint potential allies within the organization.  Additional fields are the date and time of the Incident, a text field for free-form detail, the names of all individuals who were the "subjects" creating or participating in the Incident, and a multiple choice field, "descriptor".  Descriptor field choices are common behaviors that exemplify the two types and are added to help the organization see what specific behaviors are being exhibited by the individual subjects.  In some cases, behaviors can be explained by cultural differences rather than being actual gender bias.
 
-* The user is able to record all incidents that appear as if they *could* be unconscious (or
-conscious) gender bias.  She can then see statistics regarding incidence (positive(inclusion) or
-negative(exclusion)) of occurance (of those she recorded) by iSubject, by location, or just overall.  Later analysis with a cooler head enables her to see the incident for what it really was (bias or not) and where she could have taken action that might have changed the end result of the incident
-    * see also "Touchy-Feely Psychological Crap" section at bottom
+* The author can see what percentage of her logged Incidents were marked as exclusion or inclusion, as well as the numbers of times she tagged incidents with particular descriptor tags.
+
+* Administrators will be able to see the same data as an author can see about her own logged incidents, but the data will pertain to the "subject" of reported Incidents:  
+  * How many times that individual was the subject of any Incident
+  * Percentages of Incidents that were marked inclusion v. exclusion
+  * The count of named descriptors used to illustrate individual's behavior.
+
 
 ## Specific Functionality
 
 **What is _every_ specific page or interface and _every_ action the user can take?**
 **Pick the minimum feature set for your product to work.**
 
-* 1. allUser page - login screen *match name to db*
+* 1. Login page - login screen *match name to db*
 * 2. Home/Menu page
-* 3. Add an incident page
-* 4. Edit an incident page
-* 5. Add/Edit a Subject and/or Author
-* 6. Show statistics page (type of stats chosen from Directional page)
-    * incident type ratios for Author
-    * incident type ratios for Subject
-    * generate graph showing numbers of incident type sub descriptors
-    (color code neg blue and pos orange) for Author
-    * generate graph showing numbers of incident type sub descriptors for
-    Subject
+* 3. Log Incident page
+* 4. Show statistics page for self as author
+    * percentages of inclusive or exclusive logged incidents
+    * count of different descriptors logged overall
+* 5. Show statistics page for selected subjects
+    * percentages of inclusive or exclusive logged incidents
+    * count of different descriptors logged overall
 
 ## Data Model
 
 **What are the "nouns" in your project? What do they represent? What do
 you need to save in the DB? What are the specific fields on each? How do
 you need to search for specific instances of nouns?**
+
+* User
+  * using Django's built-in User class to handle login, authentication, and to populate the "author" field of each Incident.
 
 * Person
     * ID Num (unique) *automatic*
@@ -53,48 +54,42 @@ you need to search for specific instances of nouns?**
 
 * Incident
     * IDNum (unique) *automatic*
-    * Author ID *many to one or one to many*
-    * iSubject IDs *many to many*
+    * Author ID *many to one*
+    * Subject IDs *many to many*
     * Descriptors IDs *many to many*
-    * Incident Filing Date
+    * Filing Date *automatic*
     * Incident Date
-    * Incident Time
-    * Incident Type (pos/neg)
-    * Text Box for Detail
+    * Incident Time *optional*
+    * Incident Type *two options*
+    * Text Detail
 
 ## Technical Components
 **What are the "moving parts"?**
 **What are the "modules" you're going to write?**
 
 ### Front-End
+
 #### HTML and CSS
-    * forms will be needed for every data entry point, including queries
-    * Change windows or pop ups?
-    * HTML and CSS to formulate the output of the data queries?
-    * to control the movement from screen to screen
+  * pages will be needed for every data entry point, including queries
+  * Using Bootstrap to handle device sizing and appearance
+  * write some css to override the Bootstrap defaults (color)
+
 #### Javascript
-    * to manage user inputs, including forcing answers when field data is a query tag
-    * data visualizations - Chris J suggested specifically using D3 data visualization tool
+  * to manage user input validation
+  * on-screen error messages
+  * handle data load for subject stats page
+  * one module just to handle the subject stats page and another to add to any page requiring input validation and error messages
 
 ### Back-End
-#### SQL
 
-#### Django
-    * Assist JS with some of the execution of the graphs and charts
-    * will be web interface to SQL
-     * create multiple relational databases
-        * user names
-        * incidents (related to 2 users)
-    * not sure how this will relate to Python and data mining -
-        * do I put the conditions in SQL or in Python for once SQL hands over the data?  
-        * Where does SQL get used?  
-        I know in the query developer for MS Access you can run filters so maybe it is
-        more efficient to do some of the data limitation/mining with SQL as opposed to Python?
+#### dbSqlite
+  * Using built-in default with Django, no real direct interaction, Django will translate
 
-#### Python
-    * to be used to calculate the statistics and transform the raw data into the proper out-put.
-    * create the classes that will work with Django to dip into the db and retrieve the data
-    requested from the web app
+#### Django/Python
+  * will be web interface to SQL
+  * create multiple relational databases & interact with db
+  * calculate the statistics and transform data into correct formats.
+  * modules for logic, views, storing the urls.  Logic does not, at this time, need to be broken down into multiple pieces.
 
 ## Timeline
 
@@ -132,27 +127,13 @@ off to Django
     * Javascript
     * linking the two with Django
 
-## Touchy-Feely Psychological Crap
+## Future Plans
 
-* By recording, and therefore quantifying, the incidents, the user can, upon later review, break
-the incident down into components of ownership:  what she owns, what the organization owns, and
-what the iSubject owns.  Once that has been done, she can study herself to see what improvements
-she can make, what recommendations she can make to her supervisors/organization, and that which
-is beyond her control.  By turning these upsetting incidents into "mere" data, something large,
-amorphous, and seemingly hopeless is minimized and compartmentalized into obvious conquerable steps.
-
-* The reason behind including the ability to record incidents representing INclusiveness is
-meant to give the user additional information to frame their interaction with others in the
-workplace/classroom.  This to, can be a source of empowerment.  Not every interaction is negative.
-In studying the positive interactions she can, over time, learn specifically what the other person does to be inclusive, and incorporate those actions into her own life.  It also prevents the user
-from unconsciously developing an incorrect visualization of the organizational setting because she
-is only remembering the negative interactions.  It can also help her to identify potential allies
-in the organization who might be receptive to taking a greater role in improving inclusiveness and working to end gender bias.
-
-* The advanced features will allow an organization to better map where/how/when they are
-succeeding and ditto where they have the opportunity to make improvement.  Ideally there will
-be a way for user to connect to resources that allow her to gradually become better at
-handling these incidents sooner (each time).  Theoretically, identifying a developing situation
-that might result in bad behaviour early enough in the interaction may allow the user to turn
-the situation around.  By, for example, asking a pointed question early on, or deliberately moving into the person's line of sight, or bravely and deliberately stopping a meeting organizer from
-moving to the next topic when her questions have not been answered successfully.
+* allow authors to review all individual Incidents and edit (add a new time stamp to track changes)
+* display stats visually as graphs and pie charts
+* add immediate feedback - program analyzes descriptors and upon submitting new incident, returns a page with "tips" on how to address specific behavior related to gender-bias
+* allow administrators to add and remove authors and subjects
+* add administrator fields to Incidents to record organization's response (if any) to a reported Incident.
+* add location to Incident and related statistical output to track "where" Incidents happen
+* adapt overall program to be used for other types of bias - racial, religious, etc.
+* create mobile-specific app for logging Incident to main db.
