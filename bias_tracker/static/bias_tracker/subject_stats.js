@@ -1,20 +1,36 @@
 'use strict';
 /**
+* Take in descriptor and count list item pair, create one list item from each
+* array item which will have two parts - the descriptor name and it's count.
+*/
+function createListItem(descriptorArrayPair) {
+  var descriptor = descriptorArrayPair.descriptor;
+  var count = descriptorArrayPair.count;
+  var liElement = '<li><u>' +
+  descriptor +
+  '</u> used <u>' +
+  count +
+  '</u> time(s)</li>';
+  return liElement;
+}
+/**
  * fill current page with result of search.
  */
 function fillSubjectStatsPage(stats) {
+  var subjectName = $('#subject-name');
+  subjectName.text(stats.subName);
   var totalField = $('#total');
   totalField.text(stats.total);
   var inclusionField = $('#inclusion');
   inclusionField.text(stats.inclusion);
   var exclusionField = $('#exclusion');
   exclusionField.text(stats.exclusion);
-  var descriptorsArea = $('#descriptors');
-  for descriptor in stats.descriptors {
-    descriptorsArea.append(createListItem(i))
+  var descriptorsArea = $('#descriptorsList');
+  var descriptorArray = stats.descriptors;
+  for (var i = 0; i < descriptorArray.length; i += 1) {
+    var liElement = createListItem(descriptorArray[i]);
+    descriptorsArea.append(liElement);
   }
-  // descriptorsArea.html(stats.descriptors);
-  console.dir(stats.descriptors);
 }
 /**
  * Fill in the current page with any error encountered.
@@ -34,22 +50,10 @@ function emptyResponseElements() {
   inclusion.empty();
   var exclusion = $('#exclusion');
   exclusion.empty();
+  var descriptor = $('#descriptorsList');
+  descriptor.empty();
   var errorP = $('#error');
   errorP.empty();
-}
-/**
- * Take in descriptor and count list item pair, create one list item from each
- * array item which will have two parts - the descriptor name and it's count.
- */
-function createListItem(descriptor_pair) {
-  var descriptor = descriptor_pair[descriptor];
-  var count = descriptor_pair[count]
-  var li_element = '<li><u>' +
-    descriptor +
-    '</u> used <u>' +
-    count +
-    '</u> time(s)</li>';
-  return li_element
 }
 /**
  * Take in source form data, POST, update page in place.
