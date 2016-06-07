@@ -46,37 +46,49 @@
       </div>
     </div>
     <!--/select sub -->
+    <h4 class="text-sm-left p-a-1">Individual Incident Subject Statistics</h4>
     <!-- js magic -->
-    <!-- types -->
+    <!-- error -->
     <div class="row">
-      <h4 class="text-sm-left p-l-1">Individual Incident Subject Statistics</h4>
-      <h6>
-        <ol>Includes:
-          <li>total number of incidents where individual was listed as subject (not author)</li>
-          <li>percentage of total incidents where individual demonstrated inclusion</li>
-          <li>percentage of total incidents where individual demonstrated exclusion</li>
-          <li>numbers of times individual used specifically described inclusionary/exclusionary behaviors</li>
-        </ol>
-      </h6>
-      <p id="error"></p>
-      <p>
-        1. <span id="name">INSERT NAME HERE</span>
-        was the recorded subject of
-        <strong><span id="total"></span></strong> incidents
-      </p>
-      <p>
-        2. Of those incidents <strong><span id="inclusion"></span></strong>% were inclusionary
-      </p>
-      <p>
-        3. Of those incidents <strong><span id="exclusion"></span></strong>% were exclusionary
+      <p class="p-l-1" id="error"></p>
+    </div>
+    <!-- /error -->
+    <!-- total -->
+    <div class="row">
+      <p class="p-l-1">
+        <span></span>
+        1. Total number of incidents where <strong>
+          <span id="subject-name" name="subject_name">Select Name Above</span>
+        </strong> was the recorded subject of an incident: <strong>
+          <span id="total"></span>
+        </strong>
       </p>
     </div>
-    <!-- /types -->
+    <!-- /total -->
+    <!-- inclusion -->
+    <div class="row">
+      <p class="p-l-1">
+        2. Percentage of that total where subject demonstrated inclusion: <strong>
+          <span id="inclusion"></span>
+        </strong>%
+      </p>
+    </div>
+    <!-- /inclusion -->
+    <!-- exclusion -->
+    <div class="row">
+      <p class="p-l-1">
+        3. Percentage of that total where subject demonstrated exclusion: <strong>
+          <span id="exclusion"></span>
+        </strong>%
+      </p>
+    </div>
+    <!-- /exclusion -->
     <!-- descriptors -->
     <div class="row">
-      4. BLANK
-      <ul id="descriptorsArea">
-          <li></li>
+      <label class="p-l-1" for="descriptorsList">
+        4. Numbers of times subject used specifically described inclusionary/exclusionary behaviors:
+      </label>
+      <ul id="descriptorsList">
       </ul>
     </div>
     <!-- /descriptors -->
