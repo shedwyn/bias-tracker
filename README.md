@@ -1,6 +1,6 @@
 # Bias-Tracker Purpose and Function
 
-*[See Formal Proposal](Proposal_formal.md)*
+*[See Formal Proposal](general_notes/Proposal_formal.md)*
 
 
 It is easier to speak of this in terms of the goal behind the product.  Simply, this program is being developed to give the person who feels she is experiencing unconscious gender bias in an organizational setting a sense of control.  How?
