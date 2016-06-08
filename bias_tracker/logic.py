@@ -225,6 +225,8 @@ def test_for_blank_value(value):
         return False
     elif value is None:
         return False
+    elif value == []:
+        return False
     else:
         return True
 
@@ -245,20 +247,12 @@ def test_and_correct_type(incident_type):
         return incident_type
 
 
-def test_and_correct_subject(subject):
+def test_and_correct_empty_list(item_list):
     """take in subject and return default val if ''"""
-    if test_for_blank_value(subject) is False:
-        return '1'
+    if test_for_blank_value(item_list) is False:
+        return ['1']
     else:
-        return subject
-
-
-def test_and_correct_descriptor(descriptor):
-    """take in subject and return default val if ''"""
-    if test_for_blank_value(descriptor) is False:
-        return '1'
-    else:
-        return descriptor
+        return item_list
 
 
 def log_new_incident(
@@ -274,6 +268,8 @@ def log_new_incident(
     incident_date = test_and_correct_date(incident_date)
     incident_time = test_time_input(incident_time)
     incident_type = test_and_correct_type(incident_type)
+    subjects = test_and_correct_empty_list(subjects)
+    descriptors = test_and_correct_empty_list(descriptors)
     new_incident = Incident(
         author=author,
         incident_date=incident_date,
@@ -284,11 +280,9 @@ def log_new_incident(
     # cannot add many to many fields until base Incident is saved
     new_incident.save()
     for subject in subjects:
-        subject = test_and_correct_subject(subject)
         sub_id = int(subject)
         new_incident.subjects.add(sub_id)
     for descriptor in descriptors:
-        descriptor = test_and_correct_descriptor(descriptor)
         desc_id = int(descriptor)
         new_incident.descriptors.add(desc_id)
     return 'New Incident Submitted'

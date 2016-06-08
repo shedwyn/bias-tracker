@@ -49,14 +49,14 @@ class Incident(models.Model):
     )
     # look into pre-delete and filling incidents with sub_id 1
     author = models.ForeignKey(User)
-    subjects = models.ManyToManyField(Person)
+    subjects = models.ManyToManyField(Person, default=1)
     # Filing date is the auto-add date author creates incident
     filing_date = models.DateTimeField(auto_now_add=True)
     # Incident date is specifically the date the Incident happened
     incident_date = models.DateField(default=default_date)
     incident_time = models.TimeField(blank=True)
     incident_type = models.CharField(choices=TYPE_CHOICES, max_length=10)
-    descriptors = models.ManyToManyField(Descriptor)
+    descriptors = models.ManyToManyField(Descriptor, default=1)
     text_description = models.TextField(
         'Incident Description',
         default=DEFAULT_DESCRIPTION,
