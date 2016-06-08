@@ -39,7 +39,7 @@
       <!-- incident date -->
       <div class="form-group">
         <label>
-          Date of Incident
+          Date of Incident <span><em>(required)</em></span>
           <input class="form-control" id="date" type="date" placeholder="YYYY-MM-DD" name="date" >
         </label>
       </div>
@@ -55,7 +55,7 @@
       <!-- select subjects -->
       <div class="form-group">
         <label>
-          Subject(s) Involved in Incident
+          Subject(s) Involved in Incident <span><em>(required)</em></span>
           <select class="form-control" multiple="True" name="subjects">
             {% for subject in subjects %}
             <option value="{{subject.id}}">{{subject.name}}</option>
@@ -67,7 +67,7 @@
       <!-- select type -->
       <div class="form-group">
         <label>
-          Choose Type of Incident
+          Choose Type of Incident <span><em>(required)</em></span>
           <select class="form-control" name="incident_type">
             {% for i in incident_type %}
             <option>{{i}}</option>
@@ -81,7 +81,7 @@
         <!-- consider using an optgroup for this one -->
         <!-- to divide Incl from Excl -->
         <label>
-          Choose from common descriptors for Incident:
+          Choose from common descriptors for Incident: <span><em>(required)</em></span>
           <select class="form-control" name="descriptors" multiple="True">
             {% for descriptor in descriptors %}
             <option value="{{descriptor.id}}">{{descriptor.descriptor}}</option>
@@ -100,6 +100,10 @@
       <!-- /text area -->
       <!-- submit -->
       <div class="form-group">
+        <p>
+          Failure to enter data into <em>required</em> fields will result
+          in that field being populated with the default value
+        </p>
         <input type="submit" class="btn btn-default" value="SUBMIT INCIDENT">
       </div>
       <!-- /submit -->
