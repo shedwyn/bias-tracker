@@ -1,6 +1,6 @@
 # Bias-Tracker Purpose and Function
 
-*[See Formal Proposal](general_notes/Proposal_formal.md)*
+*[See Formal Proposal](Proposal_formal.md)*
 
 
 ##Background
