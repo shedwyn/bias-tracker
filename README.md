@@ -1,29 +1,44 @@
-# Bias-Tracker Purpose and Function
+## Bias-Tracker Project
 
-*[See Formal Proposal](Proposal_formal.md)*
+  Bias Tracker allows the user to record, as in Incident, any interaction with another person at her organization that may have been demonstrating unconscious gender bias as well as marking more positive Incidents where the other person was acting more like an ally.  
 
-## GUEST USER LOGIN
+  She can generate a page to see what types of incidents she logged over time, and which descriptor tags she gave to all Incidents, along with a count of the number of times any named descriptor was used.  She can see the same statistics as they relate to the other person involved, i.e. did "John" have more "good" or "bad" interactions with her?
 
-Guests may login as
-  user: GUEST
-  password: brassmonkey
+  *[See Formal Proposal](Proposal_formal.md) for more detail, including desired upgrades*
 
+## Setup
 
-## Function
+* [Limited Requirements Needed](requirements.txt) - just Django and your virtual environment, nothing else required at present
 
-* The user may record any incident of (potential) unconscious gender bias that she witnesses at her organization.  Data recorded includes the filing date, the occurrence date and time, the individual or individuals who exhibited any of the behavior described, tags of specific types of exclusionary behavior, and a short description of what happened in her own words.
+* Login for Guests:
+  * user: GUEST
+  * password: brassmonkey
+  * allows you to add incidents, including at the admin screen
 
-* The user may also record any incident where the other individual exhibited inclusive behavior - thus being a potential ally.  Data recorded includes the incident filing date, the event date and time, the individual or individuals who exhibited any of the behavior described, tags of specific types of exclusionary behavior, and a short description of what happened in her own words.
+## Pages
 
-* The user may see the following usage statistics for her own use:
-  * total number of incidents recorded
-  * percentages of inclusion v. exclusion incidents she has recorded
-  * descriptors she recorded and the number of times each descriptor was used
+### Index Page
+  * Truly the "home" page - all the present user options appear as buttons
+  * Buttons linking to:
+    * Log New Incident page
+    * Author Stats
+    * Subject Stats
+    * Login/Logout
+  * When the user logs out a hidden <div> fills the index.page
+  * Login is required on all pages
 
-* The user may see the following statistics for any individual subject:
-  * total number of incidents recorded in which individual was (one of) the subject(s)
-  * percentages of inclusion v. exclusion incidents in which individual was (one of) the subject(s)
-  * number of times any given descriptors were used in those incidents where the individual was (one of) the subject(s)
+### Log New Incident
+  * Enter new incident fields and submit
+    * program will add defaults into required fields if user leaves blank
+  * Return home if traveled to page in error
 
+### View Stats for Author
+  * Auto loads all stats for user who is presently logged in
+  * Return home link at top of screen
 
-## File Links
+### View Stats for Subjects
+  * Auto loads list of subjects
+    * choosing subject from list will generate stats for that subject
+  * Return home link at top of screen
+
+### Login/Logout
