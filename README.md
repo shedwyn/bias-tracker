@@ -5,7 +5,7 @@
 
 ##Background
 
-* I found myself in the position of truly being the minority in an environment created for the majority when I enrolled in an intensive programming vocational learning "bootcamp" in 2016.  Having once been 1/10 of the non-black employees at a historically black organization, I thought I had experienced being the "minority" but it is quite different to truly be the minority in a world structured for someone else.
+* I found myself in the position of truly being the minority in an environment created for the majority when I enrolled in an intensive programming vocational learning "bootcamp" in 2016.
 
 * One thing I started to do was write down when an incident of possible gender bias occurred, so I could look back at it with a cooler head and determine if it really was bias in action.  I also decided to record when someone else was kind to me, or inclusive, because it only felt "fair" to record both types of interactions.  When I counted, I found that there were far more inclusive incidents than exclusive.  The idea for this web application was born in that moment.
 
@@ -30,6 +30,7 @@
 
 
 ## Future Plans
+
 
 * tiered authentication to limit access to subject data only to those with staff access
 * allow authors to review all individual Incidents and edit (add a new time stamp to track changes)
