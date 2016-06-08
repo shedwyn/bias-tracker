@@ -42,5 +42,4 @@ urlpatterns = [
         views.get_subject_data,
         name='get_stats'
     )
-    # url(r'', views.render_edit_incident_log_page, name='edit_incident'),
 ]

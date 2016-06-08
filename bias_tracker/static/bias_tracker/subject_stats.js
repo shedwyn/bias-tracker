@@ -1,7 +1,6 @@
 'use strict';
 /**
-* Take in descriptor and count list item pair, create one list item from each
-* array item which will have two parts - the descriptor name and it's count.
+* Take descriptor name and count, return one <li> element complete.
 */
 function createListItem(descriptorArrayPair) {
   var descriptor = descriptorArrayPair.descriptor;

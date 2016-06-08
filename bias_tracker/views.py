@@ -26,7 +26,6 @@ def process_login(request):
     """log in user or redirect to next page"""
     next = request.GET.get('next', '/')
     if request.method == 'POST':
-        #  check post to make sure these are what we want
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
@@ -54,11 +53,7 @@ def logout_return_home(request):
 
 @login_required(login_url='/accounts/login/')
 def render_new_incident_log_page(request):
-    """render incident log page.
-
-    user enters field data for database. 'submit' sends data to db, saves
-    entries and redirects user to home/menu page.
-    """
+    """render incident log page."""
     subjects = logic.grab_subject_options
     descriptors = logic.grab_descriptor_options
     incident_type = logic.grab_type_options
@@ -72,7 +67,7 @@ def render_new_incident_log_page(request):
 
 @login_required(login_url='/accounts/login/')
 def submit_new(request):
-    """submit new incident and returns to home page"""
+    """submit new incident and return to home page"""
     author = request.user
     subjects = request.POST.getlist('subjects')
     incident_date = request.POST['date']
@@ -95,7 +90,7 @@ def submit_new(request):
 
 @login_required(login_url='/accounts/login/')
 def render_self_stats(request):
-    """take user and render page with Incl v. Excl stats for user"""
+    """take user and render author stats page"""
     author_id = request.user.id
     recorded_incident_total = logic.get_total_incidents_as_author(author_id)
     percent_exclusion_as_author = \
@@ -128,13 +123,7 @@ def render_subject_stats(request):
 
 @login_required(login_url='/accounts/login/')
 def get_subject_data(request):
-    """extract subject id and find incident stats where id was subject.
-
-    generate data for percentage of behavior recorded as being inclusionary,
-    percent of behavior recorded as exclusionary, and number of times the
-    subject used any of the recorded descriptors when behaving in recorded
-    inclusion/exclusionary ways.
-    """
+    """extract subject id and find incident stats where id was subject."""
     subject_id = request.POST['subject']
     subject_name = logic.get_subject_name(subject_id)
     recorded_incident_total = logic.get_total_incidents_as_subject(subject_id)

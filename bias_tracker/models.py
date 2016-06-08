@@ -1,7 +1,5 @@
 """bias_tracker Models configuration"""
 
-from datetime import datetime
-
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -21,7 +19,7 @@ class Person(models.Model):
 
 
 class Descriptor(models.Model):
-    """quick one-line tags for specific details of the Incident"""
+    """quick one-line tags for subject behavior during Incident"""
 
     descriptor = models.CharField(
         'Incident Type Descriptor(s)',
@@ -40,10 +38,10 @@ class Descriptor(models.Model):
 class Incident(models.Model):
     """collection of all details for incident.
 
-    'i_' used as abbreviation for 'incident'.
+    links to models User, Person and Descriptor
     """
 
-    default_description = 'describe incident detail here'
+    DEFAULT_DESCRIPTION = 'describe incident detail here'
     default_date = '2016-01-01'
     TYPE_CHOICES = (
         ('Exclusion', 'Exclusion'),
@@ -51,15 +49,17 @@ class Incident(models.Model):
     )
     # look into pre-delete and filling incidents with sub_id 1
     author = models.ForeignKey(User)
-    subjects = models.ManyToManyField(Person)  # list of persons
+    subjects = models.ManyToManyField(Person)
+    # Filing date is the auto-add date author creates incident
     filing_date = models.DateTimeField(auto_now_add=True)
+    # Incident date is specifically the date the Incident happened
     incident_date = models.DateField(default=default_date)
     incident_time = models.TimeField(blank=True)
     incident_type = models.CharField(choices=TYPE_CHOICES, max_length=10)
     descriptors = models.ManyToManyField(Descriptor)
     text_description = models.TextField(
         'Incident Description',
-        default=default_description,
+        default=DEFAULT_DESCRIPTION,
     )
 
     def __str__(self):
@@ -75,7 +75,6 @@ class Incident(models.Model):
             self.descriptors.all(),
             self.text_description
         )
-        # self.filing_date, self.i_date, self.i_time, self.text_description
 
     def __repr__(self):
         """docstring"""
