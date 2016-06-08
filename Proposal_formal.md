@@ -129,11 +129,14 @@ off to Django
 
 ## Future Plans
 
+* tiered authentication to limit access to subject data only to those with staff access
 * allow authors to review all individual Incidents and edit (add a new time stamp to track changes)
 * display stats visually as graphs and pie charts
-* add immediate feedback - program analyzes descriptors and upon submitting new incident, returns a page with "tips" on how to address specific behavior related to gender-bias
+* add immediate feedback
+  * program analyzes descriptors and upon submitting new incident, returns a page with "tips" on how to address specific behavior related to gender-bias
 * allow administrators to add and remove authors and subjects
 * add administrator fields to Incidents to record organization's response (if any) to a reported Incident.
 * add location to Incident and related statistical output to track "where" Incidents happen
 * adapt overall program to be used for other types of bias - racial, religious, etc.
 * create mobile-specific app for logging Incident to main db.
+* points/rewards system for recording incidents, being part of a positive inclusive incident, and/or showing overall improvement as an individual
