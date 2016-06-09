@@ -17,7 +17,7 @@
 
 ## Pages
 
-### Index Page
+#### Index Page
   * Truly the "home" page - all the present user options appear as buttons
   * Buttons linking to:
     * Log New Incident page
@@ -27,18 +27,18 @@
   * When the user logs out a hidden <div> fills the index.page
   * Login is required on all pages
 
-### Log New Incident
+#### Log New Incident
   * Enter new incident fields and submit
     * program will add defaults into required fields if user leaves blank
   * Return home if traveled to page in error
 
-### View Stats for Author
+#### View Stats for Author
   * Auto loads all stats for user who is presently logged in
   * Return home link at top of screen
 
-### View Stats for Subjects
+#### View Stats for Subjects
   * Auto loads list of subjects
     * choosing subject from list will generate stats for that subject
   * Return home link at top of screen
 
-### Login/Logout
+#### Login/Logout
