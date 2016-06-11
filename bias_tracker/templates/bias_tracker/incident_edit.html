@@ -1,8 +1,65 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Edit Incident Page</title>
-    <link rel="stylesheet" type="text/css" href="incident_edit.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>New Incident for Bias Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/index.css' %}">
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+        integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+        crossorigin="anonymous"
+    >
 </head>
+<body>
+  <div class="container">
+    <!-- nav -->
+    <div class="row">
+      <p class="text-sm-right">
+        <a class="" href="{% url 'index_page'%}" name="home">RETURN HOME</a>
+      </p>
+    </div>
+    <!-- /nav -->
+    <!-- header -->
+    <div class="row">
+      <h3 class="text-sm-center"><strong>{{user.first_name}}</strong>, select from the list of subjects to show their statistics</h3>
+      </div>
+    </div>
+    <!-- /header -->
+    <!-- select sub -->
+    <div class="row">
+      <div class="col-xs-4 col-sm-offset-4">
+        <form action="{% url 'get_stats' %}" method="post" id="subject-form">
+          {% csrf_token %}
+          <select class="form-control" name="subject">
+            {% for subject in subjects %}
+            <option value="{{subject.id}}">{{subject.name}}</option>
+            {% endfor %}
+          </select>
+          <input class="form-control" type="submit" value="REALIZE STATS">
+        </form>
+      </div>
+    </div>
+    <!--/select sub -->
+    <h4 class="text-sm-left p-a-1">Individual Incident Subject Statistics</h4>
+    <!-- js magic -->
+    <!-- /js magic -->
+  </div>
+  <!-- scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+  </script>
+  <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+      integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+      crossorigin="anonymous"
+  >
+  </script>
+  <script src="{% static 'bias_tracker/ajax_csrf_setup.js' %}"></script>
+  <script src="{% static 'bias_tracker/subject_stats.js' %}"></script>
+  <!-- /scripts -->
+</body>
