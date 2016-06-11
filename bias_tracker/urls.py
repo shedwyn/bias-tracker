@@ -42,4 +42,5 @@ urlpatterns = [
         views.get_subject_data,
         name='get_stats'
     )
+    url(r'^edit_incident/$', view.edit_incident, name='edit_incident')
 ]

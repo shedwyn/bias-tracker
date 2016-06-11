@@ -65,6 +65,14 @@ def render_new_incident_log_page(request):
     return render(request, 'bias_tracker/incident_log.html', page_fill)
 
 
+def edit_incident(request):
+    """render edit incident page
+
+    renders page allowing selection of particular incident, js will be used to
+    populate the page with the data for that incident
+    """
+    pass
+
 @login_required(login_url='/accounts/login/')
 def submit_new(request):
     """submit new incident and return to home page"""
