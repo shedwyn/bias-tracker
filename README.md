@@ -10,10 +10,6 @@
 
 * [Limited Requirements Needed](requirements.txt) - just Django and your virtual environment, nothing else required at present
 
-* Login for Guests:
-  * user: GUEST
-  * password: brassmonkey
-  * allows you to add incidents, including at the admin screen
 
 ## Pages
 
