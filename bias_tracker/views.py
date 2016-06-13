@@ -150,3 +150,16 @@ def get_subject_data(request):
         descriptor_counts
     )
     return JsonResponse(subject_stats)
+
+
+@login_required(login_url='/accounts/login/')
+def render_edit_incident(request):
+    """render blank page with subjects list.
+
+    this renders page with only list of subjects.  user chooses subject to
+    trigger js script to generate data.
+    """
+    author_id = request.user.id
+    incidents = logic.grab_incidents_list(author_id)
+    page_fill = {'incidents': incidents}
+    return render(request, 'bias_tracker/incident_edit.html', page_fill)

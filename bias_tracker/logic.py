@@ -3,8 +3,8 @@
 from datetime import datetime
 
 from bias_tracker.models import Descriptor
-from bias_tracker.models import Person
 from bias_tracker.models import Incident
+from bias_tracker.models import Person
 
 
 def grab_subject_options():
@@ -23,6 +23,11 @@ def grab_type_options():
     # is this necessary?
     incident_type_choices = create_incident_type_list(incident_types)
     return incident_type_choices
+
+
+def grab_incidents_list(id):
+    """return all Incidents for author"""
+    return Incident.objects.filter(author__exact=id)
 
 
 def test_for_zero_div(type_count, total_incidents):

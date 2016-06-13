@@ -34,11 +34,13 @@
     <!-- select sub -->
     <div class="row">
       <div class="col-xs-4 col-sm-offset-4">
-        <form action="{% url 'get_stats' %}" method="post" id="subject-form">
+        <form action="{% url 'get_stats' %}" method="post" id="incident-form">
           {% csrf_token %}
-          <select class="form-control" name="subject">
-            {% for subject in subjects %}
-            <option value="{{subject.id}}">{{subject.name}}</option>
+          <select class="form-control" name="incident">
+            {% for incident in incidents %}
+            <option value="{{incident.id}}">
+              {{incident.incident_date}} - {{incident.incident_type}} - {{incident.subjects.all}}
+            </option>
             {% endfor %}
           </select>
           <input class="form-control" type="submit" value="REALIZE STATS">
@@ -46,7 +48,7 @@
       </div>
     </div>
     <!--/select sub -->
-    <h4 class="text-sm-left p-a-1">Individual Incident Subject Statistics</h4>
+    <h4 class="text-sm-left p-a-1">Incident Edit and Review</h4>
     <!-- js magic -->
     <!-- error -->
     <div class="row">
