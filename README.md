@@ -10,10 +10,9 @@
 
 * [Limited Requirements Needed](requirements.txt) - just Django and your virtual environment, nothing else required at present
 
-* Login for Guests:
-  * user: GUEST
-  * password: brassmonkey
-  * allows you to add incidents, including at the admin screen
+* You will need to create a superuser to begin. From there you can add to the separate Models of Person, User, and Descriptor as needed
+  * I will be adding instructions on how to do this as soon as possible
+* I am in the process of writing a module to populate the descriptors, but right now it can only be done manually through the admin screen.
 
 ## Pages
 
