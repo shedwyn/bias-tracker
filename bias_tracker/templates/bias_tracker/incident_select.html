@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>New Incident for Bias Tracker</title>
+    <title>Select Incident for Bias Tracker</title>
     <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/index.css' %}">
     <link
         rel="stylesheet"
@@ -31,10 +31,10 @@
       </div>
     </div>
     <!-- /header -->
-    <!-- select sub -->
+    <!-- select incident -->
     <div class="row">
       <div class="col-xs-4 col-sm-offset-4">
-        <form action="{% url 'get_stats' %}" method="post" id="incident-form">
+        <form action="{% url 'edit_incident' %}" method="get" id="incident-form">
           {% csrf_token %}
           <select class="form-control" name="incident">
             {% for incident in incidents %}
@@ -43,23 +43,20 @@
             </option>
             {% endfor %}
           </select>
-          <input class="form-control" type="submit" value="REALIZE STATS">
+          <input class="form-control" type="submit" value="Show Selected Incident">
         </form>
       </div>
     </div>
-    <!--/select sub -->
-    <h4 class="text-sm-left p-a-1">Incident Edit and Review</h4>
-    <!-- js magic -->
-    <!-- error -->
-    <div class="row">
-      <p class="p-l-1" id="error"></p>
-    </div>
-    <!-- /error -->
+    <!--/select incident -->
+<div>
+  Area for new form?
+</div>
 
 
 
-    <!-- /js magic -->
-  </div>
+
+
+
   <!-- scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
   </script>
