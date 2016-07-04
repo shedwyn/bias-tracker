@@ -6,38 +6,79 @@
 
   *[See Formal Proposal](Proposal_formal.md) for more detail, including desired upgrades*
 
-## Setup
 
-* [Limited Requirements Needed](requirements.txt) - just Django and your virtual environment, nothing else required at present
+  * [Requirements](## Requirements)
+  * [Admin Setup](## Admin Setup)
+    * [Initialize DB](### Initialize the SQLite DB)
+    * [Superuser](### Create Superuser)
+    * [Manual Instantiate](### Add Person(s) and Descriptors Manually)
+    * [Auto Instantiate](### Instantiate Person(s) and Descriptors Automatically)
+  * [Pages](## Page)
+    * [Index Page](### Index Page)
+    * [New Incident](### Log New Incident)
+    * [Author Stats](### View Stats for Author)
+    * [Subject Stats](### View Stats for Subjects)
+    * [Logout/Login](### Login/Logout)
 
-* You will need to create a superuser to begin. From there you can add to the separate Models of Person, User, and Descriptor as needed
-  * I will be adding instructions on how to do this as soon as possible
-* I am in the process of writing a module to populate the descriptors, but right now it can only be done manually through the admin screen.
+  ## Requirements
 
-## Pages
+  * [Limited Requirements Needed](requirements.txt)
 
-#### Index Page
-  * Truly the "home" page - all the present user options appear as buttons
-  * Buttons linking to:
-    * Log New Incident page
-    * Author Stats
-    * Subject Stats
-    * Login/Logout
-  * When the user logs out a hidden <div> fills the index.page
-  * Login is required on all pages
+  ## Admin Setup
 
-#### Log New Incident
-  * Enter new incident fields and submit
-    * program will add defaults into required fields if user leaves blank
-  * Return home if traveled to page in error
+  * Save files in permanent location
+    * This Django project only contains one app and both are named the same.  The
+    outer folder "bias_tracker" contains the manage.py folder needed to run the
+    Django project.  The inner "bias_tracker" folder contains the files needed for
+    the app itself.
+  * Initialize virtual environment *(optional)*
 
-#### View Stats for Author
-  * Auto loads all stats for user who is presently logged in
-  * Return home link at top of screen
+  ### Initialize the SQLite DB
 
-#### View Stats for Subjects
-  * Auto loads list of subjects
-    * choosing subject from list will generate stats for that subject
-  * Return home link at top of screen
+  * In shell/terminal "bias_tracker" APP folder
+    * > python manage.py migrate
 
-#### Login/Logout
+  ### Create Superuser
+  * In shell/terminal "bias_tracker" PROJECT folder
+    * > python manage.py createsuperuser
+    * follow steps to set up your user name and password
+
+  ### Add Person(s) and Descriptors Manually
+  * In shell terminal "bias_tracker PROJECT folder
+    * > python manage.py runserver
+
+  * In browser window run your local server but add "/admin" to the address
+  * Use the links to add
+    * Person - these are the subjects of the incident
+    * Descriptor - these are the tags that should be added to help with statistical analysis
+
+  ### Instantiate Person(s) and Descriptors Automatically
+  * Not Ready for Prime Time Yet
+
+  ## Pages
+
+  ### Index Page
+    * Truly the "home" page - all the present user options appear as buttons
+    * Buttons linking to:
+      * Log New Incident page
+      * Author Stats
+      * Subject Stats
+      * Login/Logout
+    * When the user logs out a hidden <div> fills the index.page
+    * Login is required on all pages
+
+  ### Log New Incident
+    * Enter new incident fields and submit
+      * program will add defaults into required fields if user leaves blank
+    * Return home if traveled to page in error
+
+  ### View Stats for Author
+    * Auto loads all stats for user who is presently logged in
+    * Return home link at top of screen
+
+  ### View Stats for Subjects
+    * Auto loads list of subjects
+      * choosing subject from list will generate stats for that subject
+    * Return home link at top of screen
+
+  ### Login/Logout
