@@ -25,9 +25,30 @@ def grab_type_options():
     return incident_type_choices
 
 
-def grab_incidents_list(id):
+def grab_incidents_list(author_id):
     """return all Incidents for author"""
-    return Incident.objects.filter(author__exact=id)
+    return Incident.objects.filter(author__exact=author_id)
+
+
+def grab_incident(incident_id):
+    """return single selected incident"""
+    return Incident.objects.get(id__exact=incident_id)
+
+
+def create_edit_incident_page_fill(incident_id):
+    """create dictionary with all necessary items for page_fill"""
+    my_incident = grab_incident(incident_id)
+    print('my incident', my_incident)
+    # page_fill = {
+    #     'filing_date': my_incident.filing_date,
+    #     'subjects': my_incident.subjects.all(),
+    #     'incident_date': my_incident.incident_date,
+    #     'incident_time': my_incident.incident_time,
+    #     'incident_type': my_incident.incident_type,
+    #     'descriptors': my_incident.descriptors.all(),
+    #     'text_description': my_incident.text_description,
+    # }
+    return my_incident
 
 
 def test_for_zero_div(type_count, total_incidents):

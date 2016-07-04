@@ -73,6 +73,7 @@ def edit_incident(request):
     """
     pass
 
+
 @login_required(login_url='/accounts/login/')
 def submit_new(request):
     """submit new incident and return to home page"""
@@ -153,8 +154,8 @@ def get_subject_data(request):
 
 
 @login_required(login_url='/accounts/login/')
-def render_edit_incident(request):
-    """render blank page with subjects list.
+def render_select_incident(request):
+    """render page with list of author's incidents
 
     this renders page with only list of subjects.  user chooses subject to
     trigger js script to generate data.
@@ -162,4 +163,14 @@ def render_edit_incident(request):
     author_id = request.user.id
     incidents = logic.grab_incidents_list(author_id)
     page_fill = {'incidents': incidents}
+    return render(request, 'bias_tracker/incident_select.html', page_fill)
+
+
+@login_required(login_url='/accounts/login/')
+def render_edit_incident(request):
+    """render form pre-filled with selected incident for author"""
+    # author_id = request.user.id
+    incident_id = request.GET['incident']
+    incident_data = logic.create_edit_incident_page_fill(incident_id)
+    page_fill = {'incident': incident_data}
     return render(request, 'bias_tracker/incident_edit.html', page_fill)

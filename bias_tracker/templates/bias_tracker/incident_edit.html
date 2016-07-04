@@ -19,46 +19,52 @@
 <body>
   <div class="container">
     <!-- nav -->
+    <nav class="row" role="navigation">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active">
+          <a class="" href="{% url 'index_page' %}" name="home">Return Home</a>
+        </li>
+        <li role="presentation">
+          <a class="" href="{% url 'select_incident' %}" name="select_incident">
+            Return to Select Page
+          </a>
+        </li>
+      </ul>
+    </nav>
     <div class="row">
       <p class="text-sm-right">
-        <a class="" href="{% url 'index_page'%}" name="home">RETURN HOME</a>
+        defesd
       </p>
     </div>
     <!-- /nav -->
     <!-- header -->
     <div class="row">
-      <h3 class="text-sm-center"><strong>{{user.first_name}}</strong>, select from the list of subjects to show their statistics</h3>
+      <h3 class="text-sm-center">
+        <strong>{{user.first_name}}</strong> The incident you selected:
+      </h3>
       </div>
     </div>
     <!-- /header -->
-    <!-- select sub -->
-    <div class="row">
-      <div class="col-xs-4 col-sm-offset-4">
-        <form action="{% url 'get_stats' %}" method="post" id="incident-form">
-          {% csrf_token %}
-          <select class="form-control" name="incident">
-            {% for incident in incidents %}
-            <option value="{{incident.id}}">
-              {{incident.incident_date}} - {{incident.incident_type}} - {{incident.subjects.all}}
-            </option>
-            {% endfor %}
-          </select>
-          <input class="form-control" type="submit" value="REALIZE STATS">
-        </form>
-      </div>
+    <h4 class="text-sm-left p-a-1">Incident Review</h4>
+    <!-- incident -->
+    <div>
+      <p><strong>Filing Date:</strong> {{incident.filing_date}}</p>
+      <p><strong>Incident Date:</strong> {{incident.incident_date}}</p>
+      <p><strong>Incident Time:</strong> {{incident.incident_time}}</p>
+      <p><strong>Subjects:</strong></p>
+      <ul>{%for subject in incident.subjects.all%}
+        <li>{{subject.name}}</li>
+        {%endfor%}
+      </ul>
+      <p><strong>Type:</strong> {{incident.incident_type}}</p>
+      <p><strong>Descriptors</strong></p>
+      <ul>{%for descriptor in incident.descriptors.all%}
+          <li>{{descriptor.descriptor}}</li>
+          {%endfor%}
+      </ul>
+      <p><strong>Description of Incident:</strong> {{incident.text_description}}</p>
     </div>
-    <!--/select sub -->
-    <h4 class="text-sm-left p-a-1">Incident Edit and Review</h4>
-    <!-- js magic -->
-    <!-- error -->
-    <div class="row">
-      <p class="p-l-1" id="error"></p>
-    </div>
-    <!-- /error -->
-
-
-
-    <!-- /js magic -->
+    <!-- /incident -->
   </div>
   <!-- scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
