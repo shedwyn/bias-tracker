@@ -40,21 +40,54 @@
     <!-- incident -->
     <div>
       <h4 class="text-sm-left p-a-1">Incident Review</h4>
-      <p><strong>Filing Date:</strong> {{incident.filing_date}}</p>
-      <p><strong>Incident Date:</strong> {{incident.incident_date}}</p>
-      <p><strong>Incident Time:</strong> {{incident.incident_time}}</p>
+      <p>
+        <strong>Filing Date:</strong>
+        <mark>
+          {{incident.filing_date}}
+        </mark>
+      </p>
+      <p>
+        <strong>Incident Date:</strong>
+        <mark>
+          {{incident.incident_date}}
+        </mark>
+      </p>
+      <p>
+        <strong>Incident Time:</strong>
+        <mark>
+          {{incident.incident_time}}
+        </mark>
+      </p>
       <p><strong>Subjects:</strong></p>
-      <ul>{%for subject in incident.subjects.all%}
-        <li>{{subject.name}}</li>
-        {%endfor%}
-      </ul>
-      <p><strong>Type:</strong> {{incident.incident_type}}</p>
-      <p><strong>Descriptors</strong></p>
-      <ul>{%for descriptor in incident.descriptors.all%}
-          <li>{{descriptor.descriptor}}</li>
+        <ul>{%for subject in incident.subjects.all%}
+          <li>
+            <mark>
+              {{subject.name}}
+            </mark>
+          </li>
           {%endfor%}
-      </ul>
-      <p><strong>Description of Incident:</strong> {{incident.text_description}}</p>
+        </ul>
+      <p>
+        <strong>Type:</strong>
+        <mark>
+          {{incident.incident_type}}
+        </mark>
+      </p>
+      <p><strong>Descriptors</strong></p>
+        <ul>{%for descriptor in incident.descriptors.all%}
+          <li>
+            <mark>
+              {{descriptor.descriptor}}
+            </mark>
+          </li>
+          {%endfor%}
+        </ul>
+      <p>
+        <strong>Description of Incident:</strong>
+        <mark>
+          {{incident.text_description}}
+        </mark>
+      </p>
     </div>
     <!-- /incident -->
   </div>

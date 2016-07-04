@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Select Incident for Bias Tracker</title>
+    <title>Review Incident for Bias Tracker</title>
     <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/index.css' %}">
     <link
         rel="stylesheet"
@@ -27,14 +27,14 @@
     <!-- /nav -->
     <!-- header -->
     <div class="row">
-      <h3 class="text-sm-center"><strong>{{user.first_name}}</strong>, select from the list of subjects to show their statistics</h3>
+      <h3 class="text-sm-center"><strong>{{user.first_name}}</strong>, select from the list of incidents you have recorded</h3>
       </div>
     </div>
     <!-- /header -->
     <!-- select incident -->
     <div class="row">
       <div class="col-xs-4 col-sm-offset-4">
-        <form action="{% url 'edit_incident' %}" method="get" id="incident-form">
+        <form action="{% url 'edit_incident' %}" method="post" id="incident-form">
           {% csrf_token %}
           <select class="form-control" name="incident">
             {% for incident in incidents %}
@@ -48,25 +48,95 @@
       </div>
     </div>
     <!--/select incident -->
-<div>
-  Area for new form?
+    <!-- js magic -->
+    <!-- error -->
+    <div class="row">
+      <p class="p-l-1" id="error"></p>
+    </div>
+    <!-- /error -->
+    <!-- filing-date -->
+    <div class="row">
+      <h4 class="text-sm-left p-a-1">Individual Incident Subject Statistics</h4>
+      <p class="p-l-1">
+        <strong>Filing Date:</strong>
+        <span id="filing-date" name="filing-date"><mark>
+          select above
+        </mark></span>
+      </p>
+    </div>
+    <!-- /filing-date -->
+    <!-- incident_date -->
+    <div class="row">
+      <p class="p-l-1">
+        <strong>Incident Date:</strong>
+        <span id="incident-date" name="incident-date"><mark>
+          {{incident.incident_date}}
+        </mark></span>
+      </p>
+    </div>
+    <!-- /incident_date -->
+    <!-- incident_time -->
+    <div class="row">
+      <p class="p-l-1">
+        <strong>Incident Time:</strong>
+        <span id="incident-time" name="incident-time"><mark>
+          {{incident.incident_time}}
+        </mark></span>
+      </p>
+    </div>
+    <!-- /incident_time -->
+    <!-- subjects -->
+    <div class="row">
+      <label class="p-l-1" for="subjects-list">
+        Subjects:
+      </label>
+      <ul id="subjects-list" name="subjects-list">
+      </ul>
+    </div>
+    <!-- /subjects -->
+    <!-- type -->
+    <div class="row">
+      <p class="p-l-1">
+        <strong>Type:</strong>
+        <span id="type" name="type"><mark>
+          {{incident.incident_type}}
+        </mark></span>
+      </p>
+    </div>
+    <!-- /type -->
+    <!-- descriptors -->
+    <div class="row">
+      <p class="p-l-1">
+        <label class="p-l-1" for="descriptors-list">
+          Subjects:
+        </label>
+        <ul id="descriptors-list" name="descriptors-list">
+        </ul>
+      </p>
+    </div>
+    <!-- /descriptors -->
+    <!-- text_description -->
+    <div class="row">
+      <p class="p-l-1">
+        <strong>Description of Incident:</strong>
+        <span id="text-description" name="text-description"><mark>
+          {{incident.text_description}}
+        </mark></span>
+      </p>
+    </div>
+    <!-- /text_description -->
+    <!-- /js magic -->
 </div>
-
-
-
-
-
-
-  <!-- scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-  </script>
-  <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
-      integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
-      crossorigin="anonymous"
-  >
-  </script>
-  <script src="{% static 'bias_tracker/ajax_csrf_setup.js' %}"></script>
-  <script src="{% static 'bias_tracker/subject_stats.js' %}"></script>
-  <!-- /scripts -->
+<!-- scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+</script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"
+  integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
+  crossorigin="anonymous"
+>
+</script>
+<script src="{% static 'bias_tracker/ajax_csrf_setup.js' %}"></script>
+<script src="{% static 'bias_tracker/subject_stats.js' %}"></script>
+<!-- /scripts -->
 </body>
