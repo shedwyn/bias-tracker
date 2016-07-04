@@ -167,6 +167,31 @@ def render_select_incident(request):
 
 
 @login_required(login_url='/accounts/login/')
+def get_incident_data(request):
+    """extract subject id and find incident stats where id was subject."""
+    incident_id = request.POST['incident']
+    incident = logic.grab_incident(incident_id)
+    filing_date = incident.filing_date
+    incident_date = incident.incident_date
+    incident_time = incident.incident_time
+    subjects = logic.create_subjects_list(incident)
+    incident_type = incident.incident_type
+    descriptors = logic.create_descriptors_list(incident)
+    text_description = incident.text_description
+
+    incident_stats = logic.convert_incident_stats_to_json_obj(
+        filing_date,
+        incident_date,
+        incident_time,
+        subjects,
+        incident_type,
+        descriptors,
+        text_description
+    )
+    return JsonResponse(incident_stats)
+
+
+@login_required(login_url='/accounts/login/')
 def render_edit_incident(request):
     """render form pre-filled with selected incident for author"""
     # author_id = request.user.id
