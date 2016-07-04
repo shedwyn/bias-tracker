@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Edit Incident for Bias Tracker</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bias_tracker/edit_incident.css' %}">
     <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
@@ -19,35 +19,27 @@
 <body>
   <div class="container">
     <!-- nav -->
-    <nav class="row" role="navigation">
-      <ul class="nav nav-pills">
-        <li role="presentation" class="active">
-          <a class="" href="{% url 'index_page' %}" name="home">Return Home</a>
-        </li>
-        <li role="presentation">
-          <a class="" href="{% url 'select_incident' %}" name="select_incident">
-            Return to Select Page
-          </a>
-        </li>
-      </ul>
-    </nav>
     <div class="row">
-      <p class="text-sm-right">
-        defesd
-      </p>
+      <div class="col-md-2 col-md-offset-8 m-y-1">
+        <a class="nav-link" href="{% url 'select_incident' %}" name="select_incident">
+          Return to Selection Page
+        </a>
+      </div>
+      <div class="col-md-2 m-y-1">
+        <a class="nav-link" href="{% url 'index_page' %}" name="home">Return Home</a>
+      </div>
     </div>
     <!-- /nav -->
     <!-- header -->
     <div class="row">
       <h3 class="text-sm-center">
-        <strong>{{user.first_name}}</strong> The incident you selected:
+        <strong>{{user.first_name}}</strong>, here is incident you selected:
       </h3>
-      </div>
     </div>
     <!-- /header -->
-    <h4 class="text-sm-left p-a-1">Incident Review</h4>
     <!-- incident -->
     <div>
+      <h4 class="text-sm-left p-a-1">Incident Review</h4>
       <p><strong>Filing Date:</strong> {{incident.filing_date}}</p>
       <p><strong>Incident Date:</strong> {{incident.incident_date}}</p>
       <p><strong>Incident Time:</strong> {{incident.incident_time}}</p>
