@@ -1,6 +1,6 @@
 'use strict';
 /**
-* Take descriptor name and count, return one <li> element complete.
+* Take item (descriptor or subject), return one <li> element complete.
 */
 function createListItem(listItem) {
   var liElement =
@@ -14,11 +14,11 @@ function createListItem(listItem) {
  */
 function fillIncidentPage(stats) {
   var filingDate = $('#filing-date');
-  filingDate.text(stats.subName);
+  filingDate.text(stats.filing_date);
   var incidentDate = $('#incident-date');
-  incidentDate.text(stats.total);
+  incidentDate.text(stats.incident_date);
   var incidentTime = $('#incident-time');
-  incidentTime.text(stats.total);
+  incidentTime.text(stats.incident_time);
   var subjectsArea = $('#subjects-list');
   var subjectArray = stats.subjects;
   for (var i = 0; i < subjectArray.length; i += 1) {
@@ -26,7 +26,7 @@ function fillIncidentPage(stats) {
     subjectsArea.append(liElement);
   }
   var incidentType = $('type');
-  incidentType.text(stats.total);
+  incidentType.text(stats.incident_type);
   var descriptorsArea = $('#descriptors-list');
   var descriptorArray = stats.descriptors;
   for (var i = 0; i < descriptorArray.length; i += 1) {
@@ -34,7 +34,7 @@ function fillIncidentPage(stats) {
     descriptorsArea.append(liElement);
   }
   var textDescription = $('#text-description');
-  textDescription.text(stats.total);
+  textDescription.text(stats.text_description);
 }
 /**
  * Fill in the current page with any error encountered.

@@ -47,5 +47,5 @@ urlpatterns = [
         views.render_select_incident,
         name='select_incident'
     ),
-    url(r'^edit_incident/$', views.render_edit_incident, name='edit_incident')
+    url(r'^edit_incident/$', views.get_incident_data, name='edit_incident')
 ]
