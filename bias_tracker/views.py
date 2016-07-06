@@ -171,9 +171,9 @@ def get_incident_data(request):
     """extract subject id and find incident stats where id was subject."""
     incident_id = request.POST['incident']
     incident = logic.grab_incident(incident_id)
-    filing_date = incident.filing_date
-    incident_date = incident.incident_date
-    incident_time = incident.incident_time
+    filing_date = str(incident.filing_date)[0:11]
+    incident_date = str(incident.incident_date)
+    incident_time = str(incident.incident_time)
     subjects = logic.create_subjects_list(incident)
     incident_type = incident.incident_type
     descriptors = logic.create_descriptors_list(incident)
