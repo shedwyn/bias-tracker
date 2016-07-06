@@ -41,5 +41,11 @@ urlpatterns = [
         r'^get_stats/$',
         views.get_subject_data,
         name='get_stats'
-    )
+    ),
+    url(
+        r'^select_incident/$',
+        views.render_select_incident,
+        name='select_incident'
+    ),
+    url(r'^edit_incident/$', views.get_incident_data, name='edit_incident')
 ]

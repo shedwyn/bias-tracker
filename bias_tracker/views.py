@@ -65,6 +65,15 @@ def render_new_incident_log_page(request):
     return render(request, 'bias_tracker/incident_log.html', page_fill)
 
 
+def edit_incident(request):
+    """render edit incident page
+
+    renders page allowing selection of particular incident, js will be used to
+    populate the page with the data for that incident
+    """
+    pass
+
+
 @login_required(login_url='/accounts/login/')
 def submit_new(request):
     """submit new incident and return to home page"""
@@ -142,3 +151,51 @@ def get_subject_data(request):
         descriptor_counts
     )
     return JsonResponse(subject_stats)
+
+
+@login_required(login_url='/accounts/login/')
+def render_select_incident(request):
+    """render page with list of author's incidents
+
+    this renders page with only list of subjects.  user chooses subject to
+    trigger js script to generate data.
+    """
+    author_id = request.user.id
+    incidents = logic.grab_incidents_list(author_id)
+    page_fill = {'incidents': incidents}
+    return render(request, 'bias_tracker/incident_select.html', page_fill)
+
+
+@login_required(login_url='/accounts/login/')
+def get_incident_data(request):
+    """extract subject id and find incident stats where id was subject."""
+    incident_id = request.POST['incident']
+    incident = logic.grab_incident(incident_id)
+    filing_date = str(incident.filing_date)[0:11]
+    incident_date = str(incident.incident_date)
+    incident_time = str(incident.incident_time)
+    subjects = logic.create_subjects_list(incident)
+    incident_type = incident.incident_type
+    descriptors = logic.create_descriptors_list(incident)
+    text_description = incident.text_description
+
+    incident_stats = logic.convert_incident_stats_to_json_obj(
+        filing_date,
+        incident_date,
+        incident_time,
+        subjects,
+        incident_type,
+        descriptors,
+        text_description
+    )
+    return JsonResponse(incident_stats)
+
+
+@login_required(login_url='/accounts/login/')
+def render_edit_incident(request):
+    """render form pre-filled with selected incident for author"""
+    # author_id = request.user.id
+    incident_id = request.GET['incident']
+    incident_data = logic.create_edit_incident_page_fill(incident_id)
+    page_fill = {'incident': incident_data}
+    return render(request, 'bias_tracker/incident_edit.html', page_fill)

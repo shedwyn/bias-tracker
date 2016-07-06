@@ -21,14 +21,16 @@
     <!-- nav -->
     <div class="row">
       <p class="text-sm-right">
-        <a class="" href="{% url 'index_page'%}" name="home">RETURN HOME</a>
+        <a class="" href="{% url 'index_page'%}" name="home">Return Home</a>
       </p>
     </div>
     <!-- /nav -->
     <!-- header -->
     <div class="row">
-      <h3 class="text-sm-center"><strong>{{user.first_name}}</strong>, select from the list of subjects to show their statistics</h3>
-      </div>
+      <h3 class="text-sm-center">
+        <strong>{{user.first_name}}</strong>
+        , select from the list of subjects to show their statistics
+      </h3>
     </div>
     <!-- /header -->
     <!-- select sub -->
@@ -41,12 +43,11 @@
             <option value="{{subject.id}}">{{subject.name}}</option>
             {% endfor %}
           </select>
-          <input class="form-control" type="submit" value="REALIZE STATS">
+          <input class="form-control" type="submit" value="Realize Stats">
         </form>
       </div>
     </div>
     <!--/select sub -->
-    <h4 class="text-sm-left p-a-1">Individual Incident Subject Statistics</h4>
     <!-- js magic -->
     <!-- error -->
     <div class="row">
@@ -55,6 +56,7 @@
     <!-- /error -->
     <!-- total -->
     <div class="row">
+      <h4 class="text-sm-left p-a-1">Individual Incident Subject Statistics</h4>
       <p class="p-l-1">
         <span></span>
         1. Total number of incidents where <strong>

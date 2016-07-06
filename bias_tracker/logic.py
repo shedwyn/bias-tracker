@@ -3,8 +3,8 @@
 from datetime import datetime
 
 from bias_tracker.models import Descriptor
-from bias_tracker.models import Person
 from bias_tracker.models import Incident
+from bias_tracker.models import Person
 
 
 def grab_subject_options():
@@ -23,6 +23,31 @@ def grab_type_options():
     # is this necessary?
     incident_type_choices = create_incident_type_list(incident_types)
     return incident_type_choices
+
+
+def grab_incidents_list(author_id):
+    """return all Incidents for author"""
+    return Incident.objects.filter(author__exact=author_id)
+
+
+def grab_incident(incident_id):
+    """return single selected incident"""
+    return Incident.objects.get(id__exact=incident_id)
+
+
+def create_edit_incident_page_fill(incident_id):
+    """create dictionary with all necessary items for page_fill"""
+    my_incident = grab_incident(incident_id)
+    # page_fill = {
+    #     'filing_date': my_incident.filing_date,
+    #     'subjects': my_incident.subjects.all(),
+    #     'incident_date': my_incident.incident_date,
+    #     'incident_time': my_incident.incident_time,
+    #     'incident_type': my_incident.incident_type,
+    #     'descriptors': my_incident.descriptors.all(),
+    #     'text_description': my_incident.text_description,
+    # }
+    return my_incident
 
 
 def test_for_zero_div(type_count, total_incidents):
@@ -194,6 +219,24 @@ def create_json_ready_descriptors_and_counts(subject_id):
     return json_ready_list
 
 
+def create_descriptors_list(incident):
+    """return descriptors as a list for specific incident"""
+    descriptors = incident.descriptors.all()
+    descriptors_list = []
+    for i in descriptors:
+        descriptors_list.append(i.descriptor)
+    return descriptors_list
+
+
+def create_subjects_list(incident):
+    """return subject name(s) as a list for specific incident"""
+    subjects = incident.subjects.all()
+    subjects_list = []
+    for i in subjects:
+        subjects_list.append(i.name)
+    return subjects_list
+
+
 def convert_subject_stats_to_json_obj(
     subject_name,
     recorded_incident_total,
@@ -208,6 +251,27 @@ def convert_subject_stats_to_json_obj(
         'inclusion': percent_inclusion_as_subject,
         'exclusion': percent_exclusion_as_subject,
         'descriptors': descriptor_counts
+    }
+
+
+def convert_incident_stats_to_json_obj(
+    filing_date,
+    incident_date,
+    incident_time,
+    subjects,
+    incident_type,
+    descriptors,
+    text_description
+):
+    """Convert a incident stats data into a JSON-encodable object."""
+    return {
+        'filingDate': filing_date,
+        'incidentDate': incident_date,
+        'incidentTime': incident_time,
+        'subjects': subjects,
+        'incidentType': incident_type,
+        'descriptors': descriptors,
+        'textDescription': text_description
     }
 
 
