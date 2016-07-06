@@ -219,6 +219,23 @@ def create_json_ready_descriptors_and_counts(subject_id):
     return json_ready_list
 
 
+def convert_subject_stats_to_json_obj(
+    subject_name,
+    recorded_incident_total,
+    percent_exclusion_as_subject,
+    percent_inclusion_as_subject,
+    descriptor_counts
+):
+    """Convert a subject stats data into a JSON-encodable object."""
+    return {
+        'subName': subject_name,
+        'total': recorded_incident_total,
+        'inclusion': percent_inclusion_as_subject,
+        'exclusion': percent_exclusion_as_subject,
+        'descriptors': descriptor_counts
+    }
+
+
 def create_descriptors_list(incident):
     """return descriptors as a list for specific incident"""
     descriptors = incident.descriptors.all()
@@ -235,23 +252,6 @@ def create_subjects_list(incident):
     for i in subjects:
         subjects_list.append(i.name)
     return subjects_list
-
-
-def convert_subject_stats_to_json_obj(
-    subject_name,
-    recorded_incident_total,
-    percent_exclusion_as_subject,
-    percent_inclusion_as_subject,
-    descriptor_counts
-):
-    """Convert a subject stats data into a JSON-encodable object."""
-    return {
-        'subName': subject_name,
-        'total': recorded_incident_total,
-        'inclusion': percent_inclusion_as_subject,
-        'exclusion': percent_exclusion_as_subject,
-        'descriptors': descriptor_counts
-    }
 
 
 def convert_incident_stats_to_json_obj(
