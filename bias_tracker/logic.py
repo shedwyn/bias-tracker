@@ -38,7 +38,6 @@ def grab_incident(incident_id):
 def create_edit_incident_page_fill(incident_id):
     """create dictionary with all necessary items for page_fill"""
     my_incident = grab_incident(incident_id)
-    print('my incident', my_incident)
     # page_fill = {
     #     'filing_date': my_incident.filing_date,
     #     'subjects': my_incident.subjects.all(),
@@ -226,8 +225,6 @@ def create_descriptors_list(incident):
     descriptors_list = []
     for i in descriptors:
         descriptors_list.append(i.descriptor)
-        print(i)
-    print(descriptors_list)
     return descriptors_list
 
 
@@ -237,8 +234,6 @@ def create_subjects_list(incident):
     subjects_list = []
     for i in subjects:
         subjects_list.append(i.name)
-        print(i)
-    print(subjects_list)
     return subjects_list
 
 
