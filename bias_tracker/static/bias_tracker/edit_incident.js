@@ -14,19 +14,19 @@ function createListItem(listItem) {
  */
 function fillIncidentPage(stats) {
   var filingDate = $('#filing-date');
-  filingDate.text(stats.filing_date);
+  filingDate.text(stats.filingDate);
   var incidentDate = $('#incident-date');
-  incidentDate.text(stats.incident_date);
+  incidentDate.text(stats.incidentDate);
   var incidentTime = $('#incident-time');
-  incidentTime.text(stats.incident_time);
+  incidentTime.text(stats.incidentTime);
   var subjectsArea = $('#subjects-list');
   var subjectArray = stats.subjects;
   for (var i = 0; i < subjectArray.length; i += 1) {
     var liElement = createListItem(subjectArray[i]);
     subjectsArea.append(liElement);
   }
-  var incidentType = $('type');
-  incidentType.text(stats.incident_type);
+  var incidentType = $('#type');
+  incidentType.text(stats.incidentType);
   var descriptorsArea = $('#descriptors-list');
   var descriptorArray = stats.descriptors;
   for (var i = 0; i < descriptorArray.length; i += 1) {
@@ -34,7 +34,7 @@ function fillIncidentPage(stats) {
     descriptorsArea.append(liElement);
   }
   var textDescription = $('#text-description');
-  textDescription.text(stats.text_description);
+  textDescription.text(stats.textDescription);;
 }
 /**
  * Fill in the current page with any error encountered.
