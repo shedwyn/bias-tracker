@@ -1,8 +1,8 @@
-## Bias-Tracker Project
+## Tracker Project
 
-  Bias Tracker allows the user to record, as an Incident, any interaction with another person at her organization that may have been demonstrating unconscious bias as well as marking more positive Incidents where the other person was acting more like an ally.  
+  Tracker allows the user to record, as an Incident, any interaction with another person at his/her organization that had some significance to him/her in terms of making the person feel included in the group or excluded.  This might be something that made him feel particularly left-out, or made her feel warmly welcomed.  
 
-  She can generate a page to see what types of incidents she logged over time, and which descriptor tags she gave to all Incidents, along with a count of the number of times any named descriptor was used.  She can see the same statistics as they relate to the other person involved, i.e. did "John" have more "good" or "bad" interactions with her?
+  The user can generate a page to see what types of incidents the user logged over time, and which descriptor tags were given in all Incidents, along with a count of the number of times any named descriptor was used.  The user can see the same statistics as they relate to the other person involved, i.e. did "Chris" have more "positive/inclusive" or "negative/exclusive" interactions with her?
 
   *[See Formal Proposal](Proposal_formal.md) for more detail, including desired upgrades*
 
@@ -50,9 +50,9 @@
 * In browser window run your local server but add "/admin" to the address
 * Use the links to add
   * Person - these are the subjects of the incident
-  * Descriptor - these are the tags that should be added to help with statistical analysis
+  * Descriptor - these are the tags that should be added to help with statistical analysis.  Trying to create code to fish key words out of a text field is more difficult than planting the key words as an option field on the form itself.
 
-### Instantiate Person(s) and Descriptors Automatically
+### Instantiate Person(s) and Descriptors Automatically (As of July 2016 - under construction and not yet available)
 * This will populate the Person model with "Organization" and "Individual" only.
   * If you want to add additional Persons, follow the steps for Manual above
 * This will populate the Descriptors model with the options I wrote for the original program
