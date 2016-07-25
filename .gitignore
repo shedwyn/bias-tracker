@@ -2,3 +2,6 @@ venv
 db.sqlite3
 Future_Updates.md
 __pycache__
+descriptor.txt
+descriptor3.txt
+fixtures
