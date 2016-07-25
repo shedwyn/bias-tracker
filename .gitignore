@@ -5,3 +5,4 @@ __pycache__
 descriptor.txt
 descriptor3.txt
 fixtures
+local_settings.py
