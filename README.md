@@ -35,6 +35,9 @@
 
 ### Initialize the SQLite DB - PostGreSQL
 
+* Open and review settings.py
+  * check the DATABASES default settings to make sure they are correct for YOUR database.  Right now they default to my elfough settings
+
 * In shell/terminal "bias_tracker" APP folder
   * > python ..\\manage.py createmigrations bias_tracker
 
