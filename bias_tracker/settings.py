@@ -81,23 +81,24 @@ WSGI_APPLICATION = 'bias_tracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {  # deployment settings
-    'default': dj_database_url.config()
+TRACKER_DB_PASS = os.environ['TRACKER_DB_PASS']
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bias_tracker',
+        'USER': 'elfough',
+        'PASSWORD': 'TRACKER_DB_PASS',
+        'HOST': 'localhost',
+        'PORT': '5432',  # as per the settings in PostGreSQL
+    }
 }
 
-#  for development/local, use
-# DATABASES = {
-#     'default': {
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'bias_tracker',
-#         'USER': 'elfough',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '5432',  # as per the settings in PostGreSQL
-#     }
-# }
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -135,7 +136,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+
+# from Heroku pages:
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static')
+)
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Login
 
