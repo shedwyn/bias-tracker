@@ -17,7 +17,7 @@ from django.core.wsgi import get_wsgi_application
 
 from whitenoise.django import DjangoWhiteNoise
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bias_tracker.settings")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bias_tracker.settings')
 
 application = get_wsgi_application()
 
