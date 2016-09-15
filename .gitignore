@@ -6,3 +6,4 @@ descriptor.txt
 descriptor3.txt
 fixtures
 local_settings.py
+.DS_Store
