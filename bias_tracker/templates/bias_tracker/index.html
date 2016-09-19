@@ -52,7 +52,7 @@
             those new allies!) to change outcomes of future interactions with
             any given individual.
           </p>
-          <h2>Above all - this program is about evaluation, education and
+          <h2>Above all - this program is about (re)evaluation, education and
           empowerment</h2>
           <!-- Pop Up on "Included", "Excluded", and "Ally" needed to offer
           explanation for those who do not know what is meant.-->
@@ -76,8 +76,11 @@
           href="{% url 'new_incident' %}"
           role="button"
           >
-          Create New Incident
+          New Incident
         </a>
+        <p>
+          Form to log a new incident
+        </p>
         </div>
         <!-- /create new -->
         <!-- incident edit -->
@@ -86,8 +89,11 @@
           href="{% url 'select_incident' %}"
           role="button"
           >
-          Review or Edit Incident
+          Review Incident
         </a>
+        <p>
+          Select a logged incident to review details
+        </p>
         </div>
         <!-- /incident edit -->
       </div>
@@ -100,8 +106,11 @@
               href="{% url 'self_stats' %}"
               role="button"
           >
-            YOUR statistics
+            Your Statistics
           </a>
+          <p>
+            Statistics about types of incidents you have recorded
+          </p>
         </div>
         <!-- /self stats -->
         <!-- subject stats -->
@@ -110,8 +119,12 @@
             href="{% url 'subject_stats' %}"
             role="button"
           >
-          Incident Subject Statistics
+          Co-worker Statistics
           </a>
+          <p>
+            Page for pulling up statistics specific to individuals who have
+            been participants in any of your recorded incidents
+          </p>
         </div>
         <!-- /subject stats -->
       </div>
@@ -127,6 +140,9 @@
           >
           Logout
           </a>
+          <p>
+
+          </p>
         </div>
       </div>
       <!-- /logout -->
