@@ -298,7 +298,7 @@ def test_for_blank_value(value):
 def test_and_correct_date(incident_date):
     """take in date and return default val if ''"""
     if test_for_blank_value(incident_date) is False:
-        return datetime.today().date()
+        return datetime.date.today()
     else:
         return incident_date
 
